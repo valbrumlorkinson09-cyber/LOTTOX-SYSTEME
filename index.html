@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOTTOX — Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, #17202a 0%, #080a0d 45%, #030405 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        /* LOGO */
+        .brand {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .logo {
+            width: 78px;
+            height: 78px;
+            margin: auto;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #ffd700, #ff9d00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #080808;
+            font-size: 27px;
+            font-weight: 900;
+            box-shadow: 0 0 35px rgba(255, 193, 7, .25);
+        }
+
+        .brand h1 {
+            margin-top: 14px;
+            font-size: 35px;
+            letter-spacing: 4px;
+            font-weight: 900;
+        }
+
+        .brand p {
+            margin-top: 6px;
+            color: #8f969e;
+            font-size: 13px;
+        }
+
+        /* CARD */
+        .login-card {
+            background: rgba(15, 18, 22, .96);
+            border: 1px solid #252a30;
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.45);
+        }
+
+        .login-card h2 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .login-card .subtitle {
+            color: #858c94;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: #bfc4c9;
+            margin-bottom: 8px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box span {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17px;
+        }
+
+        input {
+            width: 100%;
+            height: 52px;
+            border: 1px solid #2c3239;
+            background: #090b0e;
+            border-radius: 12px;
+            outline: none;
+            color: white;
+            padding: 0 14px 0 44px;
+            font-size: 15px;
+            transition: .2s;
+        }
+
+        input:focus {
+            border-color: #ffd000;
+            box-shadow: 0 0 0 3px rgba(255,208,0,.08);
+        }
+
+        .password-box input {
+            padding-right: 48px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+            font-size: 17px;
+        }
+
+        /* BUTTON */
+        .login-btn {
+            width: 100%;
+            height: 53px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ffd700, #ff9d00);
+            color: #090909;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: .2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(255,193,7,.18);
+        }
+
+        .login-btn:active {
+            transform: scale(.98);
+        }
+
+        .forgot {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .forgot a {
+            color: #ffd000;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #5f666d;
+            font-size: 11px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 13px;
+            font-size: 11px;
+            color: #777f87;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #20d46b;
+            box-shadow: 0 0 10px rgba(32,212,107,.6);
+        }
+
+        /* ERROR */
+        .error {
+            display: none;
+            background: rgba(255, 60, 60, .08);
+            border: 1px solid rgba(255,60,60,.25);
+            color: #ff7777;
+            padding: 11px;
+            border-radius: 10px;
+            margin-bottom: 17px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 23px;
+            }
+
+            .brand h1 {
+                font-size: 31px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- BRAND -->
+        <div class="brand">
+            <div class="logo">X</div>
+
+            <h1>LOTTOX</h1>
+
+            <p>Smart Lottery Management System</p>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="login-card">
+
+            <h2>Byenveni 👋</h2>
+
+            <p class="subtitle">
+                Konekte pou antre nan sistèm LOTTOX la.
+            </p>
+
+            <div id="errorMessage" class="error">
+                ⚠️ ID oswa modpas la pa kòrèk.
+            </div>
+
+            <!-- ID -->
+            <div class="input-group">
+                <label>ID Ajan</label>
+
+                <div class="input-box">
+                    <span>👤</span>
+
+                    <input
+                        type="text"
+                        id="agentId"
+                        placeholder="Antre ID ajan an"
+                        autocomplete="username"
+                    >
+                </div>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+                <label>Modpas</label>
+
+                <div class="input-box password-box">
+
+                    <span>🔐</span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Antre modpas la"
+                        autocomplete="current-password"
+                    >
+
+                    <span
+                        class="show-password"
+                        id="togglePassword"
+                        onclick="togglePassword()"
+                    >👁️</span>
+
+                </div>
+            </div>
+
+            <button class="login-btn" onclick="login()">
+                KONEKTE →
+            </button>
+
+            <div class="forgot">
+                <a href="#" onclick="forgotPassword()">
+                    Ou bliye modpas ou?
+                </a>
+            </div>
+
+        </div>
+
+        <!-- STATUS -->
+        <div class="status">
+            <span class="dot"></span>
+            LOTTOX System Online
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            © 2026 LOTTOX — All Rights Reserved
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword() {
+
+            const password = document.getElementById("password");
+            const icon = document.getElementById("togglePassword");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                icon.textContent = "🙈";
+
+            } else {
+
+                password.type = "password";
+                icon.textContent = "👁️";
+
+            }
+        }
+
+
+        function login() {
+
+            const agentId = document.getElementById("agentId").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            const error = document.getElementById("errorMessage");
+
+            if (!agentId || !password) {
+
+                error.textContent = "⚠️ Tanpri ranpli tout chan yo.";
+                error.style.display = "block";
+
+                return;
+            }
+
+            /*
+                DEMO LOGIN
+
+                Pou kounya:
+                ID: admin
+                Password: 123456
+
+                Apre sa n ap retire sa epi konekte
+                login nan ak Appwrite.
+            */
+
+            if (agentId === "admin" && password === "123456") {
+
+                localStorage.setItem("lottoxLoggedIn", "true");
+                localStorage.setItem("lottoxAgent", agentId);
+
+                window.location.href = "dashboard.html";
+
+            } else {
+
+                error.textContent = "⚠️ ID oswa modpas la pa kòrèk.";
+                error.style.display = "block";
+
+            }
+        }
+
+
+        function forgotPassword() {
+
+            alert(
+                "Pou kounya, kontakte administratè LOTTOX la pou reset modpas la."
+            );
+
+        }
+
+
+        // ENTER = LOGIN
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                login();
+            }
+
+        });
+
+    </script>
+
+</body>
+  </html>
