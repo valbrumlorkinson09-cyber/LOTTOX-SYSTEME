@@ -21,8 +21,6 @@
             color: #fff;
         }
 
-        /* ================= HEADER ================= */
-
         header {
             height: 70px;
             background: rgba(10, 12, 15, .96);
@@ -79,8 +77,6 @@
             justify-content: center;
         }
 
-        /* ================= MAIN ================= */
-
         main {
             width: 100%;
             max-width: 1250px;
@@ -101,8 +97,6 @@
             color: #818890;
             font-size: 13px;
         }
-
-        /* ================= STATS ================= */
 
         .stats {
             display: grid;
@@ -134,8 +128,6 @@
             margin-bottom: 8px;
         }
 
-        /* ================= GRID ================= */
-
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1.4fr .8fr;
@@ -164,8 +156,6 @@
             font-size: 12px;
             color: #777f87;
         }
-
-        /* ================= FORM ================= */
 
         .form-grid {
             display: grid;
@@ -211,8 +201,6 @@
             cursor: pointer;
         }
 
-        /* ================= BET BUTTON ================= */
-
         .add-btn {
             width: 100%;
             height: 49px;
@@ -227,8 +215,6 @@
         .add-btn:hover {
             background: #20252b;
         }
-
-        /* ================= BET TABLE ================= */
 
         .bets {
             margin-top: 18px;
@@ -272,8 +258,6 @@
             font-size: 12px;
         }
 
-        /* ================= TOTAL ================= */
-
         .total-box {
             display: flex;
             justify-content: space-between;
@@ -296,8 +280,6 @@
             color: #ffd000;
         }
 
-        /* ================= PRINT ================= */
-
         .print-btn {
             width: 100%;
             height: 55px;
@@ -314,8 +296,6 @@
         .print-btn:hover {
             box-shadow: 0 8px 25px rgba(255,193,7,.16);
         }
-
-        /* ================= QUICK ACTIONS ================= */
 
         .actions {
             display: grid;
@@ -363,8 +343,6 @@
             font-size: 11px;
         }
 
-        /* ================= RECENT TICKETS ================= */
-
         .recent {
             margin-top: 20px;
         }
@@ -398,8 +376,6 @@
             font-weight: bold;
         }
 
-        /* ================= LOGOUT ================= */
-
         .logout {
             margin-top: 18px;
             width: 100%;
@@ -411,8 +387,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-
-        /* ================= MOBILE ================= */
 
         @media (max-width: 900px) {
 
@@ -487,16 +461,12 @@
 
 </header>
 
-
 <main>
 
     <div class="welcome">
         <h1>Dashboard 🎰</h1>
         <p>Jere nouvo parye yo epi prepare tikè kliyan yo.</p>
     </div>
-
-
-    <!-- STATS -->
 
     <section class="stats">
 
@@ -526,10 +496,7 @@
 
     </section>
 
-
     <div class="dashboard-grid">
-
-        <!-- NOUVO PARI -->
 
         <section class="card">
 
@@ -537,7 +504,6 @@
                 <h2>🎟️ Nouvo Pari</h2>
                 <span>LOTTOX</span>
             </div>
-
 
             <div class="form-grid">
 
@@ -551,7 +517,6 @@
                     </select>
                 </div>
 
-
                 <div class="input-group">
                     <label>Nimewo</label>
 
@@ -563,7 +528,6 @@
                     >
                 </div>
 
-
                 <div class="input-group">
                     <label>Montan (Gdes)</label>
 
@@ -574,7 +538,6 @@
                         min="1"
                     >
                 </div>
-
 
                 <div class="input-group">
                     <label>Tip</label>
@@ -588,13 +551,9 @@
 
             </div>
 
-
             <button class="add-btn" onclick="addBet()">
                 ＋ AJOUTE PARI
             </button>
-
-
-            <!-- BETS -->
 
             <div class="bets">
 
@@ -615,9 +574,6 @@
 
             </div>
 
-
-            <!-- TOTAL -->
-
             <div class="total-box">
 
                 <span>TOTAL TIKÈ</span>
@@ -628,15 +584,11 @@
 
             </div>
 
-
             <button class="print-btn" onclick="printTicket()">
                 🖨️ ENPRIME RESI
             </button>
 
         </section>
-
-
-        <!-- ACTIONS -->
 
         <aside>
 
@@ -645,7 +597,6 @@
                 <div class="card-title">
                     <h2>Aksyon Rapid</h2>
                 </div>
-
 
                 <div class="actions">
 
@@ -660,7 +611,6 @@
 
                     </button>
 
-
                     <button class="action" onclick="showHistory()">
 
                         <div class="action-icon">📋</div>
@@ -671,7 +621,6 @@
                         </div>
 
                     </button>
-
 
                     <button class="action" onclick="showReports()">
 
@@ -685,9 +634,6 @@
                     </button>
 
                 </div>
-
-
-                <!-- RECENT -->
 
                 <div class="recent">
 
@@ -705,7 +651,6 @@
 
                 </div>
 
-
                 <button class="logout" onclick="logout()">
                     🚪 Dekonekte
                 </button>
@@ -716,10 +661,9 @@
 
     </div>
 
-</main>
+    </main>
 
-
-<script>
+    <script>
 
     /* ================= LOGIN CHECK ================= */
 
@@ -729,8 +673,8 @@
         window.location.href = "index.html";
     }
 
-
-    const agent = localStorage.getItem("lottoxAgent") || "Agent";
+    const agent =
+        localStorage.getItem("lottoxAgent") || "Agent";
 
     document.getElementById("agentName").textContent =
         "Agent: " + agent;
@@ -741,7 +685,9 @@
     let bets = [];
 
     let tickets =
-        JSON.parse(localStorage.getItem("lottoxTickets")) || [];
+        JSON.parse(
+            localStorage.getItem("lottoxTickets")
+        ) || [];
 
 
     /* ================= ADD BET ================= */
@@ -752,35 +698,49 @@
             document.getElementById("game").value;
 
         const number =
-            document.getElementById("number").value.trim();
+            document.getElementById("number")
+                .value.trim();
 
         const amount =
-            Number(document.getElementById("amount").value);
+            Number(
+                document.getElementById("amount").value
+            );
 
         const betType =
             document.getElementById("betType").value;
 
 
         if (!number) {
+
             alert("⚠️ Tanpri antre nimewo a.");
+
             return;
         }
 
+
         if (!amount || amount <= 0) {
+
             alert("⚠️ Tanpri antre yon montan valid.");
+
             return;
         }
 
 
         bets.push({
+
             game: game,
+
             number: number,
+
             amount: amount,
+
             type: betType
+
         });
 
 
         document.getElementById("number").value = "";
+
         document.getElementById("amount").value = "";
 
 
@@ -788,7 +748,7 @@
     }
 
 
-    /* ================= SHOW BETS ================= */
+    /* ================= DISPLAY BETS ================= */
 
     function renderBets() {
 
@@ -823,7 +783,9 @@
 
             row.innerHTML = `
 
-                <span>${bet.game}</span>
+                <span>
+                    ${bet.game}
+                </span>
 
                 <span>
                     ${bet.number}
@@ -871,14 +833,632 @@
 
         const total =
             bets.reduce(
-                (sum, bet) => sum + bet.amount,
+                (sum, bet) =>
+                    sum + bet.amount,
                 0
             );
 
 
-        document.getElementById("totalAmount").textContent =
+        document.getElementById(
+            "totalAmount"
+        ).textContent =
             formatMoney(total) + " Gdes";
     }
 
 
-    /* ================= PRINT =================
+    /* ================= PRINT TICKET ================= */
+
+    function printTicket() {
+
+        if (bets.length === 0) {
+
+            alert(
+                "⚠️ Ajoute omwen yon pari avan ou enprime tikè a."
+            );
+
+            return;
+        }
+
+
+        const total =
+            bets.reduce(
+                (sum, bet) =>
+                    sum + bet.amount,
+                0
+            );
+
+
+        const ticketId =
+            generateTicketId();
+
+
+        const ticket = {
+
+            id: ticketId,
+
+            agent: agent,
+
+            date:
+                new Date().toISOString(),
+
+            bets: [...bets],
+
+            total: total,
+
+            status: "VALID",
+
+            paid: false
+
+        };
+
+
+        tickets.unshift(ticket);
+
+
+        localStorage.setItem(
+            "lottoxTickets",
+            JSON.stringify(tickets)
+        );
+
+
+        /* ================= PRINT WINDOW ================= */
+
+        const printWindow =
+            window.open(
+                "",
+                "_blank",
+                "width=420,height=700"
+            );
+
+
+        if (!printWindow) {
+
+            alert(
+                "⚠️ Navigatè a bloke fenèt enprime a. Pèmèt pop-ups pou LOTTOX."
+            );
+
+            return;
+        }
+
+
+        const ticketDate =
+            new Date(ticket.date)
+                .toLocaleString("fr-FR");
+
+
+        printWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html lang="ht">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>${ticketId}</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            width: 280px;
+
+            margin: 0 auto;
+
+            padding: 12px;
+
+            color: #000;
+
+            background: #fff;
+
+        }
+
+        h2 {
+
+            text-align: center;
+
+            margin: 0;
+
+            font-size: 24px;
+
+            letter-spacing: 3px;
+
+        }
+
+        .center {
+
+            text-align: center;
+
+        }
+
+        .subtitle {
+
+            font-size: 10px;
+
+            margin-top: 4px;
+
+        }
+
+        hr {
+
+            border: none;
+
+            border-top: 1px dashed #000;
+
+            margin: 10px 0;
+
+        }
+
+        .info {
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            font-size: 10px;
+
+        }
+
+        th {
+
+            text-align: left;
+
+            border-bottom: 1px solid #000;
+
+            padding-bottom: 5px;
+
+        }
+
+        td {
+
+            padding: 5px 2px;
+
+            vertical-align: top;
+
+        }
+
+        .total {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+        }
+
+        .ticket-code {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+        }
+
+        .valid {
+
+            text-align: center;
+
+            margin-top: 8px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+        }
+
+        .footer {
+
+            text-align: center;
+
+            font-size: 9px;
+
+            margin-top: 12px;
+
+            line-height: 1.5;
+
+        }
+
+        @media print {
+
+            body {
+
+                width: 280px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>LOTTOX</h2>
+
+    <div class="center subtitle">
+        Smart Lottery Management System
+    </div>
+
+    <hr>
+
+    <div class="info">
+
+        <div>
+            <strong>Tikè:</strong>
+            ${ticketId}
+        </div>
+
+        <div>
+            <strong>Ajan:</strong>
+            ${agent}
+        </div>
+
+        <div>
+            <strong>Dat:</strong>
+            ${ticketDate}
+        </div>
+
+    </div>
+
+    <hr>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Jwèt</th>
+
+                <th>Nimewo</th>
+
+                <th>Tip</th>
+
+                <th>Gdes</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            ${bets.map(bet => `
+
+                <tr>
+
+                    <td>${bet.game}</td>
+
+                    <td>${bet.number}</td>
+
+                    <td>${bet.type}</td>
+
+                    <td>
+                        ${formatMoney(bet.amount)}
+                    </td>
+
+                </tr>
+
+            `).join("")}
+
+        </tbody>
+
+    </table>
+
+    <hr>
+
+    <div class="total">
+
+        <span>TOTAL</span>
+
+        <span>
+            ${formatMoney(total)} Gdes
+        </span>
+
+    </div>
+
+    <div class="ticket-code">
+        ${ticketId}
+    </div>
+
+    <div class="valid">
+        ● TIKÈ VALID
+    </div>
+
+    <div class="footer">
+
+        Kenbe resi sa a pou verifikasyon.
+
+        <br>
+
+        LOTTOX — 2026
+
+    </div>
+
+
+    <script>
+
+        window.onload = function() {
+
+            setTimeout(function() {
+
+                window.print();
+
+            }, 300);
+
+        };
+
+    <\/script>
+
+</body>
+
+</html>
+
+        `);
+
+
+        printWindow.document.close();
+
+
+        /* ================= CLEAR CURRENT BET ================= */
+
+        bets = [];
+
+        renderBets();
+
+        updateStats();
+
+        renderRecentTickets();
+
+    }
+
+
+    /* ================= GENERATE TICKET ID ================= */
+
+    function generateTicketId() {
+
+        const now = new Date();
+
+
+        const date =
+
+            now.getFullYear().toString() +
+
+            String(
+                now.getMonth() + 1
+            ).padStart(2, "0") +
+
+            String(
+                now.getDate()
+            ).padStart(2, "0");
+
+
+        const random =
+
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        return `LX-${date}-${random}`;
+    }
+
+
+    /* ================= FORMAT MONEY ================= */
+
+    function formatMoney(number) {
+
+        return Number(number)
+            .toLocaleString("en-US");
+    }
+
+
+    /* ================= UPDATE STATS ================= */
+
+    function updateStats() {
+
+        const today =
+            new Date().toLocaleDateString();
+
+
+        const todayTickets =
+            tickets.filter(ticket => {
+
+                return new Date(ticket.date)
+                    .toLocaleDateString()
+                    === today;
+
+            });
+
+
+        const sales =
+            todayTickets.reduce(
+
+                (sum, ticket) =>
+
+                    sum +
+                    Number(ticket.total),
+
+                0
+
+            );
+
+
+        document.getElementById(
+            "ticketCount"
+        ).textContent =
+            todayTickets.length;
+
+
+        document.getElementById(
+            "salesTotal"
+        ).textContent =
+            formatMoney(sales) +
+            " Gdes";
+    }
+
+
+    /* ================= RECENT TICKETS ================= */
+
+    function renderRecentTickets() {
+
+        const container =
+            document.getElementById(
+                "recentTickets"
+            );
+
+
+        if (tickets.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-bets">
+                    Pa gen tikè ankò.
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        container.innerHTML = "";
+
+
+        tickets
+            .slice(0, 5)
+            .forEach(ticket => {
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "ticket-item";
+
+
+                const date =
+                    new Date(ticket.date)
+                        .toLocaleString("fr-FR");
+
+
+                item.innerHTML = `
+
+                    <div>
+
+                        <div class="ticket-id">
+
+                            ${ticket.id}
+
+                        </div>
+
+                        <div class="ticket-date">
+
+                            ${date}
+
+                        </div>
+
+                    </div>
+
+                    <div class="ticket-money">
+
+                        ${formatMoney(
+                            ticket.total
+                        )} Gdes
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+    }
+
+
+    /* ================= VERIFY ================= */
+
+    function verifyTicket() {
+
+        window.location.href =
+            "verification.html";
+    }
+
+
+    /* ================= HISTORY ================= */
+
+    function showHistory() {
+
+        alert(
+            "Istwa tikè yo ap vini nan pwochen etap la."
+        );
+    }
+
+
+    /* ================= REPORTS ================= */
+
+    function showReports() {
+
+        alert(
+            "Rapò yo ap vini nan pwochen etap la."
+        );
+    }
+
+
+    /* ================= LOGOUT ================= */
+
+    function logout() {
+
+        localStorage.removeItem(
+            "lottoxLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "lottoxAgent"
+        );
+
+
+        window.location.href =
+            "index.html";
+    }
+
+
+    /* ================= INITIALIZE ================= */
+
+    updateStats();
+
+    renderRecentTickets();
+
+    renderBets();
+
+</script>
+
+</body>
+</html>
