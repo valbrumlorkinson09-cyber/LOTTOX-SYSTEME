@@ -203,32 +203,28 @@ function togglePassword(){
 
 
 /* ================= LOGIN ================= */
-
 function login(){
 
     const agentId =
         document
-        .getElementById(
-            "agentId"
-        )
+        .getElementById("agentId")
         .value
         .trim()
         .toUpperCase();
 
-
     const password =
         document
-        .getElementById(
-            "password"
-        )
+        .getElementById("password")
         .value
         .trim();
 
 
+    /* ================= EMPTY ================= */
+
     if(!agentId){
 
         alert(
-            "⚠️ Antre ID Ajan ou."
+            "⚠️ Antre ID ou."
         );
 
         return;
@@ -247,6 +243,37 @@ function login(){
     }
 
 
+    /* =================================================
+       ADMIN LOGIN
+    ================================================= */
+
+    if(
+        agentId === "ADMIN" &&
+        password === "LOTTOX2026"
+    ){
+
+        localStorage.setItem(
+            "lottoxAdminLoggedIn",
+            "true"
+        );
+
+        localStorage.setItem(
+            "lottoxLoggedIn",
+            "true"
+        );
+
+        window.location.href =
+            "admin.html";
+
+        return;
+
+    }
+
+
+    /* =================================================
+       AGENT LOGIN
+    ================================================= */
+
     const agents =
         JSON.parse(
             localStorage.getItem(
@@ -259,19 +286,14 @@ function login(){
         agents.find(
             item =>
 
-            String(
-                item.id
-            ).toUpperCase()
-            ===
-            agentId
+            String(item.id)
+            .toUpperCase()
+            === agentId
 
             &&
 
-            String(
-                item.password
-            )
-            ===
-            password
+            String(item.password)
+            === password
         );
 
 
@@ -300,7 +322,7 @@ function login(){
     }
 
 
-    /* SAVE SESSION */
+    /* ================= SESSION ================= */
 
     localStorage.setItem(
         "lottoxLoggedIn",
@@ -320,12 +342,13 @@ function login(){
     );
 
 
-    /* GO DASHBOARD */
+    /* ================= DASHBOARD ================= */
 
     window.location.href =
         "agent.html";
 
-}
+                }
+
 
 
 /* ================= ENTER ================= */
