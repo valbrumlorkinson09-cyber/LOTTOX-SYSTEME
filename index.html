@@ -315,89 +315,268 @@
 
     </div>
 
+<script>
 
-    <script>
-
-        function togglePassword() {
-
-            const password = document.getElementById("password");
-            const icon = document.getElementById("togglePassword");
-
-            if (password.type === "password") {
-
-                password.type = "text";
-                icon.textContent = "🙈";
-
-            } else {
-
-                password.type = "password";
-                icon.textContent = "👁️";
-
-            }
-        }
+/* =====================================================
+   LOTTOX LOGIN SYSTEM
+===================================================== */
 
 
-        function login() {
+/* ================= ELEMENTS ================= */
 
-            const agentId = document.getElementById("agentId").value.trim();
-            const password = document.getElementById("password").value.trim();
+const agentIdInput =
+    document.getElementById(
+        "agentId"
+    );
 
-            const error = document.getElementById("errorMessage");
-
-            if (!agentId || !password) {
-
-                error.textContent = "⚠️ Tanpri ranpli tout chan yo.";
-                error.style.display = "block";
-
-                return;
-            }
-
-            /*
-                DEMO LOGIN
-
-                Pou kounya:
-                ID: admin
-                Password: 123456
-
-                Apre sa n ap retire sa epi konekte
-                login nan ak Appwrite.
-            */
-
-            if (agentId === "admin" && password === "123456") {
-
-                localStorage.setItem("lottoxLoggedIn", "true");
-                localStorage.setItem("lottoxAgent", agentId);
-
-                window.location.href = "dashboard.html";
-
-            } else {
-
-                error.textContent = "⚠️ ID oswa modpas la pa kòrèk.";
-                error.style.display = "block";
-
-            }
-        }
+const passwordInput =
+    document.getElementById(
+        "password"
+    );
 
 
-        function forgotPassword() {
+/* ================= SHOW / HIDE PASSWORD ================= */
 
-            alert(
-                "Pou kounya, kontakte administratè LOTTOX la pou reset modpas la."
-            );
+function togglePassword(){
 
-        }
+    if(!passwordInput){
+
+        return;
+
+    }
 
 
-        // ENTER = LOGIN
-        document.addEventListener("keydown", function(event) {
+    if(
+        passwordInput.type ===
+        "password"
+    ){
 
-            if (event.key === "Enter") {
+        passwordInput.type =
+            "text";
+
+    }else{
+
+        passwordInput.type =
+            "password";
+
+    }
+
+}
+
+
+/* ================= LOGIN ================= */
+
+function login(){
+
+    const agentId =
+        agentIdInput
+        ? agentIdInput.value
+            .trim()
+            .toUpperCase()
+        : "";
+
+
+    const password =
+        passwordInput
+        ? passwordInput.value.trim()
+        : "";
+
+
+    /* ================= VALIDATION ================= */
+
+    if(!agentId){
+
+        alert(
+            "⚠️ Antre ID Ajan ou."
+        );
+
+        agentIdInput.focus();
+
+        return;
+
+    }
+
+
+    if(!password){
+
+        alert(
+            "⚠️ Antre modpas ou."
+        );
+
+        passwordInput.focus();
+
+        return;
+
+    }
+
+
+    /* ================= GET AGENTS ================= */
+
+    const agents =
+        JSON.parse(
+            localStorage.getItem(
+                "lottoxAgents"
+            )
+        ) || [];
+
+
+    /* ================= FIND AGENT ================= */
+
+    const agent =
+        agents.find(
+            item =>
+
+                String(
+                    item.id
+                )
+                .toUpperCase()
+                ===
+                agentId
+
+                &&
+
+                String(
+                    item.password
+                )
+                ===
+                password
+        );
+
+
+    /* ================= INVALID LOGIN ================= */
+
+    if(!agent){
+
+        alert(
+            "❌ ID Ajan oswa modpas la pa kòrèk."
+        );
+
+        passwordInput.value = "";
+
+        return;
+
+    }
+
+
+    /* ================= CHECK STATUS ================= */
+
+    if(
+        agent.status !==
+        "ACTIVE"
+    ){
+
+        alert(
+            "🔴 Kont ajan sa a pa aktif.\n\n" +
+            "Kontakte administratè LOTTOX la."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= SAVE LOGIN ================= */
+
+    localStorage.setItem(
+
+        "lottoxLoggedIn",
+
+        "true"
+
+    );
+
+
+    localStorage.setItem(
+
+        "lottoxCurrentAgent",
+
+        agent.id
+
+    );
+
+
+    localStorage.setItem(
+
+        "lottoxCurrentAgentName",
+
+        agent.name
+
+    );
+
+
+    /* ================= REDIRECT ================= */
+
+    window.location.href =
+        "agent.html";
+
+}
+
+
+/* ================= ENTER KEY ================= */
+
+if(agentIdInput){
+
+    agentIdInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
                 login();
+
             }
 
-        });
+        }
+    );
 
-    </script>
+}
 
-</body>
-  </html>
+
+if(passwordInput){
+
+    passwordInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
+                login();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= ADMIN LOGIN ================= */
+
+/*
+   Pou devlopman sèlman.
+   Apre sa n ap mete yon vrè
+   kont admin ki sekirize.
+*/
+
+function adminLogin(){
+
+    window.location.href =
+        "admin.html";
+
+}
+
+
+/* ================= SYSTEM ================= */
+
+console.log(
+    "🔐 LOTTOX LOGIN READY"
+);
+
+</script>
+    
