@@ -991,30 +991,32 @@ function formatMoney(value){
 
 }
 /* =====================================================
-   LOTTOX ADMIN — PATI 2/3
-   AJAN + MACHIN
+   LOTTOX — ADD AGENT
+   ID + PASSWORD + STATUS
 ===================================================== */
-
-
-/* ================= AJOUTE AJAN ================= */
 
 function addAgent(){
 
     const name =
-        document.getElementById(
-            "agentName"
-        ).value.trim();
+        document
+        .getElementById("agentName")
+        .value
+        .trim();
 
     const phone =
-        document.getElementById(
-            "agentPhone"
-        ).value.trim();
+        document
+        .getElementById("agentPhone")
+        .value
+        .trim();
 
     const machine =
-        document.getElementById(
-            "agentMachine"
-        ).value.trim();
+        document
+        .getElementById("agentMachine")
+        .value
+        .trim();
 
+
+    /* ================= VALIDATION ================= */
 
     if(!name){
 
@@ -1036,17 +1038,49 @@ function addAgent(){
     }
 
 
-    const agent = {
+    if(!machine){
 
-        id: generateID("AG"),
+        alert(
+            "⚠️ Antre ID machin nan."
+        );
 
-        name: name,
+        return;
+    }
 
-        phone: phone,
 
-        machine: machine,
+    /* ================= GENERATE ID ================= */
 
-        status: "ACTIVE",
+    const agentID =
+        generateID("AG");
+
+
+    /* ================= GENERATE PASSWORD ================= */
+
+    const password =
+        generatePassword();
+
+
+    /* ================= CREATE AGENT ================= */
+
+    const newAgent = {
+
+        id:
+            agentID,
+
+        name:
+            name,
+
+        phone:
+            phone,
+
+        machine:
+            machine,
+
+        password:
+            password,
+
+        status:
+            "ACTIVE",
 
         createdAt:
             new Date().toISOString()
@@ -1054,34 +1088,98 @@ function addAgent(){
     };
 
 
-    agents.push(agent);
+    /* ================= SAVE ================= */
 
-    saveData();
+    agents.push(
+        newAgent
+    );
 
-    document.getElementById(
-        "agentName"
-    ).value = "";
 
-    document.getElementById(
-        "agentPhone"
-    ).value = "";
+    localStorage.setItem(
 
-    document.getElementById(
-        "agentMachine"
-    ).value = "";
+        "lottoxAgents",
 
+        JSON.stringify(
+            agents
+        )
+
+    );
+
+
+    /* ================= CLEAR FORM ================= */
+
+    document
+        .getElementById(
+            "agentName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "agentPhone"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "agentMachine"
+        )
+        .value = "";
+
+
+    /* ================= UPDATE ================= */
 
     updateStats();
+
 
     displayAgents();
 
 
+    /* ================= SHOW LOGIN INFO ================= */
+
     alert(
-        "✅ Ajan ajoute avèk siksè!"
+
+        "✅ AJAN KREYE AVÈK SIKSÈ!\n\n" +
+
+        "🆔 ID Ajan: " +
+        agentID +
+
+        "\n\n🔐 Modpas: " +
+        password +
+
+        "\n\n🚗 Machin: " +
+        machine +
+
+        "\n\n🟢 Status: ACTIVE\n\n" +
+
+        "Bay ajan an ID ak modpas sa yo."
+
     );
 
 }
 
+
+/* =====================================================
+   GENERATE AGENT PASSWORD
+===================================================== */
+
+function generatePassword(){
+
+    const number =
+        Math.floor(
+            1000 +
+            Math.random() *
+            9000
+        );
+
+
+    return String(
+        number
+    );
+
+}
 
 /* ================= AJOUTE MACHIN ================= */
 
