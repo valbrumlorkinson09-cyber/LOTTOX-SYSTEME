@@ -437,76 +437,41 @@ body{
   </div>
 <script>
 
-/* =====================================================
-   LOTTOX ADMIN LOGIN
-===================================================== */
-
 function adminLogin(){
 
     const id =
-        document
-        .getElementById("adminId")
-        .value
-        .trim()
-        .toUpperCase();
-
+        document.getElementById("adminId")
+        .value.trim().toUpperCase();
 
     const password =
-        document
-        .getElementById("adminPassword")
-        .value
-        .trim();
+        document.getElementById("adminPassword")
+        .value.trim();
 
-
-    const error =
-        document.getElementById(
-            "error"
-        );
-
-
-    /* ================= CHECK ================= */
-
-    if(
-        id === "ADMIN" &&
-        password === "LOTTOX2026"
-    ){
-
-        /* SAVE ADMIN SESSION */
+    if(id === "ADMIN" && password === "LOTTOX2026"){
 
         localStorage.setItem(
             "lottoxAdminLoggedIn",
             "true"
         );
 
-
-        /* COMPATIBILITY */
-
         localStorage.setItem(
             "lottoxLoggedIn",
             "true"
         );
 
+        window.location.href = "admin.html";
 
-        /* GO ADMIN PANEL */
+    }else{
 
-        window.location.href =
-            "admin.html";
-
-
-        return;
+        alert(
+            "❌ Kòd la pa kòrèk.\n\n" +
+            "ID: ADMIN\n" +
+            "Modpas: LOTTOX2026"
+        );
 
     }
 
-
-    /* ================= ERROR ================= */
-
-    error.style.display =
-        "block";
-
 }
-
-
-/* ================= ENTER KEY ================= */
 
 document
 .getElementById("adminPassword")
@@ -514,27 +479,14 @@ document
     "keydown",
     function(event){
 
-        if(
-            event.key === "Enter"
-        ){
-
+        if(event.key === "Enter"){
             adminLogin();
-
         }
 
     }
 );
 
-
-/* ================= READY ================= */
-
-console.log(
-    "🔐 LOTTOX ADMIN LOGIN READY"
-);
-
 </script>
 
-
 </body>
-
-</html>  
+</html>
