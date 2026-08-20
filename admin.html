@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOTTOX — Admin</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #182028 0%,
+                    #080a0d 45%,
+                    #030405 100%
+                );
+            color: #fff;
+        }
+
+        header {
+            height: 70px;
+            background: rgba(10,12,15,.97);
+            border-bottom: 1px solid #252a30;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 22px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffd700,
+                    #ff9d00
+                );
+
+            color: #090909;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .brand-name {
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .admin-badge {
+            color: #ffd000;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 28px 20px 100px;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .page-title p {
+            color: #7d858d;
+            font-size: 13px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .stat {
+            background: rgba(15,18,22,.97);
+            border: 1px solid #252a30;
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .stat-icon {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .stat-label {
+            color: #777f87;
+            font-size: 11px;
+            margin-bottom: 7px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        /* ================= GRID ================= */
+
+        .grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(15,18,22,.97);
+            border: 1px solid #252a30;
+            border-radius: 18px;
+            padding: 22px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title h2 {
+            font-size: 17px;
+        }
+
+        .card-title span {
+            color: #707880;
+            font-size: 11px;
+        }
+
+        /* ================= FORM ================= */
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            display: block;
+            color: #aeb4ba;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 48px;
+
+            background: #090b0e;
+            border: 1px solid #2c3239;
+            border-radius: 11px;
+
+            color: white;
+            outline: none;
+
+            padding: 0 13px;
+            font-size: 13px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #ffd000;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,208,0,.07);
+        }
+
+        .primary-btn {
+            width: 100%;
+            height: 50px;
+
+            border: none;
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd700,
+                    #ff9d00
+                );
+
+            color: #090909;
+
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            box-shadow:
+                0 8px 25px
+                rgba(255,193,7,.15);
+        }
+
+        /* ================= MACHINES ================= */
+
+        .machine-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .machine {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 14px;
+
+            background: #111419;
+            border: 1px solid #292f35;
+            border-radius: 12px;
+        }
+
+        .machine-info strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .machine-info small {
+            color: #707880;
+            font-size: 10px;
+        }
+
+        .machine-status {
+            padding: 6px 9px;
+            border-radius: 7px;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+        .active {
+            color: #32db78;
+            background: rgba(32,219,120,.08);
+            border: 1px solid rgba(32,219,120,.18);
+        }
+
+        .inactive {
+            color: #ff7070;
+            background: rgba(255,70,70,.08);
+            border: 1px solid rgba(255,70,70,.18);
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            text-align: left;
+            background: #090b0e;
+            color: #707880;
+
+            font-size: 10px;
+            font-weight: normal;
+
+            padding: 12px;
+        }
+
+        td {
+            padding: 13px 12px;
+            border-top: 1px solid #252a30;
+
+            font-size: 11px;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            font-size: 9px;
+            font-weight: 900;
+        }
+
+        /* ================= ACTIONS ================= */
+
+        .actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .small-btn {
+            border: 1px solid #343a41;
+            background: #171b20;
+
+            color: #ddd;
+
+            border-radius: 7px;
+
+            padding: 7px 9px;
+
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .small-btn:hover {
+            background: #20252b;
+        }
+
+        .danger-btn {
+            color: #ff7373;
+            border-color: #3a2727;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .empty {
+            padding: 25px;
+            text-align: center;
+
+            color: #666e76;
+
+            font-size: 12px;
+
+            border: 1px dashed #292f35;
+            border-radius: 11px;
+        }
+
+        /* ================= NAV ================= */
+
+        .nav {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .nav button {
+            height: 45px;
+
+            border: 1px solid #292f35;
+            background: #111419;
+
+            color: #aeb4ba;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .nav button:hover,
+        .nav button.active-nav {
+            color: #ffd000;
+            border-color: #4b401d;
+            background: #171714;
+        }
+
+        .logout {
+            margin-top: 20px;
+
+            width: 100%;
+            height: 46px;
+
+            border: 1px solid #3b2727;
+            background: #171112;
+
+            color: #ff7474;
+
+            border-radius: 11px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 14px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .admin-badge {
+                display: none;
+            }
+
+            main {
+                padding: 22px 14px 80px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+                gap: 9px;
+            }
+
+            .stat {
+                padding: 14px;
+            }
+
+            .stat-value {
+                font-size: 18px;
+            }
+
+            .card {
+                padding: 17px;
+            }
+
+            .nav {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            X
+        </div>
+
+        <div class="brand-name">
+            LOTTOX
+        </div>
+
+    </div>
+
+    <div class="admin-badge">
+        ADMIN PANEL
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="page-title">
+
+        <h1>⚡ LOTTOX Admin</h1>
+
+        <p>
+            Kontwole sistèm nan, ajan yo,
+            machin yo ak aktivite tikè yo.
+        </p>
+
+    </div>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <div class="nav">
+
+        <button
+            class="active-nav"
+            onclick="showSection('overview')"
+        >
+            📊 Overview
+        </button>
+
+        <button
+            onclick="showSection('agents')"
+        >
+            👥 Ajan
+        </button>
+
+        <button
+            onclick="showSection('machines')"
+        >
+            🚗 Machin
+        </button>
+
+        <button
+            onclick="showSection('tickets')"
+        >
+            🎟️ Tikè
+        </button>
+
+    </div>
+
+
+    <!-- ================= OVERVIEW ================= -->
+
+    <section id="overview">
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div class="stat-label">
+                    Ajan
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="agentCount"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🚗
+                </div>
+
+                <div class="stat-label">
+                    Machin
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="machineCount"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🎟️
+                </div>
+
+                <div class="stat-label">
+                    Tikè
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="ticketCount"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div class="stat-label">
+                    Lavant
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="salesTotal"
+                >
+                    0 Gdes
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="grid">
+
+            <!-- QUICK AGENT -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <h2>
+                        👤 Ajoute Ajan
+                    </h2>
+
+                    <span>
+                        LOTTOX
+                    </span>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Non ajan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="agentName"
+                        placeholder="Egzanp: Jean"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Telefòn
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="agentPhone"
+                        placeholder="Egzanp: 38xxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        ID Machin
+                    </label>
+
+                    <input
+                        type="text"
+                        id="agentMachine"
+                        placeholder="Egzanp: LOT-001"
+                    >
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="addAgent()"
+                >
+                    ＋ AJOUTE AJAN
+                </button>
+
+            </section>
+
+
+            <!-- QUICK MACHINE -->
+
+            <section class="card">
+
+                <div class="card-title">
+
+                    <h2>
+                        🚗 Ajoute Machin
+                    </h2>
+
+                    <span>
+                        LOCATION
+                    </span>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Non / ID Machin
+                    </label>
+
+                    <input
+                        type="text"
+                        id="machineName"
+                        placeholder="Egzanp: LOT-001"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Non kliyan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="machineOwner"
+                        placeholder="Non moun ki lwe a"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Frè chak mwa (Gdes)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="machinePrice"
+                        placeholder="Egzanp: 5000"
+                        min="0"
+                    >
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="addMachine()"
+                >
+                    ＋ AJOUTE MACHIN
+                </button>
+
+            </section>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AGENTS ================= -->
+
+    <section
+        id="agents"
+        style="display:none;"
+    >
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    👥 Jesyon Ajan
+                </h2>
+
+                <span id="agentTotal">
+                    0 ajan
+                </span>
+
+            </div>
+
+
+            <div
+                id="agentsList"
+                class="table-wrap"
+            >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MACHINES ================= -->
+
+    <section
+        id="machines"
+        style="display:none;"
+    >
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    🚗 Machin Lwe
+                </h2>
+
+                <span id="machineTotal">
+                    0 machin
+                </span>
+
+            </div>
+
+
+            <div
+                id="machinesList"
+                class="machine-list"
+            >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TICKETS ================= -->
+
+    <section
+        id="tickets"
+        style="display:none;"
+    >
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    🎟️ Tout Tikè
+                </h2>
+
+                <span id="ticketTotal">
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="ticketsList"
+                class="table-wrap"
+            >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <button
+        class="logout"
+        onclick="logout()"
+    >
+        🚪 Dekonekte Admin
+    </button>
+
+</main>
+<script>
+
+/* =====================================================
+   LOTTOX ADMIN — JAVASCRIPT
+===================================================== */
+
+
+/* ================= LOGIN SECURITY ================= */
+
+const adminLoggedIn =
+    localStorage.getItem("lottoxLoggedIn");
+
+if (adminLoggedIn !== "true") {
+
+    window.location.href = "index.html";
+
+}
+
+
+/* ================= DATABASE ================= */
+
+let agents =
+    JSON.parse(
+        localStorage.getItem("lottoxAgents")
+    ) || [];
+
+
+let machines =
+    JSON.parse(
+        localStorage.getItem("lottoxMachines")
+    ) || [];
+
+
+let tickets =
+    JSON.parse(
+        localStorage.getItem("lottoxTickets")
+    ) || [];
+
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+function showSection(section) {
+
+    const sections = [
+        "overview",
+        "agents",
+        "machines",
+        "tickets"
+    ];
+
+    sections.forEach(id => {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.style.display =
+                id === section
+                    ? "block"
+                    : "none";
+
+        }
+
+    });
+
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(button => {
+
+            button.classList.remove(
+                "active-nav"
+            );
+
+        });
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".nav button"
+        );
+
+
+    const index = {
+        overview: 0,
+        agents: 1,
+        machines: 2,
+        tickets: 3
+    };
+
+
+    if (buttons[index[section]]) {
+
+        buttons[index[section]]
+            .classList.add(
+                "active-nav"
+            );
+
+    }
+
+
+    if (section === "agents") {
+
+        displayAgents();
+
+    }
+
+
+    if (section === "machines") {
+
+        displayMachines();
+
+    }
+
+
+    if (section === "tickets") {
+
+        displayTickets();
+
+    }
+
+}
+
+
+/* =====================================================
+   GENERATE ID
+===================================================== */
+
+function generateID(prefix) {
+
+    const random =
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+    return prefix + "-" + random;
+
+}
+
+
+/* =====================================================
+   ADD AGENT
+===================================================== */
+
+function addAgent() {
+
+    const name =
+        document
+            .getElementById("agentName")
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById("agentPhone")
+            .value
+            .trim();
+
+
+    const machine =
+        document
+            .getElementById("agentMachine")
+            .value
+            .trim();
+
+
+    if (!name) {
+
+        alert(
+            "⚠️ Tanpri antre non ajan an."
+        );
+
+        return;
+
+    }
+
+
+    if (!phone) {
+
+        alert(
+            "⚠️ Tanpri antre telefòn ajan an."
+        );
+
+        return;
+
+    }
+
+
+    const newAgent = {
+
+        id:
+            generateID("AG"),
+
+        name:
+            name,
+
+        phone:
+            phone,
+
+        machine:
+            machine || "Pa plase",
+
+        status:
+            "ACTIVE",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    agents.unshift(
+        newAgent
+    );
+
+
+    localStorage.setItem(
+        "lottoxAgents",
+        JSON.stringify(agents)
+    );
+
+
+    document
+        .getElementById("agentName")
+        .value = "";
+
+
+    document
+        .getElementById("agentPhone")
+        .value = "";
+
+
+    document
+        .getElementById("agentMachine")
+        .value = "";
+
+
+    updateStats();
+
+    displayAgents();
+
+
+    alert(
+        "✅ Ajan ajoute avèk siksè."
+    );
+
+}
+
+
+/* =====================================================
+   DISPLAY AGENTS
+===================================================== */
+
+function displayAgents() {
+
+    const container =
+        document.getElementById(
+            "agentsList"
+        );
+
+
+    document.getElementById(
+        "agentTotal"
+    ).textContent =
+        agents.length +
+        (
+            agents.length === 1
+                ? " ajan"
+                : " ajan"
+        );
+
+
+    if (agents.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Pa gen ajan anrejistre.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>NON</th>
+                    <th>TELEFÒN</th>
+                    <th>MACHIN</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+
+    agents.forEach(agent => {
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(agent.id)}
+                </td>
+
+                <td>
+                    ${escapeHTML(agent.name)}
+                </td>
+
+                <td>
+                    ${escapeHTML(agent.phone)}
+                </td>
+
+                <td>
+                    ${escapeHTML(agent.machine)}
+                </td>
+
+                <td>
+
+                    <span
+                        class="status active"
+                    >
+                        ${escapeHTML(
+                            agent.status
+                        )}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <div class="actions">
+
+                        <button
+                            class="small-btn"
+                            onclick="toggleAgent('${agent.id}')"
+                        >
+                            Aktiv
+                        </button>
+
+                        <button
+                            class="small-btn danger-btn"
+                            onclick="deleteAgent('${agent.id}')"
+                        >
+                            Efase
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   DELETE AGENT
+===================================================== */
+
+function deleteAgent(id) {
+
+    const agent =
+        agents.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!agent) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Èske ou sèten ou vle efase ajan " +
+            agent.name +
+            "?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    agents =
+        agents.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    localStorage.setItem(
+        "lottoxAgents",
+        JSON.stringify(agents)
+    );
+
+
+    updateStats();
+
+    displayAgents();
+
+}
+
+
+/* =====================================================
+   TOGGLE AGENT
+===================================================== */
+
+function toggleAgent(id) {
+
+    const agent =
+        agents.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!agent) {
+
+        return;
+
+    }
+
+
+    agent.status =
+        agent.status === "ACTIVE"
+            ? "INACTIVE"
+            : "ACTIVE";
+
+
+    localStorage.setItem(
+        "lottoxAgents",
+        JSON.stringify(agents)
+    );
+
+
+    displayAgents();
+
+}
+
+
+/* =====================================================
+   ADD MACHINE
+===================================================== */
+
+function addMachine() {
+
+    const name =
+        document
+            .getElementById("machineName")
+            .value
+            .trim();
+
+
+    const owner =
+        document
+            .getElementById("machineOwner")
+            .value
+            .trim();
+
+
+    const price =
+        Number(
+            document
+                .getElementById("machinePrice")
+                .value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "⚠️ Tanpri antre ID machin nan."
+        );
+
+        return;
+
+    }
+
+
+    if (!owner) {
+
+        alert(
+            "⚠️ Tanpri antre non kliyan an."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !price ||
+        price < 0
+    ) {
+
+        alert(
+            "⚠️ Tanpri antre frè chak mwa a."
+        );
+
+        return;
+
+    }
+
+
+    const alreadyExists =
+        machines.some(
+            machine =>
+                machine.name
+                    .toLowerCase() ===
+                name.toLowerCase()
+        );
+
+
+    if (alreadyExists) {
+
+        alert(
+            "⚠️ ID machin sa a deja egziste."
+        );
+
+        return;
+
+    }
+
+
+    const newMachine = {
+
+        id:
+            generateID("MC"),
+
+        name:
+            name,
+
+        owner:
+            owner,
+
+        price:
+            price,
+
+        status:
+            "ACTIVE",
+
+        paid:
+            false,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    machines.unshift(
+        newMachine
+    );
+
+
+    localStorage.setItem(
+        "lottoxMachines",
+        JSON.stringify(machines)
+    );
+
+
+    document
+        .getElementById("machineName")
+        .value = "";
+
+
+    document
+        .getElementById("machineOwner")
+        .value = "";
+
+
+    document
+        .getElementById("machinePrice")
+        .value = "";
+
+
+    updateStats();
+
+    displayMachines();
+
+
+    alert(
+        "✅ Machin ajoute avèk siksè."
+    );
+
+}
+
+
+/* =====================================================
+   DISPLAY MACHINES
+===================================================== */
+
+function displayMachines() {
+
+    const container =
+        document.getElementById(
+            "machinesList"
+        );
+
+
+    document.getElementById(
+        "machineTotal"
+    ).textContent =
+        machines.length +
+        " machin";
+
+
+    if (machines.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Pa gen machin ki anrejistre.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    machines.forEach(machine => {
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "machine";
+
+
+        item.innerHTML = `
+
+            <div class="machine-info">
+
+                <strong>
+
+                    🚗 ${escapeHTML(
+                        machine.name
+                    )}
+
+                </strong>
+
+                <small>
+
+                    Kliyan:
+                    ${escapeHTML(
+                        machine.owner
+                    )}
+
+                    <br>
+
+                    Frè:
+                    ${formatMoney(
+                        machine.price
+                    )}
+                    Gdes / mwa
+
+                    <br>
+
+                    ID:
+                    ${escapeHTML(
+                        machine.id
+                    )}
+
+                </small>
+
+            </div>
+
+
+            <div class="actions">
+
+                <span
+                    class="
+                        machine-status
+                        ${
+                            machine.status ===
+                            "ACTIVE"
+                                ? "active"
+                                : "inactive"
+                        }
+                    "
+                >
+
+                    ${escapeHTML(
+                        machine.status
+                    )}
+
+                </span>
+
+
+                <button
+                    class="small-btn"
+                    onclick="toggleMachine('${machine.id}')"
+                >
+                    Status
+                </button>
+
+
+                <button
+                    class="small-btn danger-btn"
+                    onclick="deleteMachine('${machine.id}')"
+                >
+                    Efase
+                </button>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            item
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   DELETE MACHINE
+===================================================== */
+
+function deleteMachine(id) {
+
+    const machine =
+        machines.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!machine) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Efase machin " +
+            machine.name +
+            "?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    machines =
+        machines.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    localStorage.setItem(
+        "lottoxMachines",
+        JSON.stringify(machines)
+    );
+
+
+    updateStats();
+
+    displayMachines();
+
+}
+
+
+/* =====================================================
+   TOGGLE MACHINE
+===================================================== */
+
+function toggleMachine(id) {
+
+    const machine =
+        machines.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!machine) {
+
+        return;
+
+    }
+
+
+    machine.status =
+        machine.status === "ACTIVE"
+            ? "INACTIVE"
+            : "ACTIVE";
+
+
+    localStorage.setItem(
+        "lottoxMachines",
+        JSON.stringify(machines)
+    );
+
+
+    displayMachines();
+
+}
+
+
+/* =====================================================
+   DISPLAY TICKETS
+===================================================== */
+
+function displayTickets() {
+
+    const container =
+        document.getElementById(
+            "ticketsList"
+        );
+
+
+    document.getElementById(
+        "ticketTotal"
+    ).textContent =
+        tickets.length;
+
+
+    if (tickets.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                Pa gen tikè anrejistre.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>KÒD</th>
+                    <th>AJAN</th>
+                    <th>DAT</th>
+                    <th>TOTAL</th>
+                    <th>STATUS</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+
+    tickets
+        .slice(0, 100)
+        .forEach(ticket => {
+
+            const status =
+                ticket.paid
+                    ? "PAID"
+                    : (
+                        ticket.status ||
+                        "VALID"
+                    );
+
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        ${escapeHTML(
+                            ticket.id
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            ticket.agent ||
+                            "Agent"
+                        )}
+                    </td>
+
+                    <td>
+                        ${formatDate(
+                            ticket.date
+                        )}
+                    </td>
+
+                    <td>
+                        ${formatMoney(
+                            ticket.total || 0
+                        )}
+                        Gdes
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="
+                                status
+                                ${
+                                    status ===
+                                    "PAID"
+                                        ? "active"
+                                        : "inactive"
+                                }
+                            "
+                        >
+
+                            ${escapeHTML(
+                                status
+                            )}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+    html += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   UPDATE DASHBOARD STATS
+===================================================== */
+
+function updateStats() {
+
+    document.getElementById(
+        "agentCount"
+    ).textContent =
+        agents.length;
+
+
+    document.getElementById(
+        "machineCount"
+    ).textContent =
+        machines.length;
+
+
+    document.getElementById(
+        "ticketCount"
+    ).textContent =
+        tickets.length;
+
+
+    const total =
+        tickets.reduce(
+            (
+                sum,
+                ticket
+            ) => {
+
+                return (
+                    sum +
+                    Number(
+                        ticket.total || 0
+                    )
+                );
+
+            },
+            0
+        );
+
+
+    document.getElementById(
+        "salesTotal"
+    ).textContent =
+        formatMoney(total) +
+        " Gdes";
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(date) {
+
+    if (!date) {
+
+        return "—";
+
+    }
+
+
+    try {
+
+        const d =
+            new Date(date);
+
+
+        return d.toLocaleDateString(
+            "fr-FR"
+        );
+
+    } catch {
+
+        return date;
+
+    }
+
+}
+
+
+/* =====================================================
+   MONEY
+===================================================== */
+
+function formatMoney(number) {
+
+    return Number(number)
+        .toLocaleString("en-US");
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+    const confirmLogout =
+        confirm(
+            "Èske ou vle dekonekte admin?"
+        );
+
+
+    if (!confirmLogout) {
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "lottoxLoggedIn"
+    );
+
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+updateStats();
+
+displayAgents();
+
+displayMachines();
+
+displayTickets();
+
+</script>
+
+</body>
+</html>
