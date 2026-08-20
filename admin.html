@@ -22,50 +22,62 @@
 }
 
 body{
+
     min-height:100vh;
+
     background:
-        radial-gradient(
-            circle at top,
-            #182028,
-            #080a0d 45%,
-            #030405
-        );
+    radial-gradient(
+        circle at top,
+        #182028 0%,
+        #080a0d 48%,
+        #030405 100%
+    );
+
     color:#fff;
+
 }
 
 header{
+
     height:70px;
-    background:#0a0c0f;
+
+    background:rgba(10,12,15,.97);
+
     border-bottom:1px solid #252a30;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 22px;
+    padding:0 20px;
 
     position:sticky;
     top:0;
     z-index:100;
+
 }
 
 .brand{
+
     display:flex;
     align-items:center;
-    gap:11px;
+    gap:10px;
+
 }
 
-.brand-logo{
-    width:42px;
-    height:42px;
+.logo{
+
+    width:43px;
+    height:43px;
+
     border-radius:12px;
 
     background:
-        linear-gradient(
-            145deg,
-            #ffd700,
-            #ff9d00
-        );
+    linear-gradient(
+        145deg,
+        #ffd700,
+        #ff9d00
+    );
 
     color:#090909;
 
@@ -73,336 +85,522 @@ header{
     align-items:center;
     justify-content:center;
 
-    font-weight:900;
     font-size:18px;
+    font-weight:900;
+
 }
 
 .brand-name{
+
     font-size:21px;
+
     font-weight:900;
+
     letter-spacing:2px;
+
 }
 
-.admin-badge{
+.admin-label{
+
     color:#ffd000;
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:bold;
+
 }
 
 main{
+
     width:100%;
-    max-width:1250px;
+
+    max-width:1200px;
+
     margin:auto;
-    padding:28px 20px 100px;
+
+    padding:25px 16px 90px;
+
 }
 
-.page-title{
-    margin-bottom:25px;
+.title{
+
+    margin-bottom:22px;
+
 }
 
-.page-title h1{
+.title h1{
+
     font-size:27px;
+
     margin-bottom:7px;
+
 }
 
-.page-title p{
-    color:#7d858d;
-    font-size:13px;
+.title p{
+
+    color:#777f87;
+
+    font-size:12px;
+
 }
+
+
+/* ================= NAV ================= */
+
+.nav{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:9px;
+
+    margin-bottom:20px;
+
+}
+
+.nav button{
+
+    height:45px;
+
+    border-radius:10px;
+
+    border:1px solid #292f35;
+
+    background:#111419;
+
+    color:#aeb4ba;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+}
+
+.nav button:hover,
+.nav button.active{
+
+    color:#ffd000;
+
+    border-color:#51451c;
+
+}
+
+
+/* ================= STATS ================= */
 
 .stats{
+
     display:grid;
+
     grid-template-columns:
-        repeat(4,1fr);
-    gap:14px;
-    margin-bottom:22px;
+    repeat(4,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+
 }
 
 .stat{
+
     background:#0f1216;
-    border:1px solid #252a30;
+
+    border:1px solid #292f35;
+
     border-radius:16px;
-    padding:18px;
+
+    padding:17px;
+
 }
 
 .stat-icon{
-    font-size:21px;
-    margin-bottom:9px;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
 }
 
 .stat-label{
-    color:#777f87;
-    font-size:11px;
-    margin-bottom:7px;
+
+    color:#707880;
+
+    font-size:10px;
+
+    margin-bottom:6px;
+
 }
 
 .stat-value{
-    font-size:22px;
+
+    font-size:21px;
+
     font-weight:900;
+
 }
 
+
+/* ================= GRID ================= */
+
 .grid{
+
     display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:20px;
+
+    grid-template-columns:
+    .8fr 1.2fr;
+
+    gap:18px;
+
 }
 
 .card{
+
     background:#0f1216;
-    border:1px solid #252a30;
-    border-radius:18px;
-    padding:22px;
+
+    border:1px solid #292f35;
+
+    border-radius:17px;
+
+    padding:20px;
+
 }
 
 .card-title{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    margin-bottom:20px;
+
+    margin-bottom:19px;
+
 }
 
 .card-title h2{
+
     font-size:17px;
+
 }
 
 .card-title span{
+
     color:#707880;
-    font-size:11px;
+
+    font-size:10px;
+
 }
 
+
+/* ================= FORM ================= */
+
 .field{
-    margin-bottom:15px;
+
+    margin-bottom:14px;
+
 }
 
 .field label{
+
     display:block;
+
     color:#aeb4ba;
-    font-size:12px;
+
+    font-size:11px;
+
     margin-bottom:7px;
+
 }
 
 input,
 select{
+
     width:100%;
-    height:48px;
+
+    height:47px;
+
+    padding:0 12px;
+
+    border-radius:10px;
+
+    border:1px solid #30363d;
 
     background:#090b0e;
 
-    border:1px solid #2c3239;
+    color:#fff;
 
-    border-radius:11px;
-
-    color:white;
     outline:none;
 
-    padding:0 13px;
-
     font-size:13px;
+
 }
 
 input:focus,
 select:focus{
+
     border-color:#ffd000;
 
     box-shadow:
-        0 0 0 3px
-        rgba(255,208,0,.07);
+    0 0 0 3px
+    rgba(255,208,0,.06);
+
 }
+
+
+/* ================= BUTTON ================= */
 
 .primary-btn{
+
     width:100%;
-    height:50px;
+
+    height:49px;
 
     border:none;
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd700,
-            #ff9d00
-        );
-
-    color:#090909;
-
-    font-weight:900;
-    cursor:pointer;
-}
-
-.machine-list{
-    display:grid;
-    gap:10px;
-}
-
-.machine{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:15px;
-    padding:14px;
-
-    background:#111419;
-
-    border:1px solid #292f35;
-    border-radius:12px;
-}
-
-.machine-info strong{
-    display:block;
-    font-size:13px;
-    margin-bottom:5px;
-}
-
-.machine-info small{
-    color:#707880;
-    font-size:10px;
-}
-
-.machine-status{
-    padding:6px 9px;
-
-    border-radius:7px;
-
-    font-size:9px;
-    font-weight:900;
-
-    white-space:nowrap;
-}
-
-.active{
-    color:#32db78;
-    background:rgba(32,219,120,.08);
-    border:1px solid rgba(32,219,120,.18);
-}
-
-.inactive{
-    color:#ff7070;
-    background:rgba(255,70,70,.08);
-    border:1px solid rgba(255,70,70,.18);
-}
-
-.table-wrap{
-    width:100%;
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:600px;
-}
-
-th{
-    text-align:left;
-    background:#090b0e;
-    color:#707880;
-    font-size:10px;
-    padding:12px;
-}
-
-td{
-    padding:13px 12px;
-    border-top:1px solid #252a30;
-    font-size:11px;
-}
-
-.actions{
-    display:flex;
-    gap:7px;
-}
-
-.small-btn{
-    border:1px solid #343a41;
-    background:#171b20;
-    color:#ddd;
-
-    border-radius:7px;
-
-    padding:7px 9px;
-
-    cursor:pointer;
-    font-size:10px;
-}
-
-.danger-btn{
-    color:#ff7373;
-    border-color:#3a2727;
-}
-
-.empty{
-    padding:25px;
-    text-align:center;
-
-    color:#666e76;
-    font-size:12px;
-
-    border:1px dashed #292f35;
-    border-radius:11px;
-}
-
-.nav{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:10px;
-
-    margin-bottom:22px;
-}
-
-.nav button{
-    height:45px;
-
-    border:1px solid #292f35;
-
-    background:#111419;
-
-    color:#aeb4ba;
 
     border-radius:10px;
 
-    cursor:pointer;
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ff9d00
+    );
 
-    font-size:11px;
-}
+    color:#080808;
 
-.nav button:hover,
-.nav button.active-nav{
-    color:#ffd000;
-    border-color:#4b401d;
-    background:#171714;
-}
-
-.logout{
-    margin-top:20px;
-
-    width:100%;
-    height:46px;
-
-    border:1px solid #3b2727;
-
-    background:#171112;
-
-    color:#ff7474;
-
-    border-radius:11px;
+    font-weight:900;
 
     cursor:pointer;
+
+}
+
+.primary-btn:hover{
+
+    box-shadow:
+    0 8px 25px
+    rgba(255,193,7,.14);
+
+}
+
+
+/* ================= AGENT LIST ================= */
+
+.agent-list{
+
+    display:grid;
+
+    gap:9px;
+
+}
+
+.agent-item{
+
+    background:#111419;
+
+    border:1px solid #292f35;
+
+    border-radius:12px;
+
+    padding:14px;
+
+}
+
+.agent-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+.agent-name{
+
+    font-size:13px;
 
     font-weight:bold;
+
 }
+
+.agent-id{
+
+    color:#ffd000;
+
+    font-size:10px;
+
+    margin-top:4px;
+
+}
+
+.agent-info{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:7px;
+
+    margin-top:12px;
+
+}
+
+.info-box{
+
+    background:#090b0e;
+
+    border-radius:8px;
+
+    padding:9px;
+
+}
+
+.info-box small{
+
+    display:block;
+
+    color:#606870;
+
+    font-size:9px;
+
+    margin-bottom:4px;
+
+}
+
+.info-box strong{
+
+    font-size:10px;
+
+}
+
+
+/* ================= STATUS ================= */
+
+.status{
+
+    padding:5px 8px;
+
+    border-radius:6px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+}
+
+.active{
+
+    color:#32db78;
+
+    background:
+    rgba(50,219,120,.08);
+
+    border:
+    1px solid
+    rgba(50,219,120,.18);
+
+}
+
+.inactive{
+
+    color:#ff7070;
+
+    background:
+    rgba(255,70,70,.08);
+
+    border:
+    1px solid
+    rgba(255,70,70,.18);
+
+}
+
+
+/* ================= ACTIONS ================= */
+
+.actions{
+
+    display:flex;
+
+    gap:7px;
+
+    margin-top:12px;
+
+}
+
+.small-btn{
+
+    flex:1;
+
+    height:35px;
+
+    border-radius:8px;
+
+    border:1px solid #343a41;
+
+    background:#171b20;
+
+    color:#ddd;
+
+    cursor:pointer;
+
+    font-size:9px;
+
+}
+
+.small-btn:hover{
+
+    background:#20252b;
+
+}
+
+.danger{
+
+    color:#ff7373;
+
+    border-color:#3a2727;
+
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#606870;
+
+    font-size:11px;
+
+    border:1px dashed #292f35;
+
+    border-radius:10px;
+
+}
+
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:900px){
 
     .stats{
+
         grid-template-columns:
-            repeat(2,1fr);
+        repeat(2,1fr);
+
     }
 
     .grid{
+
         grid-template-columns:1fr;
+
     }
 
 }
@@ -410,40 +608,59 @@ td{
 @media(max-width:600px){
 
     header{
-        padding:0 14px;
+
+        padding:0 13px;
+
     }
 
     .brand-name{
+
         font-size:18px;
+
     }
 
-    .admin-badge{
+    .admin-label{
+
         display:none;
+
     }
 
     main{
-        padding:22px 14px 80px;
-    }
 
-    .stats{
-        gap:9px;
-    }
+        padding:
+        20px 13px 70px;
 
-    .stat{
-        padding:14px;
-    }
-
-    .stat-value{
-        font-size:18px;
-    }
-
-    .card{
-        padding:17px;
     }
 
     .nav{
+
         grid-template-columns:
-            repeat(2,1fr);
+        repeat(2,1fr);
+
+    }
+
+    .stats{
+
+        gap:8px;
+
+    }
+
+    .stat{
+
+        padding:13px;
+
+    }
+
+    .stat-value{
+
+        font-size:18px;
+
+    }
+
+    .card{
+
+        padding:16px;
+
     }
 
 }
@@ -452,149 +669,167 @@ td{
 
 </head>
 
+
 <body>
+
 
 <header>
 
-<div class="brand">
+    <div class="brand">
 
-    <div class="brand-logo">
-        X
+        <div class="logo">
+            X
+        </div>
+
+        <div class="brand-name">
+            LOTTOX
+        </div>
+
     </div>
 
-    <div class="brand-name">
-        LOTTOX
+    <div class="admin-label">
+        ADMIN PANEL
     </div>
-
-</div>
-
-<div class="admin-badge">
-    ADMIN PANEL
-</div>
 
 </header>
 
 
 <main>
 
-<div class="page-title">
+
+<div class="title">
 
     <h1>
         ⚡ LOTTOX Admin
     </h1>
 
     <p>
-        Kontwole sistèm nan,
-        ajan yo, machin yo ak tikè yo.
+        Jere ajan, machin, tikè
+        ak aktivite sistèm nan.
     </p>
 
 </div>
 
 
+<!-- ================= NAV ================= -->
+
 <div class="nav">
 
-<button
-    class="active-nav"
-    onclick="showSection('overview')"
->
-    📊 Overview
-</button>
+    <button
+        class="active"
+        onclick="showSection('overview')"
+    >
+        📊 Overview
+    </button>
 
-<button
-    onclick="showSection('agents')"
->
-    👥 Ajan
-</button>
+    <button
+        onclick="showSection('agents')"
+    >
+        👥 Ajan
+    </button>
 
-<button
-    onclick="showSection('machines')"
->
-    🚗 Machin
-</button>
+    <button
+        onclick="showSection('machines')"
+    >
+        🚗 Machin
+    </button>
 
-<button
-    onclick="showSection('tickets')"
->
-    🎟️ Tikè
-</button>
+    <button
+        onclick="showSection('tickets')"
+    >
+        🎟️ Tikè
+    </button>
 
 </div>
 
+
+<!-- ================= OVERVIEW ================= -->
 
 <section id="overview">
 
+
 <div class="stats">
 
-<div class="stat">
 
-<div class="stat-icon">👥</div>
+    <div class="stat">
 
-<div class="stat-label">
-Ajan
-</div>
+        <div class="stat-icon">
+            👥
+        </div>
 
-<div
-    class="stat-value"
-    id="agentCount"
->
-0
-</div>
+        <div class="stat-label">
+            Ajan
+        </div>
 
-</div>
+        <div
+            class="stat-value"
+            id="agentCount"
+        >
+            0
+        </div>
 
-
-<div class="stat">
-
-<div class="stat-icon">🚗</div>
-
-<div class="stat-label">
-Machin
-</div>
-
-<div
-    class="stat-value"
-    id="machineCount"
->
-0
-</div>
-
-</div>
+    </div>
 
 
-<div class="stat">
+    <div class="stat">
 
-<div class="stat-icon">🎟️</div>
+        <div class="stat-icon">
+            🚗
+        </div>
 
-<div class="stat-label">
-Tikè
-</div>
+        <div class="stat-label">
+            Machin
+        </div>
 
-<div
-    class="stat-value"
-    id="ticketCount"
->
-0
-</div>
+        <div
+            class="stat-value"
+            id="machineCount"
+        >
+            0
+        </div>
 
-</div>
+    </div>
 
 
-<div class="stat">
+    <div class="stat">
 
-<div class="stat-icon">💰</div>
+        <div class="stat-icon">
+            🎟️
+        </div>
 
-<div class="stat-label">
-Lavant
-</div>
+        <div class="stat-label">
+            Tikè
+        </div>
 
-<div
-    class="stat-value"
-    id="salesTotal"
->
-0 Gdes
-</div>
+        <div
+            class="stat-value"
+            id="ticketCount"
+        >
+            0
+        </div>
 
-</div>
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            💰
+        </div>
+
+        <div class="stat-label">
+            Lavant
+        </div>
+
+        <div
+            class="stat-value"
+            id="salesTotal"
+        >
+            0 Gdes
+        </div>
+
+    </div>
+
 
 </div>
 
@@ -602,261 +837,294 @@ Lavant
 <div class="grid">
 
 
-<section class="card">
-
-<div class="card-title">
-
-<h2>
-👤 Ajoute Ajan
-</h2>
-
-<span>
-LOTTOX
-</span>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Non ajan
-</label>
-
-<input
-    id="agentName"
-    type="text"
-    placeholder="Egzanp: Jean"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Telefòn
-</label>
-
-<input
-    id="agentPhone"
-    type="tel"
-    placeholder="38xxxxxxxx"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-ID Machin
-</label>
-
-<input
-    id="agentMachine"
-    type="text"
-    placeholder="LOT-001"
->
-
-</div>
-
-
-<button
-    class="primary-btn"
-    onclick="addAgent()"
->
-＋ AJOUTE AJAN
-</button>
-
-</section>
-
+<!-- ================= ADD AGENT ================= -->
 
 <section class="card">
 
-<div class="card-title">
+    <div class="card-title">
 
-<h2>
-🚗 Ajoute Machin
-</h2>
+        <h2>
+            👤 Ajoute Ajan
+        </h2>
 
-<span>
-LOCATION
-</span>
+        <span>
+            NOUVO
+        </span>
 
-</div>
-
-
-<div class="field">
-
-<label>
-Non / ID Machin
-</label>
-
-<input
-    id="machineName"
-    type="text"
-    placeholder="LOT-001"
->
-
-</div>
+    </div>
 
 
-<div class="field">
+    <div class="field">
 
-<label>
-Non kliyan
-</label>
+        <label>
+            Non ajan
+        </label>
 
-<input
-    id="machineOwner"
-    type="text"
-    placeholder="Non moun ki lwe a"
->
+        <input
+            id="agentName"
+            type="text"
+            placeholder="Egzanp: Jean"
+        >
 
-</div>
-
-
-<div class="field">
-
-<label>
-Frè chak mwa
-</label>
-
-<input
-    id="machinePrice"
-    type="number"
-    placeholder="5000"
->
-
-</div>
+    </div>
 
 
-<button
-    class="primary-btn"
-    onclick="addMachine()"
->
-＋ AJOUTE MACHIN
-</button>
+    <div class="field">
+
+        <label>
+            Telefòn
+        </label>
+
+        <input
+            id="agentPhone"
+            type="tel"
+            placeholder="38xxxxxxxx"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Modpas ajan
+        </label>
+
+        <input
+            id="agentPassword"
+            type="password"
+            placeholder="Kreye modpas la"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            ID Machin
+        </label>
+
+        <input
+            id="agentMachine"
+            type="text"
+            placeholder="Egzanp: LOT-001"
+        >
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="addAgent()"
+    >
+        ＋ AJOUTE AJAN
+    </button>
 
 </section>
 
+
+<!-- ================= ADD MACHINE ================= -->
+
+<section class="card">
+
+    <div class="card-title">
+
+        <h2>
+            🚗 Ajoute Machin
+        </h2>
+
+        <span>
+            LOCATION
+        </span>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            ID Machin
+        </label>
+
+        <input
+            id="machineName"
+            type="text"
+            placeholder="Egzanp: LOT-001"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Non kliyan
+        </label>
+
+        <input
+            id="machineOwner"
+            type="text"
+            placeholder="Non moun ki lwe a"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Frè chak mwa
+        </label>
+
+        <input
+            id="machinePrice"
+            type="number"
+            min="0"
+            placeholder="Egzanp: 5000"
+        >
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="addMachine()"
+    >
+        ＋ AJOUTE MACHIN
+    </button>
+
+</section>
+
+
 </div>
 
 </section>
 
+
+<!-- ================= AGENTS ================= -->
 
 <section
     id="agents"
     style="display:none"
 >
 
-<div class="card">
+    <div class="card">
 
-<div class="card-title">
+        <div class="card-title">
 
-<h2>
-👥 Jesyon Ajan
-</h2>
+            <h2>
+                👥 Ajan LOTTOX
+            </h2>
 
-<span id="agentTotal">
-0 ajan
-</span>
+            <span id="agentTotal">
+                0 ajan
+            </span>
 
-</div>
+        </div>
 
-<div
-    id="agentsList"
-    class="table-wrap"
-></div>
 
-</div>
+        <div
+            id="agentsList"
+            class="agent-list"
+        >
+
+            <div class="empty">
+                Pa gen ajan ankò.
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+
+<!-- ================= MACHINES ================= -->
 
 <section
     id="machines"
     style="display:none"
 >
 
-<div class="card">
+    <div class="card">
 
-<div class="card-title">
+        <div class="card-title">
 
-<h2>
-🚗 Machin Lwe
-</h2>
+            <h2>
+                🚗 Machin LOTTOX
+            </h2>
 
-<span id="machineTotal">
-0 machin
-</span>
+            <span id="machineTotal">
+                0 machin
+            </span>
 
-</div>
+        </div>
 
-<div
-    id="machinesList"
-    class="machine-list"
-></div>
 
-</div>
+        <div
+            id="machinesList"
+            class="agent-list"
+        >
+
+            <div class="empty">
+                Pa gen machin ankò.
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+
+<!-- ================= TICKETS ================= -->
 
 <section
     id="tickets"
     style="display:none"
 >
 
-<div class="card">
+    <div class="card">
 
-<div class="card-title">
+        <div class="card-title">
 
-<h2>
-🎟️ Tout Tikè
-</h2>
+            <h2>
+                🎟️ Tikè LOTTOX
+            </h2>
 
-<span id="ticketTotal">
-0
-</span>
+            <span id="ticketTotal">
+                0
+            </span>
 
-</div>
+        </div>
 
-<div
-    id="ticketsList"
-    class="table-wrap"
-></div>
 
-</div>
+        <div
+            id="ticketsList"
+            class="agent-list"
+        >
+
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<button
-    class="logout"
-    onclick="logout()"
->
-🚪 Dekonekte Admin
-</button>
-
-</main>
-
+            </main>
+            <!-- =====================================================
+     LOTTOX ADMIN — JAVASCRIPT
+     PATI 2/3
+===================================================== -->
 
 <script>
 
-/* LOTTOX JS — Pati 1 */
-
-if(
-    localStorage.getItem(
-        "lottoxLoggedIn"
-    ) !== "true"
-){
-
-    window.location.href =
-        "index.html";
-
-}
+/* ================= DATABASE ================= */
 
 let agents =
     JSON.parse(
@@ -865,12 +1133,14 @@ let agents =
         )
     ) || [];
 
+
 let machines =
     JSON.parse(
         localStorage.getItem(
             "lottoxMachines"
         )
     ) || [];
+
 
 let tickets =
     JSON.parse(
@@ -879,144 +1149,173 @@ let tickets =
         )
     ) || [];
 
-let rentals =
-    JSON.parse(
-        localStorage.getItem(
-            "lottoxRentals"
-        )
-    ) || [];
 
-function saveData(){
-
-    localStorage.setItem(
-        "lottoxAgents",
-        JSON.stringify(agents)
-    );
-
-    localStorage.setItem(
-        "lottoxMachines",
-        JSON.stringify(machines)
-    );
-
-    localStorage.setItem(
-        "lottoxTickets",
-        JSON.stringify(tickets)
-    );
-
-}
+/* ================= ID ================= */
 
 function generateID(prefix){
 
-    return prefix +
-        "-" +
+    const number =
         Math.floor(
             100000 +
-            Math.random()*900000
+            Math.random() * 900000
         );
+
+    return prefix + "-" + number;
 
 }
 
+
+/* ================= NAVIGATION ================= */
+
 function showSection(section){
 
-    [
+    const sections = [
         "overview",
         "agents",
         "machines",
         "tickets"
-    ].forEach(id => {
+    ];
 
-        const el =
-            document.getElementById(id);
 
-        if(el){
+    sections.forEach(
+        function(id){
 
-            el.style.display =
-                id === section
-                ? "block"
-                : "none";
+            const element =
+                document.getElementById(
+                    id
+                );
+
+
+            if(element){
+
+                element.style.display =
+                    id === section
+                    ? "block"
+                    : "none";
+
+            }
 
         }
+    );
 
-    });
 
     document
-        .querySelectorAll(".nav button")
-        .forEach(btn =>
-            btn.classList.remove(
-                "active-nav"
-            )
-        );
+    .querySelectorAll(
+        ".nav button"
+    )
+    .forEach(
+        function(button){
 
-    const index = {
-        overview:0,
-        agents:1,
-        machines:2,
-        tickets:3
-    };
+            button.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
 
     const buttons =
         document.querySelectorAll(
             ".nav button"
         );
 
-    if(buttons[index[section]]){
 
-        buttons[index[section]]
-            .classList.add(
-                "active-nav"
-            );
+    const indexes = {
+
+        overview:0,
+
+        agents:1,
+
+        machines:2,
+
+        tickets:3
+
+    };
+
+
+    if(
+        buttons[indexes[section]]
+    ){
+
+        buttons[
+            indexes[section]
+        ].classList.add(
+            "active"
+        );
+
+    }
+
+
+    if(
+        section === "agents"
+    ){
+
+        displayAgents();
+
+    }
+
+
+    if(
+        section === "machines"
+    ){
+
+        displayMachines();
+
+    }
+
+
+    if(
+        section === "tickets"
+    ){
+
+        displayTickets();
 
     }
 
 }
 
-function escapeHTML(value){
 
-    return String(
-        value ?? ""
-    )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-function formatMoney(value){
-
-    return Number(
-        value || 0
-    ).toLocaleString("en-US");
-
-}
-/* =====================================================
-   LOTTOX — ADD AGENT
-   ID + PASSWORD + STATUS
-===================================================== */
+/* ================= ADD AGENT ================= */
 
 function addAgent(){
 
     const name =
         document
-        .getElementById("agentName")
+        .getElementById(
+            "agentName"
+        )
         .value
         .trim();
+
 
     const phone =
         document
-        .getElementById("agentPhone")
+        .getElementById(
+            "agentPhone"
+        )
         .value
         .trim();
+
+
+    const password =
+        document
+        .getElementById(
+            "agentPassword"
+        )
+        .value
+        .trim();
+
 
     const machine =
         document
-        .getElementById("agentMachine")
+        .getElementById(
+            "agentMachine"
+        )
         .value
         .trim();
 
 
-    /* ================= VALIDATION ================= */
+    /* VALIDATION */
 
     if(!name){
 
@@ -1025,6 +1324,7 @@ function addAgent(){
         );
 
         return;
+
     }
 
 
@@ -1035,37 +1335,49 @@ function addAgent(){
         );
 
         return;
+
+    }
+
+
+    if(!password){
+
+        alert(
+            "⚠️ Kreye yon modpas pou ajan an."
+        );
+
+        return;
+
+    }
+
+
+    if(password.length < 4){
+
+        alert(
+            "⚠️ Modpas la dwe gen omwen 4 karaktè."
+        );
+
+        return;
+
     }
 
 
     if(!machine){
 
         alert(
-            "⚠️ Antre ID machin nan."
+            "⚠️ Antre ID machin ajan an."
         );
 
         return;
+
     }
 
 
-    /* ================= GENERATE ID ================= */
+    /* CREATE AGENT */
 
-    const agentID =
-        generateID("AG");
-
-
-    /* ================= GENERATE PASSWORD ================= */
-
-    const password =
-        generatePassword();
-
-
-    /* ================= CREATE AGENT ================= */
-
-    const newAgent = {
+    const agent = {
 
         id:
-            agentID,
+            generateID("AG"),
 
         name:
             name,
@@ -1073,11 +1385,11 @@ function addAgent(){
         phone:
             phone,
 
-        machine:
-            machine,
-
         password:
             password,
+
+        machine:
+            machine,
 
         status:
             "ACTIVE",
@@ -1088,10 +1400,10 @@ function addAgent(){
     };
 
 
-    /* ================= SAVE ================= */
+    /* SAVE */
 
     agents.push(
-        newAgent
+        agent
     );
 
 
@@ -1106,144 +1418,143 @@ function addAgent(){
     );
 
 
-    /* ================= CLEAR FORM ================= */
-
-    document
-        .getElementById(
-            "agentName"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "agentPhone"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "agentMachine"
-        )
-        .value = "";
-
-
-    /* ================= UPDATE ================= */
-
-    updateStats();
-
-
-    displayAgents();
-
-
-    /* ================= SHOW LOGIN INFO ================= */
+    /* SUCCESS */
 
     alert(
 
-        "✅ AJAN KREYE AVÈK SIKSÈ!\n\n" +
+        "✅ AJAN KREYE!\n\n" +
 
-        "🆔 ID Ajan: " +
-        agentID +
+        "🆔 ID: " +
+        agent.id +
 
-        "\n\n🔐 Modpas: " +
-        password +
+        "\n👤 Non: " +
+        agent.name +
 
-        "\n\n🚗 Machin: " +
-        machine +
+        "\n🔐 Modpas: " +
+        agent.password +
 
-        "\n\n🟢 Status: ACTIVE\n\n" +
-
-        "Bay ajan an ID ak modpas sa yo."
+        "\n🚗 Machin: " +
+        agent.machine
 
     );
+
+
+    /* CLEAR */
+
+    document
+    .getElementById(
+        "agentName"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "agentPhone"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "agentPassword"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "agentMachine"
+    )
+    .value = "";
+
+
+    updateStats();
 
 }
 
 
-/* =====================================================
-   GENERATE AGENT PASSWORD
-===================================================== */
-
-function generatePassword(){
-
-    const number =
-        Math.floor(
-            1000 +
-            Math.random() *
-            9000
-        );
-
-
-    return String(
-        number
-    );
-
-}
-
-/* ================= AJOUTE MACHIN ================= */
+/* ================= ADD MACHINE ================= */
 
 function addMachine(){
 
     const name =
-        document.getElementById(
+        document
+        .getElementById(
             "machineName"
-        ).value.trim();
+        )
+        .value
+        .trim();
+
 
     const owner =
-        document.getElementById(
+        document
+        .getElementById(
             "machineOwner"
-        ).value.trim();
+        )
+        .value
+        .trim();
+
 
     const price =
         Number(
-            document.getElementById(
+            document
+            .getElementById(
                 "machinePrice"
-            ).value
+            )
+            .value
         );
 
 
     if(!name){
 
         alert(
-            "⚠️ Antre non / ID machin nan."
+            "⚠️ Antre ID machin nan."
         );
 
         return;
+
     }
 
 
-    const exists =
-        machines.find(
-            machine =>
-                machine.name
-                    .toLowerCase()
-                ===
-                name.toLowerCase()
-        );
-
-
-    if(exists){
+    if(!owner){
 
         alert(
-            "⚠️ Machin sa a deja egziste."
+            "⚠️ Antre non kliyan an."
         );
 
         return;
+
+    }
+
+
+    if(
+        !price ||
+        price < 0
+    ){
+
+        alert(
+            "⚠️ Antre frè chak mwa a."
+        );
+
+        return;
+
     }
 
 
     const machine = {
 
-        id: generateID("LOT"),
+        id:
+            name,
 
-        name: name,
+        owner:
+            owner,
 
-        owner: owner,
+        price:
+            price,
 
-        price: price || 0,
-
-        status: "ACTIVE",
+        status:
+            "ACTIVE",
 
         createdAt:
             new Date().toISOString()
@@ -1251,926 +1562,61 @@ function addMachine(){
     };
 
 
-    machines.push(machine);
+    machines.push(
+        machine
+    );
 
-    saveData();
+
+    localStorage.setItem(
+
+        "lottoxMachines",
+
+        JSON.stringify(
+            machines
+        )
+
+    );
 
 
-    document.getElementById(
+    alert(
+
+        "✅ MACHIN AJOUTE!\n\n" +
+
+        "🚗 ID: " +
+        machine.id +
+
+        "\n👤 Kliyan: " +
+        machine.owner +
+
+        "\n💰 Frè: " +
+        machine.price +
+        " Gdes"
+
+    );
+
+
+    document
+    .getElementById(
         "machineName"
-    ).value = "";
+    )
+    .value = "";
 
-    document.getElementById(
+
+    document
+    .getElementById(
         "machineOwner"
-    ).value = "";
+    )
+    .value = "";
 
-    document.getElementById(
+
+    document
+    .getElementById(
         "machinePrice"
-    ).value = "";
+    )
+    .value = "";
 
 
     updateStats();
-
-    displayMachines();
-
-
-    alert(
-        "✅ Machin ajoute!\n\n" +
-        "ID: " +
-        machine.id
-    );
-
-}
-
-
-/* ================= AFFICHER AJAN ================= */
-
-function displayAgents(){
-
-    const box =
-        document.getElementById(
-            "agentsList"
-        );
-
-
-    const total =
-        document.getElementById(
-            "agentTotal"
-        );
-
-
-    if(!box) return;
-
-
-    if(total){
-
-        total.textContent =
-            agents.length +
-            " ajan";
-
-    }
-
-
-    if(!agents.length){
-
-        box.innerHTML = `
-
-            <div class="empty">
-
-                👥 Pa gen ajan
-                pou kounye a.
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    let html = `
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        AJAN
-                    </th>
-
-                    <th>
-                        TELEFÒN
-                    </th>
-
-                    <th>
-                        MACHIN
-                    </th>
-
-                    <th>
-                        STATUS
-                    </th>
-
-                    <th>
-                        AKSYON
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-    `;
-
-
-    agents.forEach(
-        agent => {
-
-            html += `
-
-                <tr>
-
-                    <td>
-
-                        <strong>
-                            ${escapeHTML(
-                                agent.name
-                            )}
-                        </strong>
-
-                        <br>
-
-                        <small>
-                            ${escapeHTML(
-                                agent.id
-                            )}
-                        </small>
-
-                    </td>
-
-
-                    <td>
-                        ${escapeHTML(
-                            agent.phone
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${
-                            agent.machine
-                            ? escapeHTML(
-                                agent.machine
-                              )
-                            : "—"
-                        }
-                    </td>
-
-
-                    <td>
-
-                        <span
-                            class="
-                                status
-                                ${
-                                    agent.status
-                                    === "ACTIVE"
-                                    ? "active"
-                                    : "inactive"
-                                }
-                            "
-                        >
-
-                            ${
-                                agent.status
-                                === "ACTIVE"
-                                ? "AKTIF"
-                                : "INAKTIF"
-                            }
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <div class="actions">
-
-                            <button
-                                class="small-btn"
-                                onclick="
-                                    toggleAgent(
-                                        '${agent.id}'
-                                    )
-                                "
-                            >
-
-                                ${
-                                    agent.status
-                                    === "ACTIVE"
-                                    ? "⏸️"
-                                    : "▶️"
-                                }
-
-                            </button>
-
-
-                            <button
-                                class="
-                                    small-btn
-                                    danger-btn
-                                "
-                                onclick="
-                                    deleteAgent(
-                                        '${agent.id}'
-                                    )
-                                "
-                            >
-                                🗑️
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-
-            </tbody>
-
-        </table>
-
-    `;
-
-
-    box.innerHTML = html;
-
-}
-
-
-/* ================= TOGGLE AJAN ================= */
-
-function toggleAgent(id){
-
-    const agent =
-        agents.find(
-            item =>
-                item.id === id
-        );
-
-
-    if(!agent) return;
-
-
-    agent.status =
-        agent.status === "ACTIVE"
-        ? "INACTIVE"
-        : "ACTIVE";
-
-
-    saveData();
-
-    displayAgents();
-
-    updateStats();
-
-}
-
-
-/* ================= DELETE AJAN ================= */
-
-function deleteAgent(id){
-
-    const agent =
-        agents.find(
-            item =>
-                item.id === id
-        );
-
-
-    if(!agent) return;
-
-
-    const ok =
-        confirm(
-            "⚠️ Efase ajan " +
-            agent.name +
-            "?"
-        );
-
-
-    if(!ok) return;
-
-
-    agents =
-        agents.filter(
-            item =>
-                item.id !== id
-        );
-
-
-    saveData();
-
-    displayAgents();
-
-    updateStats();
-
-
-    alert(
-        "✅ Ajan efase."
-    );
-
-}
-
-
-/* ================= AFFICHER MACHIN ================= */
-
-function displayMachines(){
-
-    const box =
-        document.getElementById(
-            "machinesList"
-        );
-
-
-    const total =
-        document.getElementById(
-            "machineTotal"
-        );
-
-
-    if(!box) return;
-
-
-    if(total){
-
-        total.textContent =
-            machines.length +
-            " machin";
-
-    }
-
-
-    if(!machines.length){
-
-        box.innerHTML = `
-
-            <div class="empty">
-
-                🚗 Pa gen machin
-                pou kounye a.
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    box.innerHTML = "";
-
-
-    machines.forEach(
-        machine => {
-
-            const rental =
-                rentals.find(
-                    r =>
-                        r.machine ===
-                            machine.name
-                        &&
-                        r.status ===
-                            "ACTIVE"
-                );
-
-
-            const rented =
-                rental &&
-                getRentalDays(
-                    rental
-                ) >= 0;
-
-
-            const available =
-                machine.status ===
-                    "ACTIVE"
-                &&
-                !rented;
-
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-
-            div.className =
-                "machine";
-
-
-            div.innerHTML = `
-
-                <div
-                    class="machine-info"
-                >
-
-                    <strong>
-
-                        🚗
-                        ${escapeHTML(
-                            machine.name
-                        )}
-
-                    </strong>
-
-
-                    <small>
-
-                        ID:
-                        ${escapeHTML(
-                            machine.id
-                        )}
-
-                        ·
-
-                        ${
-                            machine.owner
-                            ? escapeHTML(
-                                machine.owner
-                              )
-                            : "Pa gen kliyan"
-                        }
-
-                        ·
-
-                        ${formatMoney(
-                            machine.price
-                        )}
-                        Gdes/mwa
-
-                    </small>
-
-                </div>
-
-
-                <div>
-
-                    <span
-                        class="
-                            machine-status
-                            ${
-                                available
-                                ? "active"
-                                : "inactive"
-                            }
-                        "
-                    >
-
-                        ${
-                            machine.status !==
-                            "ACTIVE"
-
-                            ? "INAKTIF"
-
-                            : rented
-                            ? "LWE"
-
-                            : "DISPONIB"
-                        }
-
-                    </span>
-
-
-                    <button
-                        class="small-btn"
-                        onclick="
-                            toggleMachine(
-                                '${machine.id}'
-                            )
-                        "
-                    >
-
-                        ${
-                            machine.status ===
-                            "ACTIVE"
-                            ? "⏸️"
-                            : "▶️"
-                        }
-
-                    </button>
-
-
-                    <button
-                        class="
-                            small-btn
-                            danger-btn
-                        "
-                        onclick="
-                            deleteMachine(
-                                '${machine.id}'
-                            )
-                        "
-                    >
-                        🗑️
-                    </button>
-
-                </div>
-
-            `;
-
-
-            box.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* ================= JOU KONTRA ================= */
-
-function getRentalDays(rental){
-
-    if(!rental.endDate){
-
-        return -1;
-
-    }
-
-
-    const end =
-        new Date(
-            rental.endDate +
-            "T23:59:59"
-        );
-
-
-    return Math.ceil(
-        (
-            end.getTime() -
-            Date.now()
-        ) /
-        86400000
-    );
-
-}
-
-
-/* ================= MACHIN ON/OFF ================= */
-
-function toggleMachine(id){
-
-    const machine =
-        machines.find(
-            item =>
-                item.id === id
-        );
-
-
-    if(!machine) return;
-
-
-    machine.status =
-        machine.status ===
-        "ACTIVE"
-        ? "INACTIVE"
-        : "ACTIVE";
-
-
-    saveData();
-
-    displayMachines();
-
-    updateStats();
-
-}
-
-
-/* ================= EFase MACHIN ================= */
-
-function deleteMachine(id){
-
-    const machine =
-        machines.find(
-            item =>
-                item.id === id
-        );
-
-
-    if(!machine) return;
-
-
-    const activeRental =
-        rentals.find(
-            rental =>
-                rental.machine ===
-                    machine.name
-                &&
-                rental.status ===
-                    "ACTIVE"
-        );
-
-
-    if(activeRental){
-
-        alert(
-            "⚠️ Ou pa ka efase machin sa a.\n\n" +
-            "Machin nan gen yon kontra aktif."
-        );
-
-        return;
-    }
-
-
-    const ok =
-        confirm(
-            "⚠️ Efase machin " +
-            machine.name +
-            "?"
-        );
-
-
-    if(!ok) return;
-
-
-    machines =
-        machines.filter(
-            item =>
-                item.id !== id
-        );
-
-
-    saveData();
-
-    displayMachines();
-
-    updateStats();
-
-
-    alert(
-        "✅ Machin efase."
-    );
-
-    }  
-/* =====================================================
-   LOTTOX ADMIN — PATI 3/3
-   TIKÈ + STATS + REFRESH + LOGOUT
-===================================================== */
-
-
-/* ================= AFFICHER TIKÈ ================= */
-
-function displayTickets(){
-
-    const box =
-        document.getElementById(
-            "ticketsList"
-        );
-
-    const total =
-        document.getElementById(
-            "ticketTotal"
-        );
-
-
-    if(!box) return;
-
-
-    if(total){
-
-        total.textContent =
-            tickets.length +
-            " tikè";
-
-    }
-
-
-    if(!tickets.length){
-
-        box.innerHTML = `
-
-            <div class="empty">
-
-                🎟️ Pa gen tikè
-                pou kounye a.
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    let html = `
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        TIKÈ
-                    </th>
-
-                    <th>
-                        DAT
-                    </th>
-
-                    <th>
-                        CHWA
-                    </th>
-
-                    <th>
-                        MONTAN
-                    </th>
-
-                    <th>
-                        STATUS
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-    `;
-
-
-    tickets
-        .slice()
-        .reverse()
-        .forEach(ticket => {
-
-            const status =
-                ticket.status ||
-                "VALID";
-
-
-            html += `
-
-                <tr>
-
-                    <td>
-
-                        <strong>
-
-                            ${
-                                escapeHTML(
-                                    ticket.id ||
-                                    "—"
-                                )
-                            }
-
-                        </strong>
-
-                    </td>
-
-
-                    <td>
-
-                        ${
-                            ticket.createdAt
-                            ? formatDate(
-                                ticket.createdAt
-                              )
-                            : "—"
-                        }
-
-                    </td>
-
-
-                    <td>
-
-                        ${
-                            ticket.number
-                            ? escapeHTML(
-                                ticket.number
-                              )
-                            : ticket.numbers
-                            ? escapeHTML(
-                                Array.isArray(
-                                    ticket.numbers
-                                )
-                                ? ticket.numbers.join(
-                                    ", "
-                                  )
-                                : ticket.numbers
-                              )
-                            : "—"
-                        }
-
-                    </td>
-
-
-                    <td>
-
-                        ${
-                            formatMoney(
-                                ticket.amount ||
-                                ticket.price ||
-                                ticket.montant ||
-                                0
-                            )
-                        }
-
-                        Gdes
-
-                    </td>
-
-
-                    <td>
-
-                        <span
-                            class="
-                                status
-                                ${
-                                    status ===
-                                    "VALID"
-                                    ||
-                                    status ===
-                                    "WIN"
-                                    ||
-                                    status ===
-                                    "PAID"
-                                    ? "active"
-                                    : "inactive"
-                                }
-                            "
-                        >
-
-                            ${
-                                escapeHTML(
-                                    status
-                                )
-                            }
-
-                        </span>
-
-                    </td>
-
-                </tr>
-
-            `;
-
-        });
-
-
-    html += `
-
-            </tbody>
-
-        </table>
-
-    `;
-
-
-    box.innerHTML = html;
-
-}
-
-
-/* ================= FORMAT DAT ================= */
-
-function formatDate(date){
-
-    try{
-
-        return new Date(
-            date
-        ).toLocaleString(
-            "fr-FR",
-            {
-                day:"2-digit",
-                month:"2-digit",
-                year:"numeric",
-                hour:"2-digit",
-                minute:"2-digit"
-            }
-        );
-
-    }catch(error){
-
-        return "—";
-
-    }
-
-}
-
-
-/* ================= TOTAL LAVANT ================= */
-
-function calculateSales(){
-
-    let total = 0;
-
-
-    tickets.forEach(ticket => {
-
-        total += Number(
-            ticket.amount ||
-            ticket.price ||
-            ticket.montant ||
-            0
-        );
-
-    });
-
-
-    return total;
 
 }
 
@@ -2178,116 +1624,6 @@ function calculateSales(){
 /* ================= UPDATE STATS ================= */
 
 function updateStats(){
-
-    const agentCount =
-        document.getElementById(
-            "agentCount"
-        );
-
-
-    const machineCount =
-        document.getElementById(
-            "machineCount"
-        );
-
-
-    const ticketCount =
-        document.getElementById(
-            "ticketCount"
-        );
-
-
-    const salesTotal =
-        document.getElementById(
-            "salesTotal"
-        );
-
-
-    if(agentCount){
-
-        agentCount.textContent =
-            agents.length;
-
-    }
-
-
-    if(machineCount){
-
-        machineCount.textContent =
-            machines.length;
-
-    }
-
-
-    if(ticketCount){
-
-        ticketCount.textContent =
-            tickets.length;
-
-    }
-
-
-    if(salesTotal){
-
-        salesTotal.textContent =
-            formatMoney(
-                calculateSales()
-            ) +
-            " Gdes";
-
-    }
-
-
-    const agentTotal =
-        document.getElementById(
-            "agentTotal"
-        );
-
-
-    if(agentTotal){
-
-        agentTotal.textContent =
-            agents.length +
-            " ajan";
-
-    }
-
-
-    const machineTotal =
-        document.getElementById(
-            "machineTotal"
-        );
-
-
-    if(machineTotal){
-
-        machineTotal.textContent =
-            machines.length +
-            " machin";
-
-    }
-
-
-    const ticketTotal =
-        document.getElementById(
-            "ticketTotal"
-        );
-
-
-    if(ticketTotal){
-
-        ticketTotal.textContent =
-            tickets.length +
-            " tikè";
-
-    }
-
-}
-
-
-/* ================= REFRESH ================= */
-
-function refreshAdmin(){
 
     agents =
         JSON.parse(
@@ -2313,88 +1649,770 @@ function refreshAdmin(){
         ) || [];
 
 
-    rentals =
-        JSON.parse(
-            localStorage.getItem(
-                "lottoxRentals"
-            )
-        ) || [];
+    document
+    .getElementById(
+        "agentCount"
+    )
+    .textContent =
+        agents.length;
 
 
-    updateStats();
+    document
+    .getElementById(
+        "machineCount"
+    )
+    .textContent =
+        machines.length;
 
-    displayAgents();
 
-    displayMachines();
+    document
+    .getElementById(
+        "ticketCount"
+    )
+    .textContent =
+        tickets.length;
 
-    displayTickets();
+
+    let total = 0;
+
+
+    tickets.forEach(
+        function(ticket){
+
+            total +=
+                Number(
+                    ticket.amount
+                ) || 0;
+
+        }
+    );
+
+
+    document
+    .getElementById(
+        "salesTotal"
+    )
+    .textContent =
+        total.toLocaleString(
+            "en-US"
+        ) +
+        " Gdes";
+
+
+    document
+    .getElementById(
+        "agentTotal"
+    )
+    .textContent =
+        agents.length +
+        " ajan";
+
+
+    document
+    .getElementById(
+        "machineTotal"
+    )
+    .textContent =
+        machines.length +
+        " machin";
+
+
+    document
+    .getElementById(
+        "ticketTotal"
+    )
+    .textContent =
+        tickets.length;
 
 }
 
 
-/* ================= LOGOUT ================= */
+/* ================= ESCAPE ================= */
 
-function logout(){
+function safe(value){
 
-    const ok =
-        confirm(
-            "🚪 Èske ou vle dekonekte Admin?"
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+/* ================= DISPLAY AGENTS ================= */
+
+function displayAgents(){
+
+    const box =
+        document.getElementById(
+            "agentsList"
         );
 
 
-    if(!ok){
+    if(!agents.length){
+
+        box.innerHTML = `
+            <div class="empty">
+                Pa gen ajan ankò.
+            </div>
+        `;
 
         return;
 
     }
 
 
-    localStorage.removeItem(
-        "lottoxLoggedIn"
-    );
+    box.innerHTML =
+        agents.map(
+            function(agent){
+
+                const statusClass =
+                    agent.status === "ACTIVE"
+                    ? "active"
+                    : "inactive";
 
 
-    window.location.href =
-        "index.html";
+                return `
+
+                <div class="agent-item">
+
+                    <div class="agent-top">
+
+                        <div>
+
+                            <div class="agent-name">
+                                👤 ${safe(agent.name)}
+                            </div>
+
+                            <div class="agent-id">
+                                ${safe(agent.id)}
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="status ${statusClass}"
+                        >
+                            ${safe(agent.status)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="agent-info">
+
+                        <div class="info-box">
+
+                            <small>
+                                Telefòn
+                            </small>
+
+                            <strong>
+                                ${safe(agent.phone)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>
+                                Machin
+                            </small>
+
+                            <strong>
+                                ${safe(agent.machine)}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="small-btn"
+                            onclick="
+                                toggleAgent(
+                                    '${agent.id}'
+                                )
+                            "
+                        >
+                            ${
+                                agent.status === "ACTIVE"
+                                ? "🔴 Dezaktive"
+                                : "🟢 Aktive"
+                            }
+                        </button>
+
+
+                        <button
+                            class="small-btn danger"
+                            onclick="
+                                deleteAgent(
+                                    '${agent.id}'
+                                )
+                            "
+                        >
+                            🗑️ Efase
+                        </button>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
 
 }
 
 
-/* ================= START ADMIN ================= */
+/* ================= TOGGLE AGENT ================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+function toggleAgent(id){
 
-        updateStats();
+    const index =
+        agents.findIndex(
+            function(agent){
 
-        displayAgents();
+                return agent.id === id;
 
-        displayMachines();
+            }
+        );
 
-        displayTickets();
+
+    if(index === -1){
+
+        return;
 
     }
+
+
+    agents[index].status =
+        agents[index].status === "ACTIVE"
+        ? "INACTIVE"
+        : "ACTIVE";
+
+
+    localStorage.setItem(
+
+        "lottoxAgents",
+
+        JSON.stringify(
+            agents
+        )
+
+    );
+
+
+    displayAgents();
+
+    updateStats();
+
+}
+
+
+/* ================= DELETE AGENT ================= */
+
+function deleteAgent(id){
+
+    const agent =
+        agents.find(
+            function(item){
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if(!agent){
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+
+            "⚠️ Efase ajan sa a?\n\n" +
+
+            "Ajan: " +
+            agent.name +
+
+            "\nID: " +
+            agent.id
+
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    agents =
+        agents.filter(
+            function(item){
+
+                return item.id !== id;
+
+            }
+        );
+
+
+    localStorage.setItem(
+
+        "lottoxAgents",
+
+        JSON.stringify(
+            agents
+        )
+
+    );
+
+
+    displayAgents();
+
+    updateStats();
+
+}
+
+
+/* ================= DISPLAY MACHINES ================= */
+
+function displayMachines(){
+
+    const box =
+        document.getElementById(
+            "machinesList"
+        );
+
+
+    if(!machines.length){
+
+        box.innerHTML = `
+            <div class="empty">
+                Pa gen machin ankò.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        machines.map(
+            function(machine){
+
+                const statusClass =
+                    machine.status === "ACTIVE"
+                    ? "active"
+                    : "inactive";
+
+
+                return `
+
+                <div class="agent-item">
+
+                    <div class="agent-top">
+
+                        <div>
+
+                            <div class="agent-name">
+                                🚗 ${safe(machine.id)}
+                            </div>
+
+                            <div class="agent-id">
+                                ${safe(machine.owner)}
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status ${statusClass}"
+                        >
+                            ${safe(machine.status)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="agent-info">
+
+                        <div class="info-box">
+
+                            <small>
+                                Kliyan
+                            </small>
+
+                            <strong>
+                                ${safe(machine.owner)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>
+                                Frè / Mwa
+                            </small>
+
+                            <strong>
+                                ${Number(
+                                    machine.price
+                                ).toLocaleString(
+                                    "en-US"
+                                )} Gdes
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="small-btn"
+                            onclick="
+                                toggleMachine(
+                                    '${machine.id}'
+                                )
+                            "
+                        >
+                            ${
+                                machine.status === "ACTIVE"
+                                ? "🔴 Dezaktive"
+                                : "🟢 Aktive"
+                            }
+                        </button>
+
+
+                        <button
+                            class="small-btn danger"
+                            onclick="
+                                deleteMachine(
+                                    '${machine.id}'
+                                )
+                            "
+                        >
+                            🗑️ Efase
+                        </button>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* ================= TOGGLE MACHINE ================= */
+
+function toggleMachine(id){
+
+    const index =
+        machines.findIndex(
+            function(machine){
+
+                return machine.id === id;
+
+            }
+        );
+
+
+    if(index === -1){
+
+        return;
+
+    }
+
+
+    machines[index].status =
+        machines[index].status === "ACTIVE"
+        ? "INACTIVE"
+        : "ACTIVE";
+
+
+    localStorage.setItem(
+
+        "lottoxMachines",
+
+        JSON.stringify(
+            machines
+        )
+
+    );
+
+
+    displayMachines();
+
+    updateStats();
+
+}
+
+
+/* ================= DELETE MACHINE ================= */
+
+function deleteMachine(id){
+
+    const machine =
+        machines.find(
+            function(item){
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if(!machine){
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+
+            "⚠️ Efase machin sa a?\n\n" +
+
+            "ID: " +
+            machine.id
+
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    machines =
+        machines.filter(
+            function(item){
+
+                return item.id !== id;
+
+            }
+        );
+
+
+    localStorage.setItem(
+
+        "lottoxMachines",
+
+        JSON.stringify(
+            machines
+        )
+
+    );
+
+
+    displayMachines();
+
+    updateStats();
+
+}
+
+
+/* ================= DISPLAY TICKETS ================= */
+
+function displayTickets(){
+
+    const box =
+        document.getElementById(
+            "ticketsList"
+        );
+
+
+    if(!tickets.length){
+
+        box.innerHTML = `
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        tickets
+        .slice()
+        .reverse()
+        .map(
+            function(ticket){
+
+                return `
+
+                <div class="agent-item">
+
+                    <div class="agent-top">
+
+                        <div>
+
+                            <div class="agent-name">
+
+                                🎟️
+                                ${safe(ticket.id)}
+
+                            </div>
+
+                            <div class="agent-id">
+
+                                ${safe(
+                                    ticket.createdAt
+                                    ? new Date(
+                                        ticket.createdAt
+                                    ).toLocaleString()
+                                    : ""
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status active"
+                        >
+                            ${safe(
+                                ticket.status ||
+                                "VALID"
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="agent-info">
+
+                        <div class="info-box">
+
+                            <small>
+                                Nimewo
+                            </small>
+
+                            <strong>
+                                ${safe(
+                                    ticket.number
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>
+                                Montan
+                            </small>
+
+                            <strong>
+                                ${Number(
+                                    ticket.amount || 0
+                                ).toLocaleString(
+                                    "en-US"
+                                )} Gdes
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>
+                                Ajan
+                            </small>
+
+                            <strong>
+                                ${safe(
+                                    ticket.agentName
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <small>
+                                Machin
+                            </small>
+
+                            <strong>
+                                ${safe(
+                                    ticket.machine
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* ================= ADMIN START ================= */
+
+updateStats();
+
+
+/* ================= LOG ================= */
+
+console.log(
+    "⚡ LOTTOX ADMIN READY"
 );
-
-
-/* ================= AUTO REFRESH ================= */
-
-setInterval(
-    function(){
-
-        refreshAdmin();
-
-    },
-    10000
-);
-
-
-/* =====================================================
-   LOTTOX ADMIN FINI
-===================================================== */
 
 </script>
+
 
 </body>
 
