@@ -1,0 +1,2978 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOTTOX — Lokasyon</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #182028 0%,
+                    #080a0d 45%,
+                    #030405 100%
+                );
+            color: #fff;
+        }
+
+        header {
+            height: 70px;
+            background: #0a0c0f;
+            border-bottom: 1px solid #252a30;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 20px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffd700,
+                    #ff9d00
+                );
+
+            color: #080808;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .brand-name {
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .back-btn {
+            background: #111419;
+            border: 1px solid #30363d;
+
+            color: #ddd;
+
+            border-radius: 9px;
+
+            padding: 9px 13px;
+
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 28px 18px 90px;
+        }
+
+        .page-title {
+            margin-bottom: 24px;
+        }
+
+        .page-title h1 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .page-title p {
+            color: #7d858d;
+            font-size: 13px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .stat {
+            background: #0f1216;
+
+            border: 1px solid #252a30;
+
+            border-radius: 15px;
+
+            padding: 17px;
+        }
+
+        .stat-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #777f87;
+            font-size: 10px;
+            margin-bottom: 7px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        /* ================= GRID ================= */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #0f1216;
+
+            border: 1px solid #252a30;
+
+            border-radius: 18px;
+
+            padding: 21px;
+        }
+
+        .card-title {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .card-title h2 {
+            font-size: 17px;
+        }
+
+        .card-title span {
+            color: #707880;
+            font-size: 10px;
+        }
+
+        /* ================= FORM ================= */
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+
+            color: #aeb4ba;
+
+            font-size: 12px;
+
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 47px;
+
+            background: #090b0e;
+
+            border: 1px solid #2c3239;
+
+            border-radius: 10px;
+
+            color: white;
+
+            outline: none;
+
+            padding: 0 12px;
+
+            font-size: 13px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #ffd000;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,208,0,.07);
+        }
+
+        .primary-btn {
+            width: 100%;
+            height: 49px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd700,
+                    #ff9d00
+                );
+
+            color: #080808;
+
+            font-weight: 900;
+
+            cursor: pointer;
+        }
+
+        .primary-btn:hover {
+            box-shadow:
+                0 7px 24px
+                rgba(255,193,7,.15);
+        }
+
+        /* ================= ALERT ================= */
+
+        .alert-box {
+            display: none;
+
+            margin-bottom: 20px;
+
+            padding: 14px;
+
+            border-radius: 11px;
+
+            background:
+                rgba(255,80,80,.07);
+
+            border:
+                1px solid
+                rgba(255,80,80,.18);
+
+            color: #ff8585;
+
+            font-size: 12px;
+        }
+
+        /* ================= RENTAL ================= */
+
+        .rental-list {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .rental {
+            background: #111419;
+
+            border: 1px solid #292f35;
+
+            border-radius: 14px;
+
+            padding: 17px;
+        }
+
+        .rental-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 14px;
+        }
+
+        .rental-name strong {
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+        .rental-name small {
+            color: #707880;
+
+            font-size: 10px;
+        }
+
+        .rental-status {
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+        .status-active {
+            color: #35dc7b;
+
+            background:
+                rgba(35,220,123,.08);
+
+            border:
+                1px solid
+                rgba(35,220,123,.18);
+        }
+
+        .status-warning {
+            color: #ffd000;
+
+            background:
+                rgba(255,208,0,.08);
+
+            border:
+                1px solid
+                rgba(255,208,0,.18);
+        }
+
+        .status-expired {
+            color: #ff7070;
+
+            background:
+                rgba(255,70,70,.08);
+
+            border:
+                1px solid
+                rgba(255,70,70,.18);
+        }
+
+        /* ================= PROGRESS ================= */
+
+        .progress-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #777f87;
+
+            font-size: 10px;
+
+            margin-bottom: 7px;
+        }
+
+        .progress {
+            height: 7px;
+
+            background: #090b0e;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffd700,
+                    #ff9d00
+                );
+
+            border-radius: 20px;
+
+            width: 0%;
+        }
+
+        /* ================= DETAILS ================= */
+
+        .rental-details {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+        .detail {
+            background: #090b0e;
+
+            border-radius: 9px;
+
+            padding: 10px;
+        }
+
+        .detail small {
+            display: block;
+
+            color: #666e76;
+
+            font-size: 9px;
+
+            margin-bottom: 5px;
+        }
+
+        .detail strong {
+            font-size: 11px;
+        }
+
+        .rental-actions {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 14px;
+        }
+
+        .small-btn {
+            border: 1px solid #343a41;
+
+            background: #171b20;
+
+            color: #ddd;
+
+            border-radius: 8px;
+
+            padding: 8px 11px;
+
+            cursor: pointer;
+
+            font-size: 10px;
+        }
+
+        .small-btn:hover {
+            background: #20252b;
+        }
+
+        .delete-btn {
+            color: #ff7373;
+
+            border-color: #3a2727;
+        }
+
+        .empty {
+            padding: 30px;
+
+            text-align: center;
+
+            color: #666e76;
+
+            font-size: 12px;
+
+            border:
+                1px dashed #292f35;
+
+            border-radius: 12px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 14px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            main {
+                padding:
+                    22px 14px 80px;
+            }
+
+            .stats {
+                gap: 8px;
+            }
+
+            .stat {
+                padding: 13px;
+            }
+
+            .stat-value {
+                font-size: 17px;
+            }
+
+            .card {
+                padding: 17px;
+            }
+
+            .rental-details {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .rental-top {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .rental-actions {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            X
+        </div>
+
+        <div class="brand-name">
+            LOTTOX
+        </div>
+
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="goBack()"
+    >
+        ← Admin
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="page-title">
+
+        <h1>
+            🚗 Lokasyon LOTTOX
+        </h1>
+
+        <p>
+            Jere machin ak kontra kliyan yo.
+        </p>
+
+    </div>
+
+
+    <div
+        id="alertBox"
+        class="alert-box"
+    ></div>
+
+
+    <!-- ================= STATS ================= -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🚗
+            </div>
+
+            <div class="stat-label">
+                Machin Total
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalMachines"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🟢
+            </div>
+
+            <div class="stat-label">
+                Aktif
+            </div>
+
+            <div
+                class="stat-value"
+                id="activeMachines"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ⚠️
+            </div>
+
+            <div class="stat-label">
+                Prèske Ekspire
+            </div>
+
+            <div
+                class="stat-value"
+                id="warningMachines"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+            <div class="stat-label">
+                Revni Mwa
+            </div>
+
+            <div
+                class="stat-value"
+                id="monthlyRevenue"
+            >
+                0 Gdes
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CREATE ================= -->
+
+    <div class="grid">
+
+        <section class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    ➕ Nouvo Kontra
+                </h2>
+
+                <span>
+                    LOTTOX
+                </span>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Machin
+                </label>
+
+                <select
+                    id="machineSelect"
+                >
+
+                    <option value="">
+                        Chwazi machin
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Non kliyan
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Non kliyan an"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Telefòn kliyan
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="38xxxxxxxx"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Dat kòmansman
+                </label>
+
+                <input
+                    type="date"
+                    id="startDate"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Kantite mwa
+                </label>
+
+                <input
+                    type="number"
+                    id="months"
+                    min="1"
+                    value="1"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Pri chak mwa (Gdes)
+                </label>
+
+                <input
+                    type="number"
+                    id="monthlyPrice"
+                    min="0"
+                    placeholder="5000"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="createRental()"
+            >
+                🚗 KREYE KONTRA
+            </button>
+
+        </section>
+
+
+        <!-- ================= INFO ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    📌 Enfòmasyon
+                </h2>
+
+            </div>
+
+
+            <div class="rental">
+
+                <div class="rental-top">
+
+                    <div class="rental-name">
+
+                        <strong>
+                            Sistèm Lokasyon LOTTOX
+                        </strong>
+
+                        <small>
+                            Jere kontra machin yo
+                        </small>
+
+                    </div>
+
+
+                    <span
+                        class="
+                            rental-status
+                            status-active
+                        "
+                    >
+                        SYSTEM
+                    </span>
+
+                </div>
+
+
+                <div class="rental-details">
+
+                    <div class="detail">
+
+                        <small>
+                            KONTRA
+                        </small>
+
+                        <strong>
+                            Chak mwa
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <small>
+                            PERYÒD
+                        </small>
+
+                        <strong>
+                            1–12 mwa
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <small>
+                            STATUS
+                        </small>
+
+                        <strong>
+                            Aktif
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <small>
+                            ALÈT
+                        </small>
+
+                        <strong>
+                            7 jou
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    style="
+                        margin-top:15px;
+                        padding:13px;
+                        border-radius:10px;
+                        background:#090b0e;
+                        border:1px solid #292f35;
+                        color:#777f87;
+                        font-size:11px;
+                        line-height:1.5;
+                    "
+                >
+
+                    💡 Lè yon kontra rive nan
+                    dènye 7 jou li, sistèm nan ap
+                    make l kòm
+
+                    <strong
+                        style="color:#ffd000;"
+                    >
+                        PRÈSKE EKSPIRÉ
+                    </strong>.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ================= LIST ================= -->
+
+    <section class="card">
+
+        <div class="card-title">
+
+            <h2>
+                📋 Kontra Aktif
+            </h2>
+
+            <span id="rentalCount">
+                0 kontra
+            </span>
+
+        </div>
+
+
+        <div
+            id="rentalsList"
+            class="rental-list"
+        >
+
+            <div class="empty">
+
+                Pa gen kontra pou kounye a.
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+<script>
+
+/* =====================================================
+   LOTTOX RENTAL SYSTEM
+   PART 2 / 3
+===================================================== */
+
+
+/* ================= LOGIN ================= */
+
+const loggedIn =
+    localStorage.getItem("lottoxLoggedIn");
+
+if (loggedIn !== "true") {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* ================= DATABASE ================= */
+
+let machines =
+    JSON.parse(
+        localStorage.getItem(
+            "lottoxMachines"
+        )
+    ) || [];
+
+
+let rentals =
+    JSON.parse(
+        localStorage.getItem(
+            "lottoxRentals"
+        )
+    ) || [];
+
+
+/* ================= ELEMENTS ================= */
+
+const machineSelect =
+    document.getElementById(
+        "machineSelect"
+    );
+
+
+const startDate =
+    document.getElementById(
+        "startDate"
+    );
+
+
+/* =====================================================
+   DEFAULT DATE
+===================================================== */
+
+function setDefaultDate() {
+
+    const today =
+        new Date();
+
+
+    const year =
+        today.getFullYear();
+
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    if (startDate) {
+
+        startDate.value =
+            year +
+            "-" +
+            month +
+            "-" +
+            day;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD MACHINES
+===================================================== */
+
+function loadMachines() {
+
+    if (!machineSelect) {
+
+        return;
+
+    }
+
+
+    machineSelect.innerHTML = `
+
+        <option value="">
+            Chwazi machin
+        </option>
+
+    `;
+
+
+    const available =
+        machines.filter(
+            machine =>
+                machine.status !==
+                "INACTIVE"
+        );
+
+
+    if (
+        available.length === 0
+    ) {
+
+        machineSelect.innerHTML += `
+
+            <option value="">
+                Pa gen machin disponib
+            </option>
+
+        `;
+
+        return;
+
+    }
+
+
+    available.forEach(
+        machine => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                machine.name;
+
+
+            option.textContent =
+                machine.name +
+                " — " +
+                (
+                    machine.owner ||
+                    "Pa gen kliyan"
+                );
+
+
+            machineSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MACHINE CHANGE
+===================================================== */
+
+if (machineSelect) {
+
+    machineSelect.addEventListener(
+        "change",
+        function() {
+
+            const selected =
+                machines.find(
+                    machine =>
+                        machine.name ===
+                        this.value
+                );
+
+
+            if (
+                selected &&
+                selected.price
+            ) {
+
+                document
+                    .getElementById(
+                        "monthlyPrice"
+                    )
+                    .value =
+                    selected.price;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   GENERATE RENTAL ID
+===================================================== */
+
+function generateRentalID() {
+
+    const random =
+        Math.floor(
+            100000 +
+            Math.random() * 900000
+        );
+
+
+    return "LOC-" +
+        random;
+
+}
+
+
+/* =====================================================
+   CALCULATE END DATE
+===================================================== */
+
+function calculateEndDate(
+    start,
+    months
+) {
+
+    const date =
+        new Date(
+            start +
+            "T00:00:00"
+        );
+
+
+    date.setMonth(
+        date.getMonth() +
+        Number(months)
+    );
+
+
+    date.setDate(
+        date.getDate() -
+        1
+    );
+
+
+    return date
+        .toISOString()
+        .split("T")[0];
+
+}
+
+
+/* =====================================================
+   CREATE RENTAL
+===================================================== */
+
+function createRental() {
+
+    const machine =
+        document
+            .getElementById(
+                "machineSelect"
+            )
+            .value
+            .trim();
+
+
+    const customer =
+        document
+            .getElementById(
+                "customerName"
+            )
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById(
+                "customerPhone"
+            )
+            .value
+            .trim();
+
+
+    const start =
+        document
+            .getElementById(
+                "startDate"
+            )
+            .value;
+
+
+    const months =
+        Number(
+            document
+                .getElementById(
+                    "months"
+                )
+                .value
+        );
+
+
+    const price =
+        Number(
+            document
+                .getElementById(
+                    "monthlyPrice"
+                )
+                .value
+        );
+
+
+    /* ================= VALIDATION ================= */
+
+    if (!machine) {
+
+        alert(
+            "⚠️ Chwazi machin nan."
+        );
+
+        return;
+
+    }
+
+
+    if (!customer) {
+
+        alert(
+            "⚠️ Antre non kliyan an."
+        );
+
+        return;
+
+    }
+
+
+    if (!phone) {
+
+        alert(
+            "⚠️ Antre telefòn kliyan an."
+        );
+
+        return;
+
+    }
+
+
+    if (!start) {
+
+        alert(
+            "⚠️ Chwazi dat kòmansman an."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !months ||
+        months < 1
+    ) {
+
+        alert(
+            "⚠️ Kantite mwa a dwe omwen 1."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !price ||
+        price <= 0
+    ) {
+
+        alert(
+            "⚠️ Antre pri chak mwa a."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= CHECK EXISTING ================= */
+
+    const existing =
+        rentals.find(
+            rental =>
+                rental.machine ===
+                    machine &&
+                rental.status ===
+                    "ACTIVE"
+        );
+
+
+    if (existing) {
+
+        alert(
+            "⚠️ Machin sa a deja gen yon kontra aktif."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= END DATE ================= */
+
+    const endDate =
+        calculateEndDate(
+            start,
+            months
+        );
+
+
+    /* ================= TOTAL ================= */
+
+    const totalPrice =
+        price *
+        months;
+
+
+    /* ================= CREATE ================= */
+
+    const rental = {
+
+        id:
+            generateRentalID(),
+
+        machine:
+            machine,
+
+        customer:
+            customer,
+
+        phone:
+            phone,
+
+        startDate:
+            start,
+
+        endDate:
+            endDate,
+
+        months:
+            months,
+
+        monthlyPrice:
+            price,
+
+        totalPrice:
+            totalPrice,
+
+        paidMonths:
+            0,
+
+        paidAmount:
+            0,
+
+        status:
+            "ACTIVE",
+
+        createdAt:
+            new Date().toISOString(),
+
+        lastPayment:
+            null
+
+    };
+
+
+    /* ================= SAVE ================= */
+
+    rentals.unshift(
+        rental
+    );
+
+
+    localStorage.setItem(
+        "lottoxRentals",
+        JSON.stringify(
+            rentals
+        )
+    );
+
+
+    /* ================= RESET FORM ================= */
+
+    document
+        .getElementById(
+            "customerName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "customerPhone"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "months"
+        )
+        .value = "1";
+
+
+    document
+        .getElementById(
+            "monthlyPrice"
+        )
+        .value = "";
+
+
+    machineSelect.value =
+        "";
+
+
+    /* ================= UPDATE ================= */
+
+    renderRentals();
+
+    updateStats();
+
+
+    alert(
+        "✅ Kontra LOTTOX kreye avèk siksè.\n\n" +
+        "ID kontra: " +
+        rental.id
+    );
+
+}
+
+
+/* =====================================================
+   RENTAL STATUS
+===================================================== */
+
+function getRentalStatus(
+    rental
+) {
+
+    if (
+        rental.status ===
+        "CANCELLED"
+    ) {
+
+        return {
+
+            type:
+                "expired",
+
+            text:
+                "ANILE"
+
+        };
+
+    }
+
+
+    const today =
+        new Date();
+
+
+    const end =
+        new Date(
+            rental.endDate +
+            "T23:59:59"
+        );
+
+
+    const difference =
+        end.getTime() -
+        today.getTime();
+
+
+    const days =
+        Math.ceil(
+            difference /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
+
+
+    if (
+        days < 0
+    ) {
+
+        return {
+
+            type:
+                "expired",
+
+            text:
+                "EKSPIRÉ"
+
+        };
+
+    }
+
+
+    if (
+        days <= 7
+    ) {
+
+        return {
+
+            type:
+                "warning",
+
+            text:
+                "PRÈSKE EKSPIRÉ"
+
+        };
+
+    }
+
+
+    return {
+
+        type:
+            "active",
+
+        text:
+            "AKTIF"
+
+    };
+
+}
+
+
+/* =====================================================
+   DAYS LEFT
+===================================================== */
+
+function daysLeft(
+    endDate
+) {
+
+    const today =
+        new Date();
+
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const end =
+        new Date(
+            endDate +
+            "T00:00:00"
+        );
+
+
+    const difference =
+        end.getTime() -
+        today.getTime();
+
+
+    return Math.ceil(
+        difference /
+        (
+            1000 *
+            60 *
+            60 *
+            24
+        )
+    );
+
+}
+
+
+/* =====================================================
+   FORMAT MONEY
+===================================================== */
+
+function formatMoney(
+    number
+) {
+
+    return Number(
+        number || 0
+    ).toLocaleString(
+        "en-US"
+    );
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(
+    date
+) {
+
+    if (!date) {
+
+        return "—";
+
+    }
+
+
+    const parts =
+        String(date)
+            .split("-");
+
+
+    if (
+        parts.length !== 3
+    ) {
+
+        return date;
+
+    }
+
+
+    return (
+        parts[2] +
+        "/" +
+        parts[1] +
+        "/" +
+        parts[0]
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   CALCULATE PAYMENT %
+===================================================== */
+
+function paymentPercentage(
+    rental
+) {
+
+    const total =
+        Number(
+            rental.totalPrice ||
+            0
+        );
+
+
+    const paid =
+        Number(
+            rental.paidAmount ||
+            0
+        );
+
+
+    if (
+        total <= 0
+    ) {
+
+        return 0;
+
+    }
+
+
+    const percentage =
+        (
+            paid /
+            total
+        ) * 100;
+
+
+    return Math.max(
+        0,
+        Math.min(
+            100,
+            percentage
+        )
+    );
+
+}
+
+
+/* =====================================================
+   PAYMENT STATUS
+===================================================== */
+
+function paymentStatus(
+    rental
+) {
+
+    const total =
+        Number(
+            rental.totalPrice ||
+            0
+        );
+
+
+    const paid =
+        Number(
+            rental.paidAmount ||
+            0
+        );
+
+
+    if (
+        paid >= total
+    ) {
+
+        return "PEYE NÈT";
+
+    }
+
+
+    if (
+        paid > 0
+    ) {
+
+        return "PASYÈL";
+
+    }
+
+
+    return "PA PÈYE";
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+setDefaultDate();
+
+loadMachines();
+
+          </script>
+         <script>
+
+function renderRentals(){
+
+    const box =
+        document.getElementById("rentalsList");
+
+    const count =
+        document.getElementById("rentalCount");
+
+    count.textContent =
+        rentals.length + " kontra";
+
+    if(!rentals.length){
+
+        box.innerHTML = `
+            <div class="empty">
+                📋 Pa gen kontra pou kounye a.
+            </div>
+        `;
+
+        return;
+    }
+
+    box.innerHTML = "";
+
+    rentals.forEach(rental => {
+
+        const status =
+            getRentalStatus(rental);
+
+        const days =
+            daysLeft(rental.endDate);
+
+        const total =
+            Number(rental.totalPrice || 0);
+
+        const paid =
+            Number(rental.paidAmount || 0);
+
+        const percent =
+            paymentPercentage(rental);
+
+        let timeText = "";
+
+        if(days < 0){
+
+            timeText =
+                "Ekspire depi " +
+                Math.abs(days) +
+                " jou";
+
+        }else if(days === 0){
+
+            timeText =
+                "Ekspire jodi a";
+
+        }else{
+
+            timeText =
+                days +
+                " jou rete";
+
+        }
+
+        const item =
+            document.createElement("div");
+
+        item.className = "rental";
+
+        item.innerHTML = `
+
+            <div class="rental-top">
+
+                <div class="rental-name">
+
+                    <strong>
+                        🚗
+                        ${escapeHTML(
+                            rental.machine
+                        )}
+                    </strong>
+
+                    <small>
+                        👤
+                        ${escapeHTML(
+                            rental.customer
+                        )}
+
+                        · 📞
+
+                        ${escapeHTML(
+                            rental.phone
+                        )}
+                    </small>
+
+                </div>
+
+                <span
+                    class="
+                        rental-status
+                        status-${status.type}
+                    "
+                >
+                    ${status.text}
+                </span>
+
+            </div>
+
+
+            <div class="progress-info">
+
+                <span>
+                    💰 Peman
+                </span>
+
+                <span>
+                    ${formatMoney(paid)}
+                    /
+                    ${formatMoney(total)}
+                    Gdes
+                </span>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    style="
+                        width:${percent}%;
+                    "
+                ></div>
+
+            </div>
+
+
+            <div
+                style="
+                    margin-top:7px;
+                    color:#777;
+                    font-size:9px;
+                "
+            >
+                ${paymentStatus(rental)}
+                ·
+                ${percent.toFixed(0)}%
+            </div>
+
+
+            <div class="rental-details">
+
+                <div class="detail">
+
+                    <small>ID</small>
+
+                    <strong>
+                        ${escapeHTML(
+                            rental.id
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <small>KÒMANSE</small>
+
+                    <strong>
+                        ${formatDate(
+                            rental.startDate
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <small>EKSPIRASYON</small>
+
+                    <strong>
+                        ${formatDate(
+                            rental.endDate
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <small>TAN</small>
+
+                    <strong>
+                        ${timeText}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="rental-actions">
+
+                <button
+                    class="small-btn"
+                    onclick="
+                        recordPayment(
+                            '${rental.id}'
+                        )
+                    "
+                >
+                    💰 Peman
+                </button>
+
+
+                <button
+                    class="small-btn"
+                    onclick="
+                        extendRental(
+                            '${rental.id}'
+                        )
+                    "
+                >
+                    ➕ Pwolonje
+                </button>
+
+
+                <button
+                    class="small-btn"
+                    onclick="
+                        printReceipt(
+                            '${rental.id}'
+                        )
+                    "
+                >
+                    🧾 Resi
+                </button>
+
+
+                <button
+                    class="
+                        small-btn
+                        delete-btn
+                    "
+                    onclick="
+                        deleteRental(
+                            '${rental.id}'
+                        )
+                    "
+                >
+                    🗑️ Efase
+                </button>
+
+            </div>
+
+        `;
+
+        box.appendChild(item);
+
+    });
+
+}
+
+
+/* ================= PEMAN ================= */
+
+function recordPayment(id){
+
+    const rental =
+        rentals.find(
+            x => x.id === id
+        );
+
+    if(!rental) return;
+
+
+    const amount =
+        prompt(
+            "💰 Konbyen kliyan an peye?"
+        );
+
+    if(amount === null) return;
+
+
+    const payment =
+        Number(amount);
+
+
+    if(
+        !payment ||
+        payment <= 0
+    ){
+
+        alert(
+            "⚠️ Montan an pa valid."
+        );
+
+        return;
+    }
+
+
+    const total =
+        Number(
+            rental.totalPrice || 0
+        );
+
+
+    const paid =
+        Number(
+            rental.paidAmount || 0
+        );
+
+
+    const remaining =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    if(remaining <= 0){
+
+        alert(
+            "✅ Kontra a deja peye nèt."
+        );
+
+        return;
+    }
+
+
+    rental.paidAmount =
+        paid +
+        Math.min(
+            payment,
+            remaining
+        );
+
+
+    rental.paidMonths =
+        Math.floor(
+            rental.paidAmount /
+            Number(
+                rental.monthlyPrice
+            )
+        );
+
+
+    rental.lastPayment =
+        new Date().toISOString();
+
+
+    saveRentals();
+
+    renderRentals();
+
+    updateStats();
+
+
+    alert(
+        "✅ Peman anrejistre!"
+    );
+
+}
+
+
+/* ================= PWOLONGE ================= */
+
+function extendRental(id){
+
+    const rental =
+        rentals.find(
+            x => x.id === id
+        );
+
+    if(!rental) return;
+
+
+    const value =
+        prompt(
+            "➕ Konbyen mwa pou ajoute?"
+        );
+
+    if(value === null) return;
+
+
+    const months =
+        Number(value);
+
+
+    if(
+        !months ||
+        months < 1
+    ){
+
+        alert(
+            "⚠️ Kantite mwa a pa valid."
+        );
+
+        return;
+    }
+
+
+    const date =
+        new Date(
+            rental.endDate +
+            "T00:00:00"
+        );
+
+
+    date.setMonth(
+        date.getMonth() +
+        months
+    );
+
+
+    rental.endDate =
+        date
+        .toISOString()
+        .split("T")[0];
+
+
+    rental.months =
+        Number(rental.months) +
+        months;
+
+
+    rental.totalPrice =
+        Number(
+            rental.monthlyPrice
+        ) *
+        rental.months;
+
+
+    rental.status =
+        "ACTIVE";
+
+
+    saveRentals();
+
+    renderRentals();
+
+    updateStats();
+
+
+    alert(
+        "✅ Kontra a pwolonje!"
+    );
+
+} 
+/* ================= DELETE ================= */
+
+function deleteRental(id){
+
+    const rental =
+        rentals.find(
+            x => x.id === id
+        );
+
+    if(!rental) return;
+
+
+    const ok =
+        confirm(
+            "⚠️ Efase kontra " +
+            rental.id +
+            "?\n\n" +
+            "Kliyan: " +
+            rental.customer
+        );
+
+
+    if(!ok) return;
+
+
+    rentals =
+        rentals.filter(
+            x => x.id !== id
+        );
+
+
+    saveRentals();
+
+    renderRentals();
+
+    updateStats();
+
+}
+
+
+/* ================= SAVE ================= */
+
+function saveRentals(){
+
+    localStorage.setItem(
+        "lottoxRentals",
+        JSON.stringify(rentals)
+    );
+
+}
+
+
+/* ================= STATS ================= */
+
+function updateStats(){
+
+    let active = 0;
+
+    let warning = 0;
+
+    let revenue = 0;
+
+
+    rentals.forEach(
+        rental => {
+
+            const status =
+                getRentalStatus(
+                    rental
+                );
+
+
+            if(
+                status.type ===
+                "active"
+            ){
+
+                active++;
+
+            }
+
+
+            if(
+                status.type ===
+                "warning"
+            ){
+
+                warning++;
+
+            }
+
+
+            revenue +=
+                Number(
+                    rental.monthlyPrice ||
+                    0
+                );
+
+        }
+    );
+
+
+    const total =
+        document.getElementById(
+            "totalMachines"
+        );
+
+
+    const activeBox =
+        document.getElementById(
+            "activeMachines"
+        );
+
+
+    const warningBox =
+        document.getElementById(
+            "warningMachines"
+        );
+
+
+    const revenueBox =
+        document.getElementById(
+            "monthlyRevenue"
+        );
+
+
+    if(total)
+        total.textContent =
+            rentals.length;
+
+
+    if(activeBox)
+        activeBox.textContent =
+            active;
+
+
+    if(warningBox)
+        warningBox.textContent =
+            warning;
+
+
+    if(revenueBox)
+        revenueBox.textContent =
+            formatMoney(
+                revenue
+            ) + " Gdes";
+
+
+    showAlerts();
+
+}
+
+
+/* ================= ALERT ================= */
+
+function showAlerts(){
+
+    const box =
+        document.getElementById(
+            "alertBox"
+        );
+
+
+    if(!box) return;
+
+
+    const warnings =
+        rentals.filter(
+            rental => {
+
+                const days =
+                    daysLeft(
+                        rental.endDate
+                    );
+
+
+                return (
+                    days >= 0 &&
+                    days <= 7
+                );
+
+            }
+        );
+
+
+    if(!warnings.length){
+
+        box.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    box.style.display =
+        "block";
+
+
+    box.innerHTML =
+
+        "⚠️ <strong>" +
+        warnings.length +
+        "</strong> kontra " +
+        "pral ekspire nan 7 jou " +
+        "oswa mwens.";
+
+}
+
+
+/* ================= RESI ================= */
+
+function printReceipt(id){
+
+    const rental =
+        rentals.find(
+            x => x.id === id
+        );
+
+
+    if(!rental){
+
+        alert(
+            "❌ Kontra pa jwenn."
+        );
+
+        return;
+
+    }
+
+
+    const paid =
+        Number(
+            rental.paidAmount || 0
+        );
+
+
+    const total =
+        Number(
+            rental.totalPrice || 0
+        );
+
+
+    const balance =
+        Math.max(
+            0,
+            total - paid
+        );
+
+
+    const win =
+        window.open(
+            "",
+            "_blank",
+            "width=450,height=650"
+        );
+
+
+    if(!win){
+
+        alert(
+            "⚠️ Pèmèt popup pou enprime resi."
+        );
+
+        return;
+
+    }
+
+
+    win.document.write(`
+
+<!DOCTYPE html>
+
+<html lang="ht">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>LOTTOX — Resi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    padding:25px;
+
+    color:#111;
+
+}
+
+.receipt{
+
+    max-width:380px;
+
+    margin:auto;
+
+    border:1px solid #ddd;
+
+    padding:22px;
+
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+
+}
+
+.center{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:11px;
+
+}
+
+.line{
+
+    border-top:
+    1px dashed #aaa;
+
+    margin:15px 0;
+
+}
+
+.row{
+
+    display:flex;
+
+    justify-content:
+    space-between;
+
+    gap:15px;
+
+    margin:9px 0;
+
+    font-size:12px;
+
+}
+
+.row strong{
+
+    text-align:right;
+
+}
+
+.total{
+
+    font-size:17px;
+
+    font-weight:900;
+
+}
+
+.print{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:12px;
+
+    border:0;
+
+    background:#111;
+
+    color:white;
+
+}
+
+@media print{
+
+    .print{
+
+        display:none;
+
+    }
+
+    body{
+
+        padding:0;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="receipt">
+
+    <div class="logo">
+        LOTTOX
+    </div>
+
+    <div class="center">
+        RESI LOKASYON
+    </div>
+
+
+    <div class="line"></div>
+
+
+    <div class="row">
+
+        <span>ID</span>
+
+        <strong>
+            ${escapeHTML(
+                rental.id
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Kliyan</span>
+
+        <strong>
+            ${escapeHTML(
+                rental.customer
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Telefòn</span>
+
+        <strong>
+            ${escapeHTML(
+                rental.phone
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Machin</span>
+
+        <strong>
+            ${escapeHTML(
+                rental.machine
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Kòmanse</span>
+
+        <strong>
+            ${formatDate(
+                rental.startDate
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Ekspire</span>
+
+        <strong>
+            ${formatDate(
+                rental.endDate
+            )}
+        </strong>
+
+    </div>
+
+
+    <div class="line"></div>
+
+
+    <div class="row">
+
+        <span>Total</span>
+
+        <strong>
+            ${formatMoney(
+                total
+            )} Gdes
+        </strong>
+
+    </div>
+
+
+    <div class="row">
+
+        <span>Peye</span>
+
+        <strong>
+            ${formatMoney(
+                paid
+            )} Gdes
+        </strong>
+
+    </div>
+
+
+    <div class="row total">
+
+        <span>Rès</span>
+
+        <strong>
+            ${formatMoney(
+                balance
+            )} Gdes
+        </strong>
+
+    </div>
+
+
+    <div class="line"></div>
+
+
+    <div class="center">
+
+        Mèsi paske ou chwazi
+        <strong>LOTTOX</strong>.
+
+    </div>
+
+
+    <button
+        class="print"
+        onclick="window.print()"
+    >
+
+        🖨️ Enprime Resi
+
+    </button>
+
+</div>
+
+</body>
+
+</html>
+
+    `);
+
+
+    win.document.close();
+
+}
+
+
+/* ================= BACK ================= */
+
+function goBack(){
+
+    window.location.href =
+        "admin.html";
+
+}
+
+
+/* ================= START ================= */
+
+renderRentals();
+
+updateStats();
+
+
+/* ================= AUTO REFRESH ================= */
+
+setInterval(
+    function(){
+
+        machines =
+            JSON.parse(
+                localStorage.getItem(
+                    "lottoxMachines"
+                )
+            ) || [];
+
+
+        rentals =
+            JSON.parse(
+                localStorage.getItem(
+                    "lottoxRentals"
+                )
+            ) || [];
+
+
+        renderRentals();
+
+        updateStats();
+
+    },
+    60000
+);
+
+
+/* ================= END SCRIPT ================= */
+
+</script>
+
+</body>
+
+</html>           
