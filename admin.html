@@ -2322,7 +2322,58 @@ console.log(
 
 
 </main>
+<script>
 
+document.querySelectorAll(".nav button").forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const text = this.textContent.trim();
+
+        let target = "";
+
+        if(text.includes("Overview")){
+            target = "overview";
+        }
+        else if(text.includes("Kliyan")){
+            target = "clients";
+        }
+        else if(text.includes("Machin")){
+            target = "machines";
+        }
+        else if(text.includes("Ajan")){
+            target = "agents";
+        }
+        else if(text.includes("Tikè")){
+            target = "tickets";
+        }
+
+        document
+            .querySelectorAll(".section")
+            .forEach(function(section){
+                section.classList.remove("active");
+            });
+
+        const selected =
+            document.getElementById(target);
+
+        if(selected){
+            selected.classList.add("active");
+        }
+
+        document
+            .querySelectorAll(".nav button")
+            .forEach(function(btn){
+                btn.classList.remove("active");
+            });
+
+        this.classList.add("active");
+
+    });
+
+});
+
+</script>
 </body>
 
 </html>    
