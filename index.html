@@ -1,1 +1,665 @@
+<!DOCTYPE html>
+<html lang="ht">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080a0d"
+    >
+
+    <title>LOTTOX — Login</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOTTOX LOGIN
+===================================================== -->
+
+<main class="login-page">
+
+
+    <!-- BRAND -->
+
+    <section class="brand">
+
+        <div class="brand-logo">
+            X
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                LOTTOX
+            </div>
+
+            <div class="brand-subtitle">
+                Smart Lottery Management System
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOGIN CARD -->
+
+    <section class="login-card">
+
+
+        <div class="welcome">
+
+            <div class="welcome-icon">
+                🔐
+            </div>
+
+            <h1>
+                Byenveni 👋
+            </h1>
+
+            <p>
+                Konekte pou antre
+                nan sistèm LOTTOX la.
+            </p>
+
+        </div>
+
+
+        <!-- ERROR -->
+
+        <div
+            id="loginError"
+            class="login-error"
+            role="alert"
+        ></div>
+
+
+        <!-- ACCOUNT TYPE -->
+
+        <div class="account-type">
+
+            <button
+                type="button"
+                class="type-btn active"
+                id="adminType"
+                onclick="selectType('admin')"
+            >
+                👑 Admin
+            </button>
+
+
+            <button
+                type="button"
+                class="type-btn"
+                id="clientType"
+                onclick="selectType('client')"
+            >
+                🏢 Kliyan
+            </button>
+
+
+            <button
+                type="button"
+                class="type-btn"
+                id="agentType"
+                onclick="selectType('agent')"
+            >
+                👤 Ajan
+            </button>
+
+        </div>
+
+
+        <!-- ID -->
+
+        <div class="field">
+
+            <label for="loginId">
+                ID / Code
+            </label>
+
+            <div class="input-box">
+
+                <span>
+                    🆔
+                </span>
+
+                <input
+                    type="text"
+                    id="loginId"
+                    placeholder="Antre ID ou"
+                    autocomplete="username"
+                    spellcheck="false"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="field">
+
+            <label for="loginPassword">
+                Modpas
+            </label>
+
+            <div class="input-box">
+
+                <span>
+                    🔐
+                </span>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Antre modpas ou"
+                    autocomplete="current-password"
+                >
+
+                <button
+                    type="button"
+                    class="eye-btn"
+                    id="eyeButton"
+                    onclick="togglePassword()"
+                    aria-label="Montre modpas"
+                >
+                    👁️
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="button"
+            class="login-btn"
+            id="loginButton"
+            onclick="login()"
+        >
+
+            <span id="loginButtonText">
+                KONEKTE →
+            </span>
+
+        </button>
+
+
+        <!-- FORGOT -->
+
+        <button
+            type="button"
+            class="forgot-btn"
+            onclick="forgotPassword()"
+        >
+            Ou bliye modpas ou?
+        </button>
+
+
+    </section>
+
+
+    <!-- SYSTEM STATUS -->
+
+    <div class="system-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+            LOTTOX System Online
+        </span>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="copyright">
+
+        © 2026 LOTTOX —
+        All Rights Reserved
+
+    </footer>
+
+
+</main>
+
+
+<!-- =====================================================
+     LOGIN JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   LOTTOX LOGIN SYSTEM
+===================================================== */
+
+
+/* ================= CURRENT TYPE ================= */
+
+let accountType = "admin";
+
+
+/* =====================================================
+   SELECT ACCOUNT TYPE
+===================================================== */
+
+function selectType(type){
+
+    accountType = type;
+
+
+    const adminBtn =
+        document.getElementById(
+            "adminType"
+        );
+
+    const clientBtn =
+        document.getElementById(
+            "clientType"
+        );
+
+    const agentBtn =
+        document.getElementById(
+            "agentType"
+        );
+
+
+    adminBtn.classList.remove(
+        "active"
+    );
+
+    clientBtn.classList.remove(
+        "active"
+    );
+
+    agentBtn.classList.remove(
+        "active"
+    );
+
+
+    if(type === "admin"){
+
+        adminBtn.classList.add(
+            "active"
+        );
+
+    }
+
+
+    if(type === "client"){
+
+        clientBtn.classList.add(
+            "active"
+        );
+
+    }
+
+
+    if(type === "agent"){
+
+        agentBtn.classList.add(
+            "active"
+        );
+
+    }
+
+
+    clearError();
+
+
+    const input =
+        document.getElementById(
+            "loginId"
+        );
+
+
+    if(type === "admin"){
+
+        input.placeholder =
+            "Antre ID Admin";
+
+    }
+
+
+    if(type === "client"){
+
+        input.placeholder =
+            "Antre ID Kliyan";
+
+    }
+
+
+    if(type === "agent"){
+
+        input.placeholder =
+            "Antre ID Ajan";
+
+    }
+
+}
+
+
+/* =====================================================
+   PASSWORD VISIBILITY
+===================================================== */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        );
+
+    const eye =
+        document.getElementById(
+            "eyeButton"
+        );
+
+
+    if(
+        password.type ===
+        "password"
+    ){
+
+        password.type =
+            "text";
+
+        eye.textContent =
+            "🙈";
+
+    }else{
+
+        password.type =
+            "password";
+
+        eye.textContent =
+            "👁️";
+
+    }
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showError(message){
+
+    const error =
+        document.getElementById(
+            "loginError"
+        );
+
+
+    error.textContent =
+        message;
+
+
+    error.classList.add(
+        "show"
+    );
+
+}
+
+
+function clearError(){
+
+    const error =
+        document.getElementById(
+            "loginError"
+        );
+
+
+    error.textContent =
+        "";
+
+
+    error.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login(){
+
+    clearError();
+
+
+    const id =
+        document
+        .getElementById(
+            "loginId"
+        )
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const password =
+        document
+        .getElementById(
+            "loginPassword"
+        )
+        .value
+        .trim();
+
+
+    /* ================= VALIDATION ================= */
+
+    if(!id){
+
+        showError(
+            "⚠️ Antre ID ou."
+        );
+
+        return;
+
+    }
+
+
+    if(!password){
+
+        showError(
+            "⚠️ Antre modpas ou."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       ADMIN DEMO ACCESS
+       
+       Sa a se aksè inisyal sèlman.
+       Lè backend LOTTOX la konekte,
+       authentication lan ap soti nan database.
+    ================================================= */
+
+    if(
+        accountType === "admin" &&
+        id === "ADMIN" &&
+        password === "LOTTOX2026"
+    ){
+
+        localStorage.setItem(
+            "lottoxRole",
+            "SUPER_ADMIN"
+        );
+
+
+        localStorage.setItem(
+            "lottoxLoggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "lottoxAdminLoggedIn",
+            "true"
+        );
+
+
+        window.location.href =
+            "admin.html";
+
+
+        return;
+
+    }
+
+
+    /* =================================================
+       CLIENT
+       
+       Nouvo backend lan pral jere sa.
+    ================================================= */
+
+    if(
+        accountType === "client"
+    ){
+
+        showError(
+            "🔒 Kont kliyan yo pral konekte ak baz LOTTOX la."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       AGENT
+       
+       Nouvo backend lan pral jere sa.
+    ================================================= */
+
+    if(
+        accountType === "agent"
+    ){
+
+        showError(
+            "🔒 Kont ajan yo pral konekte ak baz LOTTOX la."
+        );
+
+        return;
+
+    }
+
+
+    /* ================= INVALID ================= */
+
+    showError(
+        "❌ ID oswa modpas la pa kòrèk."
+    );
+
+}
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+function forgotPassword(){
+
+    alert(
+
+        "🔐 Modpas bliye?\n\n" +
+
+        "Kontakte administratè LOTTOX " +
+
+        "pou reset kont ou."
+
+    );
+
+}
+
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
+
+document
+.getElementById("loginId")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            document
+            .getElementById(
+                "loginPassword"
+            )
+            .focus();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("loginPassword")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            login();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   READY
+===================================================== */
+
+console.log(
+    "⚡ LOTTOX LOGIN READY"
+);
+
+
+</script>
+
+
+</body>
+
+  </html>
