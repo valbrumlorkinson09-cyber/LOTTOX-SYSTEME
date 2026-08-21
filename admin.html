@@ -22,9 +22,7 @@
 }
 
 body{
-
     min-height:100vh;
-
     background:
     radial-gradient(
         circle at top,
@@ -32,487 +30,306 @@ body{
         #080a0d 45%,
         #030405 100%
     );
-
     color:#fff;
 }
 
 header{
-
     height:68px;
-
     background:#0a0c0f;
-
     border-bottom:1px solid #252a30;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     padding:0 18px;
-
     position:sticky;
-
     top:0;
-
     z-index:10;
 }
 
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 }
 
 .logo{
-
     width:40px;
-
     height:40px;
-
     border-radius:11px;
-
     background:
     linear-gradient(
         135deg,
         #ffd700,
         #ff9d00
     );
-
     color:#080808;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-weight:900;
-
 }
 
 .brand-name{
-
     font-size:20px;
-
     font-weight:900;
-
     letter-spacing:2px;
-
 }
 
 .logout{
-
     border:1px solid #3b2727;
-
     background:#171112;
-
     color:#ff7373;
-
     padding:9px 12px;
-
     border-radius:9px;
-
     cursor:pointer;
-
     font-size:10px;
-
     font-weight:bold;
-
 }
 
 main{
-
     max-width:1200px;
-
     margin:auto;
-
     padding:25px 15px 70px;
-
 }
 
 .title{
-
     margin-bottom:22px;
-
 }
 
 .title h1{
-
     font-size:26px;
-
     margin-bottom:7px;
-
 }
 
 .title p{
-
     color:#777f87;
-
     font-size:12px;
-
 }
 
 
 /* NAV */
 
 .nav{
-
     display:grid;
-
     grid-template-columns:
     repeat(5,1fr);
-
     gap:8px;
-
     margin-bottom:20px;
-
 }
 
 .nav button{
-
     height:44px;
-
     border:1px solid #292f35;
-
     background:#111419;
-
     color:#aeb4ba;
-
     border-radius:10px;
-
     cursor:pointer;
-
     font-size:10px;
-
 }
 
 .nav button.active{
-
     color:#ffd000;
-
     border-color:#4b401d;
-
     background:#171714;
-
 }
 
 
 /* SECTIONS */
 
 .section{
-
     display:none;
-
 }
 
 .section.active{
-
     display:block;
-
 }
 
 
 /* STATS */
 
 .stats{
-
     display:grid;
-
     grid-template-columns:
     repeat(4,1fr);
-
     gap:12px;
-
     margin-bottom:20px;
-
 }
 
 .stat{
-
     background:#0f1216;
-
     border:1px solid #252a30;
-
     border-radius:15px;
-
     padding:16px;
-
 }
 
 .stat-icon{
-
     font-size:20px;
-
     margin-bottom:8px;
-
 }
 
 .stat-label{
-
     color:#777f87;
-
     font-size:10px;
-
     margin-bottom:6px;
-
 }
 
 .stat-value{
-
     font-size:21px;
-
     font-weight:900;
-
 }
 
 
 /* CARD */
 
 .card{
-
     background:#0f1216;
-
     border:1px solid #252a30;
-
     border-radius:17px;
-
     padding:19px;
-
     margin-bottom:16px;
-
 }
 
 .card-title{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:18px;
-
 }
 
 .card-title h2{
-
     font-size:16px;
-
 }
 
 .card-title span{
-
     color:#707880;
-
     font-size:10px;
-
 }
 
 
 /* FORM */
 
 .field{
-
     margin-bottom:14px;
-
 }
 
 .field label{
-
     display:block;
-
     color:#aeb4ba;
-
     font-size:11px;
-
     margin-bottom:6px;
-
 }
 
 input,
 select{
-
     width:100%;
-
     height:46px;
-
     background:#090b0e;
-
     border:1px solid #2c3239;
-
     border-radius:10px;
-
     color:white;
-
     outline:none;
-
     padding:0 12px;
-
     font-size:12px;
-
 }
 
 input:focus,
 select:focus{
-
     border-color:#ffd000;
-
 }
 
 .primary{
-
     width:100%;
-
     height:48px;
-
     border:0;
-
     border-radius:10px;
-
     background:
     linear-gradient(
         135deg,
         #ffd700,
         #ff9d00
     );
-
     color:#090909;
-
     font-weight:900;
-
     cursor:pointer;
-
 }
 
 
 /* GRID */
 
 .grid{
-
     display:grid;
-
     grid-template-columns:
     1fr 1fr;
-
     gap:15px;
-
 }
 
 
 /* EMPTY */
 
 .empty{
-
     text-align:center;
-
     padding:25px;
-
     color:#666e76;
-
     font-size:11px;
-
     border:1px dashed #292f35;
-
     border-radius:10px;
-
 }
 
 
 /* LIST */
 
 .item{
-
     background:#111419;
-
     border:1px solid #292f35;
-
     border-radius:11px;
-
     padding:13px;
-
     margin-bottom:9px;
-
 }
 
 .item-top{
-
     display:flex;
-
     justify-content:space-between;
-
     gap:10px;
-
 }
 
 .item strong{
-
     font-size:12px;
-
 }
 
 .item small{
-
     display:block;
-
     color:#707880;
-
     font-size:10px;
-
     margin-top:5px;
-
 }
 
 .active{
-
     color:#32db78;
-
 }
 
 .inactive{
-
     color:#ff7070;
-
 }
 
 .actions{
-
     display:flex;
-
     gap:7px;
-
     margin-top:10px;
-
 }
 
 .small{
-
     border:1px solid #343a41;
-
     background:#171b20;
-
     color:#ddd;
-
     border-radius:7px;
-
     padding:7px 9px;
-
     cursor:pointer;
-
     font-size:9px;
-
 }
 
 .danger{
-
     color:#ff7373;
-
     border-color:#3a2727;
-
 }
 
 
@@ -521,16 +338,12 @@ select:focus{
 @media(max-width:800px){
 
     .stats{
-
         grid-template-columns:
         repeat(2,1fr);
-
     }
 
     .grid{
-
         grid-template-columns:1fr;
-
     }
 
 }
@@ -538,16 +351,12 @@ select:focus{
 @media(max-width:600px){
 
     .nav{
-
         grid-template-columns:
         repeat(2,1fr);
-
     }
 
     .title h1{
-
         font-size:22px;
-
     }
 
 }
@@ -558,7 +367,6 @@ select:focus{
 
 
 <body>
-
 
 <header>
 
@@ -586,7 +394,6 @@ select:focus{
 
 
 <main>
-
 
 <div class="title">
 
@@ -765,7 +572,6 @@ select:focus{
 >
 
     <div class="grid">
-
 
         <div class="card">
 
@@ -1115,11 +921,10 @@ select:focus{
 </section>
 
 
-<script>
 
-/* ================= DATABASE ================= */
 <!-- JAVASCRIPT -->
 
+<script>
 
 /* ================= DATABASE ================= */
 
@@ -1214,29 +1019,56 @@ function generateID(prefix){
 
 
 /* ================= NAVIGATION ================= */
+
 function showSection(name, button){
 
-    document.querySelectorAll(".section").forEach(
-        section => {
-            section.classList.remove("active");
-        }
-    );
+    document
+        .querySelectorAll(".section")
+        .forEach(
+            section => {
+
+                section.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
 
     const section =
-        document.getElementById(name);
+        document.getElementById(
+            name
+        );
+
 
     if(section){
-        section.classList.add("active");
+
+        section.classList.add(
+            "active"
+        );
+
     }
 
-    document.querySelectorAll(".nav button").forEach(
-        btn => {
-            btn.classList.remove("active");
-        }
-    );
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(
+            btn => {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
 
     if(button){
-        button.classList.add("active");
+
+        button.classList.add(
+            "active"
+        );
+
     }
 
 }
@@ -1376,12 +1208,15 @@ function updateClientOptions(){
                 Chwazi kliyan
             </option>`;
 
+
         clients.forEach(
             client => {
 
                 machine.innerHTML +=
                     `<option value="${client.id}">
-                        ${escapeHTML(client.name)}
+                        ${escapeHTML(
+                            client.name
+                        )}
                     </option>`;
 
             }
@@ -1397,12 +1232,15 @@ function updateClientOptions(){
                 Chwazi kliyan
             </option>`;
 
+
         clients.forEach(
             client => {
 
                 agent.innerHTML +=
                     `<option value="${client.id}">
-                        ${escapeHTML(client.name)}
+                        ${escapeHTML(
+                            client.name
+                        )}
                     </option>`;
 
             }
@@ -1678,11 +1516,8 @@ function addAgent(){
     refresh();
 
 }
-<!-- ================= JAVASCRIPT PART 3 ================= -->
-
-<script>
-
-/* ================= CLIENT LIST ================= */
+    
+/* ================= DISPLAY CLIENTS ================= */
 
 function displayClients(){
 
@@ -1696,11 +1531,17 @@ function displayClients(){
             "clientTotal"
         );
 
-    if(total)
+    if(total){
+
         total.textContent =
-            clients.length + " kliyan";
+            clients.length +
+            " kliyan";
+
+    }
+
 
     if(!box) return;
+
 
     if(clients.length === 0){
 
@@ -1711,85 +1552,88 @@ function displayClients(){
         `;
 
         return;
+
     }
+
 
     box.innerHTML =
         clients.map(
             client => `
 
-        <div class="item">
+            <div class="item">
 
-            <div class="item-top">
+                <div class="item-top">
 
-                <div>
+                    <div>
 
-                    <strong>
-                        ${escapeHTML(
-                            client.name
-                        )}
+                        <strong>
+                            ${escapeHTML(
+                                client.name
+                            )}
+                        </strong>
+
+                        <small>
+                            ID:
+                            ${escapeHTML(
+                                client.id
+                            )}
+                        </small>
+
+                        <small>
+                            📞
+                            ${escapeHTML(
+                                client.phone || "-"
+                            )}
+                        </small>
+
+                    </div>
+
+                    <strong
+                        class="${
+                            client.status === "ACTIVE"
+                            ? "active"
+                            : "inactive"
+                        }"
+                    >
+                        ● ${client.status}
                     </strong>
-
-                    <small>
-                        ID:
-                        ${escapeHTML(
-                            client.id
-                        )}
-                    </small>
-
-                    <small>
-                        📞
-                        ${escapeHTML(
-                            client.phone || "-"
-                        )}
-                    </small>
 
                 </div>
 
-                <strong
-                    class="${
-                        client.status === "ACTIVE"
-                        ? "active"
-                        : "inactive"
-                    }"
-                >
-                    ● ${client.status}
-                </strong>
+
+                <div class="actions">
+
+                    <button
+                        class="small"
+                        onclick="toggleClient('${client.id}')"
+                    >
+                        ${
+                            client.status === "ACTIVE"
+                            ? "⏸️ Dezaktive"
+                            : "▶️ Aktive"
+                        }
+                    </button>
+
+
+                    <button
+                        class="small danger"
+                        onclick="deleteClient('${client.id}')"
+                    >
+                        🗑️ Efase
+                    </button>
+
+                </div>
 
             </div>
 
-
-            <div class="actions">
-
-                <button
-                    class="small"
-                    onclick="toggleClient('${client.id}')"
-                >
-                    ${
-                        client.status === "ACTIVE"
-                        ? "⏸️ Dezaktive"
-                        : "▶️ Aktive"
-                    }
-                </button>
-
-                <button
-                    class="small danger"
-                    onclick="deleteClient('${client.id}')"
-                >
-                    🗑️ Efase
-                </button>
-
-            </div>
-
-        </div>
-
-        `
+            `
         ).join("");
 
 }
 
 
 
-/* ================= MACHINE LIST ================= */
+/* ================= DISPLAY MACHINES ================= */
 
 function displayMachines(){
 
@@ -1803,11 +1647,18 @@ function displayMachines(){
             "machineTotal"
         );
 
-    if(total)
+
+    if(total){
+
         total.textContent =
-            machines.length + " machin";
+            machines.length +
+            " machin";
+
+    }
+
 
     if(!box) return;
+
 
     if(machines.length === 0){
 
@@ -1818,78 +1669,81 @@ function displayMachines(){
         `;
 
         return;
+
     }
+
 
     box.innerHTML =
         machines.map(
             machine => `
 
-        <div class="item">
+            <div class="item">
 
-            <div class="item-top">
+                <div class="item-top">
 
-                <div>
+                    <div>
 
-                    <strong>
-                        ${escapeHTML(
-                            machine.id
-                        )}
+                        <strong>
+                            ${escapeHTML(
+                                machine.id
+                            )}
+                        </strong>
+
+                        <small>
+                            Kliyan:
+                            ${escapeHTML(
+                                machine.clientName || "-"
+                            )}
+                        </small>
+
+                    </div>
+
+                    <strong
+                        class="${
+                            machine.status === "ACTIVE"
+                            ? "active"
+                            : "inactive"
+                        }"
+                    >
+                        ● ${machine.status}
                     </strong>
-
-                    <small>
-                        Kliyan:
-                        ${escapeHTML(
-                            machine.clientName
-                        )}
-                    </small>
 
                 </div>
 
-                <strong
-                    class="${
-                        machine.status === "ACTIVE"
-                        ? "active"
-                        : "inactive"
-                    }"
-                >
-                    ● ${machine.status}
-                </strong>
+
+                <div class="actions">
+
+                    <button
+                        class="small"
+                        onclick="toggleMachine('${machine.id}')"
+                    >
+                        ${
+                            machine.status === "ACTIVE"
+                            ? "⏸️ Off"
+                            : "▶️ On"
+                        }
+                    </button>
+
+
+                    <button
+                        class="small danger"
+                        onclick="deleteMachine('${machine.id}')"
+                    >
+                        🗑️ Efase
+                    </button>
+
+                </div>
 
             </div>
 
-
-            <div class="actions">
-
-                <button
-                    class="small"
-                    onclick="toggleMachine('${machine.id}')"
-                >
-                    ${
-                        machine.status === "ACTIVE"
-                        ? "⏸️ Off"
-                        : "▶️ On"
-                    }
-                </button>
-
-                <button
-                    class="small danger"
-                    onclick="deleteMachine('${machine.id}')"
-                >
-                    🗑️ Efase
-                </button>
-
-            </div>
-
-        </div>
-
-        `
+            `
         ).join("");
 
 }
 
 
 
-/* ================= AGENT LIST ================= */
+/* ================= DISPLAY AGENTS ================= */
 
 function displayAgents(){
 
@@ -1903,11 +1757,18 @@ function displayAgents(){
             "agentTotal"
         );
 
-    if(total)
+
+    if(total){
+
         total.textContent =
-            agents.length + " ajan";
+            agents.length +
+            " ajan";
+
+    }
+
 
     if(!box) return;
+
 
     if(agents.length === 0){
 
@@ -1918,92 +1779,95 @@ function displayAgents(){
         `;
 
         return;
+
     }
+
 
     box.innerHTML =
         agents.map(
             agent => `
 
-        <div class="item">
+            <div class="item">
 
-            <div class="item-top">
+                <div class="item-top">
 
-                <div>
+                    <div>
 
-                    <strong>
-                        ${escapeHTML(
-                            agent.name
-                        )}
+                        <strong>
+                            ${escapeHTML(
+                                agent.name
+                            )}
+                        </strong>
+
+                        <small>
+                            ID:
+                            ${escapeHTML(
+                                agent.id
+                            )}
+                        </small>
+
+                        <small>
+                            Kliyan:
+                            ${escapeHTML(
+                                agent.clientName || "-"
+                            )}
+                        </small>
+
+                        <small>
+                            Machine:
+                            ${escapeHTML(
+                                agent.machineId || "-"
+                            )}
+                        </small>
+
+                    </div>
+
+                    <strong
+                        class="${
+                            agent.status === "ACTIVE"
+                            ? "active"
+                            : "inactive"
+                        }"
+                    >
+                        ● ${agent.status}
                     </strong>
-
-                    <small>
-                        ID:
-                        ${escapeHTML(
-                            agent.id
-                        )}
-                    </small>
-
-                    <small>
-                        Kliyan:
-                        ${escapeHTML(
-                            agent.clientName
-                        )}
-                    </small>
-
-                    <small>
-                        Machine:
-                        ${escapeHTML(
-                            agent.machineId || "-"
-                        )}
-                    </small>
 
                 </div>
 
-                <strong
-                    class="${
-                        agent.status === "ACTIVE"
-                        ? "active"
-                        : "inactive"
-                    }"
-                >
-                    ● ${agent.status}
-                </strong>
+
+                <div class="actions">
+
+                    <button
+                        class="small"
+                        onclick="toggleAgent('${agent.id}')"
+                    >
+                        ${
+                            agent.status === "ACTIVE"
+                            ? "⏸️ Off"
+                            : "▶️ On"
+                        }
+                    </button>
+
+
+                    <button
+                        class="small danger"
+                        onclick="deleteAgent('${agent.id}')"
+                    >
+                        🗑️ Efase
+                    </button>
+
+                </div>
 
             </div>
 
-
-            <div class="actions">
-
-                <button
-                    class="small"
-                    onclick="toggleAgent('${agent.id}')"
-                >
-                    ${
-                        agent.status === "ACTIVE"
-                        ? "⏸️ Off"
-                        : "▶️ On"
-                    }
-                </button>
-
-                <button
-                    class="small danger"
-                    onclick="deleteAgent('${agent.id}')"
-                >
-                    🗑️ Efase
-                </button>
-
-            </div>
-
-        </div>
-
-        `
+            `
         ).join("");
 
 }
 
 
 
-/* ================= TICKETS ================= */
+/* ================= DISPLAY TICKETS ================= */
 
 function displayTickets(){
 
@@ -2017,11 +1881,18 @@ function displayTickets(){
             "ticketTotal"
         );
 
-    if(total)
+
+    if(total){
+
         total.textContent =
-            tickets.length + " tikè";
+            tickets.length +
+            " tikè";
+
+    }
+
 
     if(!box) return;
+
 
     if(tickets.length === 0){
 
@@ -2032,37 +1903,41 @@ function displayTickets(){
         `;
 
         return;
+
     }
+
 
     box.innerHTML =
         tickets.map(
             ticket => `
 
-        <div class="item">
+            <div class="item">
 
-            <strong>
-                🎟️ ${escapeHTML(
-                    ticket.id || "TICKET"
-                )}
-            </strong>
+                <strong>
+                    🎟️
+                    ${escapeHTML(
+                        ticket.id || "TICKET"
+                    )}
+                </strong>
 
-            <small>
-                Ajan:
-                ${escapeHTML(
-                    ticket.agentName || "-"
-                )}
-            </small>
+                <small>
+                    Ajan:
+                    ${escapeHTML(
+                        ticket.agentName || "-"
+                    )}
+                </small>
 
-            <small>
-                Montan:
-                ${Number(
-                    ticket.amount || 0
-                ).toLocaleString()} Gdes
-            </small>
+                <small>
+                    Montan:
+                    ${Number(
+                        ticket.amount || 0
+                    ).toLocaleString()}
+                    Gdes
+                </small>
 
-        </div>
+            </div>
 
-        `
+            `
         ).join("");
 
 }
@@ -2075,17 +1950,22 @@ function toggleClient(id){
 
     const client =
         clients.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
+
     if(!client) return;
+
 
     client.status =
         client.status === "ACTIVE"
         ? "INACTIVE"
         : "ACTIVE";
 
+
     saveData();
+
     refresh();
 
 }
@@ -2093,16 +1973,26 @@ function toggleClient(id){
 
 function deleteClient(id){
 
-    if(!confirm(
-        "⚠️ Efase kliyan sa?"
-    )) return;
+    if(
+        !confirm(
+            "⚠️ Efase kliyan sa?"
+        )
+    ){
+
+        return;
+
+    }
+
 
     clients =
         clients.filter(
-            item => item.id !== id
+            item =>
+                item.id !== id
         );
 
+
     saveData();
+
     refresh();
 
 }
@@ -2115,17 +2005,22 @@ function toggleMachine(id){
 
     const machine =
         machines.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
+
     if(!machine) return;
+
 
     machine.status =
         machine.status === "ACTIVE"
         ? "INACTIVE"
         : "ACTIVE";
 
+
     saveData();
+
     refresh();
 
 }
@@ -2133,16 +2028,26 @@ function toggleMachine(id){
 
 function deleteMachine(id){
 
-    if(!confirm(
-        "⚠️ Efase machin sa?"
-    )) return;
+    if(
+        !confirm(
+            "⚠️ Efase machin sa?"
+        )
+    ){
+
+        return;
+
+    }
+
 
     machines =
         machines.filter(
-            item => item.id !== id
+            item =>
+                item.id !== id
         );
 
+
     saveData();
+
     refresh();
 
 }
@@ -2155,17 +2060,22 @@ function toggleAgent(id){
 
     const agent =
         agents.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
+
     if(!agent) return;
+
 
     agent.status =
         agent.status === "ACTIVE"
         ? "INACTIVE"
         : "ACTIVE";
 
+
     saveData();
+
     refresh();
 
 }
@@ -2173,16 +2083,26 @@ function toggleAgent(id){
 
 function deleteAgent(id){
 
-    if(!confirm(
-        "⚠️ Efase ajan sa?"
-    )) return;
+    if(
+        !confirm(
+            "⚠️ Efase ajan sa?"
+        )
+    ){
+
+        return;
+
+    }
+
 
     agents =
         agents.filter(
-            item => item.id !== id
+            item =>
+                item.id !== id
         );
 
+
     saveData();
+
     refresh();
 
 }
@@ -2193,48 +2113,67 @@ function deleteAgent(id){
 
 function updateStats(){
 
-    const ids = {
-
-        clientCount:
-            clients.length,
-
-        machineCount:
-            machines.length,
-
-        agentCount:
-            agents.length,
-
-        ticketCount:
-            tickets.length
-
-    };
-
-
-    Object.keys(ids)
-        .forEach(
-            id => {
-
-                const el =
-                    document.getElementById(
-                        id
-                    );
-
-                if(el)
-                    el.textContent =
-                        ids[id];
-
-            }
+    const clientCount =
+        document.getElementById(
+            "clientCount"
         );
 
+    const machineCount =
+        document.getElementById(
+            "machineCount"
+        );
 
-    const sales =
+    const agentCount =
+        document.getElementById(
+            "agentCount"
+        );
+
+    const ticketCount =
+        document.getElementById(
+            "ticketCount"
+        );
+
+    const salesTotal =
         document.getElementById(
             "salesTotal"
         );
 
-    if(sales){
 
-        sales.textContent =
+    if(clientCount){
+
+        clientCount.textContent =
+            clients.length;
+
+    }
+
+
+    if(machineCount){
+
+        machineCount.textContent =
+            machines.length;
+
+    }
+
+
+    if(agentCount){
+
+        agentCount.textContent =
+            agents.length;
+
+    }
+
+
+    if(ticketCount){
+
+        ticketCount.textContent =
+            tickets.length;
+
+    }
+
+
+    if(salesTotal){
+
+        salesTotal.textContent =
             Number(
                 finance.sales || 0
             ).toLocaleString() +
@@ -2273,11 +2212,26 @@ function escapeHTML(value){
     return String(
         value ?? ""
     )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
@@ -2303,6 +2257,7 @@ function logout(){
         "lottoxCurrentAgentName"
     );
 
+
     window.location.href =
         "index.html";
 
@@ -2314,66 +2269,15 @@ function logout(){
 
 refresh();
 
+
 console.log(
     "⚡ LOTTOX CONTROL CENTER READY"
 );
 
 </script>
 
-
 </main>
-<script>
 
-document.querySelectorAll(".nav button").forEach(function(button){
-
-    button.addEventListener("click", function(){
-
-        const text = this.textContent.trim();
-
-        let target = "";
-
-        if(text.includes("Overview")){
-            target = "overview";
-        }
-        else if(text.includes("Kliyan")){
-            target = "clients";
-        }
-        else if(text.includes("Machin")){
-            target = "machines";
-        }
-        else if(text.includes("Ajan")){
-            target = "agents";
-        }
-        else if(text.includes("Tikè")){
-            target = "tickets";
-        }
-
-        document
-            .querySelectorAll(".section")
-            .forEach(function(section){
-                section.classList.remove("active");
-            });
-
-        const selected =
-            document.getElementById(target);
-
-        if(selected){
-            selected.classList.add("active");
-        }
-
-        document
-            .querySelectorAll(".nav button")
-            .forEach(function(btn){
-                btn.classList.remove("active");
-            });
-
-        this.classList.add("active");
-
-    });
-
-});
-
-</script>
 </body>
 
 </html>    
