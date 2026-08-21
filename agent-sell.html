@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ht">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>LOTTOX — Vann Tikè</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at top,
+        #182028 0%,
+        #080a0d 45%,
+        #030405 100%
+    );
+
+    color:#fff;
+}
+
+header{
+
+    height:68px;
+
+    background:#0a0c0f;
+
+    border-bottom:1px solid #252a30;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.logo{
+
+    width:40px;
+    height:40px;
+
+    border-radius:11px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ff9d00
+    );
+
+    color:#080808;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:900;
+}
+
+.brand-name{
+
+    font-size:20px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+.back-btn{
+
+    border:1px solid #292f35;
+
+    background:#111419;
+
+    color:#ddd;
+
+    padding:9px 12px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+main{
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:25px 15px 70px;
+}
+
+.title{
+
+    margin-bottom:20px;
+}
+
+.title h1{
+
+    font-size:25px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+
+    color:#777f87;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+.card{
+
+    background:#0f1216;
+
+    border:1px solid #252a30;
+
+    border-radius:17px;
+
+    padding:20px;
+
+    margin-bottom:16px;
+}
+
+.card-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.card-title h2{
+
+    font-size:16px;
+}
+
+.card-title span{
+
+    color:#707880;
+
+    font-size:10px;
+}
+
+.field{
+
+    margin-bottom:15px;
+}
+
+.field label{
+
+    display:block;
+
+    color:#aeb4ba;
+
+    font-size:11px;
+
+    margin-bottom:7px;
+}
+
+input,
+select{
+
+    width:100%;
+
+    height:48px;
+
+    background:#090b0e;
+
+    border:1px solid #2c3239;
+
+    border-radius:10px;
+
+    color:#fff;
+
+    outline:none;
+
+    padding:0 12px;
+
+    font-size:13px;
+}
+
+input:focus,
+select:focus{
+
+    border-color:#ffd000;
+}
+
+.primary{
+
+    width:100%;
+
+    height:50px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ff9d00
+    );
+
+    color:#090909;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.primary:active{
+
+    transform:scale(.98);
+}
+
+.info{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+
+    margin-bottom:16px;
+}
+
+.info-box{
+
+    background:#111419;
+
+    border:1px solid #292f35;
+
+    border-radius:11px;
+
+    padding:13px;
+}
+
+.info-label{
+
+    color:#707880;
+
+    font-size:9px;
+
+    margin-bottom:6px;
+}
+
+.info-value{
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+.ticket{
+
+    background:#111419;
+
+    border:1px solid #292f35;
+
+    border-radius:11px;
+
+    padding:13px;
+
+    margin-bottom:9px;
+}
+
+.ticket strong{
+
+    font-size:12px;
+}
+
+.ticket small{
+
+    display:block;
+
+    color:#707880;
+
+    font-size:10px;
+
+    margin-top:5px;
+}
+
+.empty{
+
+    text-align:center;
+
+    padding:24px;
+
+    color:#666e76;
+
+    font-size:11px;
+
+    border:1px dashed #292f35;
+
+    border-radius:10px;
+}
+
+@media(max-width:600px){
+
+    .title h1{
+
+        font-size:22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            X
+        </div>
+
+        <div class="brand-name">
+            LOTTOX
+        </div>
+
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="goBack()"
+    >
+        ← Dashboard
+    </button>
+
+</header>
+
+<main>
+
+    <div class="title">
+
+        <h1>
+            🎟️ Vann Tikè
+        </h1>
+
+        <p>
+            Kreye yon nouvo tikè epi
+            anrejistre lavant lan nan sistèm LOTTOX.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                Nouvo Tikè
+            </h2>
+
+            <span>
+                LOTTOX
+            </span>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    AJAN
+                </div>
+
+                <div
+                    class="info-value"
+                    id="agentName"
+                >
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-label">
+                    MACHIN
+                </div>
+
+                <div
+                    class="info-value"
+                    id="machineId"
+                >
+                    -
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                🎯 Jwèt / Loto
+            </label>
+
+            <select id="game">
+
+                <option value="">
+                    Chwazi jwèt la
+                </option>
+
+                <option value="Loto 3 Chif">
+                    Loto 3 Chif
+                </option>
+
+                <option value="Loto 4 Chif">
+                    Loto 4 Chif
+                </option>
+
+                <option value="Loto 5 Chif">
+                    Loto 5 Chif
+                </option>
+
+                <option value="Bòlèt">
+                    Bòlèt
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                🔢 Nimewo
+            </label>
+
+            <input
+                id="number"
+                type="text"
+                inputmode="numeric"
+                placeholder="Egzanp: 25-36-48"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                💰 Montan
+            </label>
+
+            <input
+                id="amount"
+                type="number"
+                min="1"
+                placeholder="Egzanp: 100"
+            >
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="sellTicket()"
+        >
+            🎟️ VANN TIKÈ
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                🧾 Dènye Tikè
+            </h2>
+
+            <span id="ticketCount">
+                0
+            </span>
+
+        </div>
+
+
+        <div id="recentTickets">
+
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+  /* ================= DATABASE ================= */
+
+let agents =
+    JSON.parse(
+        localStorage.getItem(
+            "lottoxAgents"
+        )
+    ) || [];
+
+
+let tickets =
+    JSON.parse(
+        localStorage.getItem(
+            "lottoxTickets"
+        )
+    ) || [];
+
+
+let finance =
+    JSON.parse(
+        localStorage.getItem(
+            "lottoxFinance"
+        )
+    ) || {
+        sales:0,
+        profit:0,
+        loss:0
+    };
+
+
+/* ================= CURRENT AGENT ================= */
+
+const currentAgentId =
+    localStorage.getItem(
+        "lottoxCurrentAgent"
+    );
+
+
+const currentAgent =
+    agents.find(
+        agent =>
+            String(agent.id) ===
+            String(currentAgentId)
+    );
+
+
+/* ================= SECURITY ================= */
+
+function checkLogin(){
+
+    const loggedIn =
+        localStorage.getItem(
+            "lottoxAgentLoggedIn"
+        );
+
+
+    if(
+        loggedIn !==
+        "true"
+    ){
+
+        window.location.href =
+            "agent-login.html";
+
+        return false;
+
+    }
+
+
+    if(!currentAgent){
+
+        localStorage.removeItem(
+            "lottoxAgentLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "lottoxCurrentAgent"
+        );
+
+        window.location.href =
+            "agent-login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* ================= ESCAPE ================= */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* ================= MONEY ================= */
+
+function money(value){
+
+    return Number(
+        value || 0
+    ).toLocaleString() +
+    " Gdes";
+
+}
+
+
+/* ================= TICKET ID ================= */
+
+function generateTicketID(){
+
+    return "TKT-" +
+        Date.now().toString() +
+        "-" +
+        Math.floor(
+            100 +
+            Math.random() * 900
+        );
+
+}
+
+
+/* ================= SELL TICKET ================= */
+
+function sellTicket(){
+
+    if(!currentAgent){
+
+        alert(
+            "❌ Sesyon ajan an pa valide."
+        );
+
+        return;
+
+    }
+
+
+    const game =
+        document
+        .getElementById(
+            "game"
+        )
+        .value
+        .trim();
+
+
+    const number =
+        document
+        .getElementById(
+            "number"
+        )
+        .value
+        .trim();
+
+
+    const amount =
+        Number(
+            document
+            .getElementById(
+                "amount"
+            )
+            .value
+        );
+
+
+    /* CHECK GAME */
+
+    if(!game){
+
+        alert(
+            "⚠️ Chwazi jwèt la."
+        );
+
+        return;
+
+    }
+
+
+    /* CHECK NUMBER */
+
+    if(!number){
+
+        alert(
+            "⚠️ Antre nimewo a."
+        );
+
+        return;
+
+    }
+
+
+    /* CHECK AMOUNT */
+
+    if(
+        !amount ||
+        amount <= 0
+    ){
+
+        alert(
+            "⚠️ Antre yon montan ki valab."
+        );
+
+        return;
+
+    }
+
+
+    /* GET MACHINE */
+
+    const machineId =
+        currentAgent.machineId ||
+        "";
+
+
+    /* CREATE TICKET */
+
+    const ticket = {
+
+        id:
+            generateTicketID(),
+
+        agentId:
+            currentAgent.id,
+
+        agentName:
+            currentAgent.name,
+
+        clientId:
+            currentAgent.clientId || "",
+
+        clientName:
+            currentAgent.clientName || "",
+
+        machineId:
+            machineId,
+
+        game:
+            game,
+
+        number:
+            number,
+
+        amount:
+            amount,
+
+        status:
+            "VALID",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    /* SAVE TICKET */
+
+    tickets.push(
+        ticket
+    );
+
+
+    localStorage.setItem(
+        "lottoxTickets",
+        JSON.stringify(
+            tickets
+        )
+    );
+
+
+    /* UPDATE FINANCE */
+
+    finance.sales =
+        Number(
+            finance.sales || 0
+        ) +
+        amount;
+
+
+    finance.profit =
+        Number(
+            finance.profit || 0
+        );
+
+
+    localStorage.setItem(
+        "lottoxFinance",
+        JSON.stringify(
+            finance
+        )
+    );
+
+
+    /* CLEAR FORM */
+
+    document
+        .getElementById(
+            "game"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "number"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "amount"
+        )
+        .value = "";
+
+
+    /* SUCCESS */
+
+    alert(
+
+        "✅ TIKÈ VANN!\n\n" +
+
+        "ID: " +
+        ticket.id +
+        "\n" +
+
+        "Jwèt: " +
+        ticket.game +
+        "\n" +
+
+        "Nimewo: " +
+        ticket.number +
+        "\n" +
+
+        "Montan: " +
+        money(
+            ticket.amount
+        )
+
+    );
+
+
+    loadRecentTickets();
+
+}
+
+
+/* ================= RECENT TICKETS ================= */
+
+function loadRecentTickets(){
+
+    const box =
+        document.getElementById(
+            "recentTickets"
+        );
+
+
+    const count =
+        document.getElementById(
+            "ticketCount"
+        );
+
+
+    if(!box){
+
+        return;
+
+    }
+
+
+    const agentTickets =
+        tickets
+        .filter(
+            ticket =>
+                String(
+                    ticket.agentId
+                ) ===
+                String(
+                    currentAgentId
+                )
+        )
+        .slice()
+        .reverse();
+
+
+    if(count){
+
+        count.textContent =
+            agentTickets.length +
+            " tikè";
+
+    }
+
+
+    if(
+        agentTickets.length ===
+        0
+    ){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        agentTickets
+        .slice(0,10)
+        .map(
+            ticket => `
+
+            <div class="ticket">
+
+                <strong>
+                    🎟️
+                    ${escapeHTML(
+                        ticket.id
+                    )}
+                </strong>
+
+                <small>
+                    🎯 Jwèt:
+                    ${escapeHTML(
+                        ticket.game
+                    )}
+                </small>
+
+                <small>
+                    🔢 Nimewo:
+                    ${escapeHTML(
+                        ticket.number
+                    )}
+                </small>
+
+                <small>
+                    💰 Montan:
+                    ${money(
+                        ticket.amount
+                    )}
+                </small>
+
+                <small>
+                    ⚙️ Machin:
+                    ${escapeHTML(
+                        ticket.machineId ||
+                        "-"
+                    )}
+                </small>
+
+            </div>
+
+        `
+        )
+        .join("");
+
+  }
+  /* ================= LOAD AGENT ================= */
+
+function loadAgent(){
+
+    const name =
+        document.getElementById(
+            "agentName"
+        );
+
+    const machine =
+        document.getElementById(
+            "machineId"
+        );
+
+
+    if(
+        name &&
+        currentAgent
+    ){
+
+        name.textContent =
+            currentAgent.name;
+
+    }
+
+
+    if(
+        machine &&
+        currentAgent
+    ){
+
+        machine.textContent =
+            currentAgent.machineId ||
+            "-";
+
+    }
+
+}
+
+
+/* ================= BACK ================= */
+
+function goBack(){
+
+    window.location.href =
+        "agent.html";
+
+}
+
+
+/* ================= ENTER NUMBER ================= */
+
+document
+    .getElementById(
+        "number"
+    )
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
+                document
+                    .getElementById(
+                        "amount"
+                    )
+                    .focus();
+
+            }
+
+        }
+    );
+
+
+/* ================= ENTER AMOUNT ================= */
+
+document
+    .getElementById(
+        "amount"
+    )
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
+                sellTicket();
+
+            }
+
+        }
+    );
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        if(
+            !checkLogin()
+        ){
+
+            return;
+
+        }
+
+
+        loadAgent();
+
+        loadRecentTickets();
+
+
+        console.log(
+            "🎟️ LOTTOX SELL TICKET READY"
+        );
+
+    }
+);
+
+
+/* ================= END ================= */
+
+</script>
+
+</main>
+
+</body>
+
+</html>
