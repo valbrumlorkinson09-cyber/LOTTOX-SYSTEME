@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="ht">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>LOTTOX — Client Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at top,
+        #182028 0%,
+        #080a0d 45%,
+        #030405 100%
+    );
+
+    color:#fff;
+}
+
+header{
+
+    height:68px;
+
+    background:#0a0c0f;
+
+    border-bottom:1px solid #252a30;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.logo{
+
+    width:40px;
+    height:40px;
+
+    border-radius:11px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd700,
+        #ff9d00
+    );
+
+    color:#080808;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-weight:900;
+}
+
+.brand-name{
+
+    font-size:20px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+.logout{
+
+    border:1px solid #3b2727;
+
+    background:#171112;
+
+    color:#ff7373;
+
+    padding:9px 12px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+main{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:25px 15px 70px;
+}
+
+.title{
+
+    margin-bottom:22px;
+}
+
+.title h1{
+
+    font-size:26px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+
+    color:#777f87;
+
+    font-size:12px;
+}
+
+
+/* ================= NAV ================= */
+
+.nav{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:8px;
+
+    margin-bottom:20px;
+}
+
+.nav button{
+
+    height:44px;
+
+    border:1px solid #292f35;
+
+    background:#111419;
+
+    color:#aeb4ba;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:10px;
+}
+
+.nav button.active{
+
+    color:#ffd000;
+
+    border-color:#4b401d;
+
+    background:#171714;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section{
+
+    display:none;
+}
+
+.section.active{
+
+    display:block;
+}
+
+
+/* ================= STATS ================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.stat{
+
+    background:#0f1216;
+
+    border:1px solid #252a30;
+
+    border-radius:15px;
+
+    padding:16px;
+}
+
+.stat-icon{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+.stat-label{
+
+    color:#777f87;
+
+    font-size:10px;
+
+    margin-bottom:6px;
+}
+
+.stat-value{
+
+    font-size:21px;
+
+    font-weight:900;
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+
+    background:#0f1216;
+
+    border:1px solid #252a30;
+
+    border-radius:17px;
+
+    padding:19px;
+
+    margin-bottom:16px;
+}
+
+.card-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.card-title h2{
+
+    font-size:16px;
+}
+
+.card-title span{
+
+    color:#707880;
+
+    font-size:10px;
+}
+
+
+/* ================= LIST ================= */
+
+.item{
+
+    background:#111419;
+
+    border:1px solid #292f35;
+
+    border-radius:11px;
+
+    padding:13px;
+
+    margin-bottom:9px;
+}
+
+.item-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+}
+
+.item strong{
+
+    font-size:12px;
+}
+
+.item small{
+
+    display:block;
+
+    color:#707880;
+
+    font-size:10px;
+
+    margin-top:5px;
+}
+
+.active{
+
+    color:#32db78;
+}
+
+.inactive{
+
+    color:#ff7070;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#666e76;
+
+    font-size:11px;
+
+    border:1px dashed #292f35;
+
+    border-radius:10px;
+}
+
+
+/* ================= GRID ================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:15px;
+}
+
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+
+    overflow-x:auto;
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:11px;
+}
+
+th,
+td{
+
+    padding:12px 8px;
+
+    text-align:left;
+
+    border-bottom:1px solid #252a30;
+}
+
+th{
+
+    color:#777f87;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+}
+
+td{
+
+    color:#ddd;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    .stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .title h1{
+
+        font-size:22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            X
+        </div>
+
+        <div class="brand-name">
+            LOTTOX
+        </div>
+
+    </div>
+
+
+    <button
+        class="logout"
+        onclick="logout()"
+    >
+        🚪 Dekonekte
+    </button>
+
+</header>
+
+
+<main>
+
+
+<div class="title">
+
+    <h1>
+        ⚡ LOTTOX Dashboard
+    </h1>
+
+    <p id="welcomeText">
+        Byenveni nan espas kliyan ou.
+    </p>
+
+</div>
+
+
+<!-- ================= NAV ================= -->
+
+<div class="nav">
+
+    <button
+        class="active"
+        onclick="showSection('overview',this)"
+    >
+        📊 Overview
+    </button>
+
+
+    <button
+        onclick="showSection('machines',this)"
+    >
+        Machin
+    </button>
+
+
+    <button
+        onclick="showSection('agents',this)"
+    >
+        👥 Ajan
+    </button>
+
+
+    <button
+        onclick="showSection('tickets',this)"
+    >
+        🎟️ Tikè
+    </button>
+
+
+    <button
+        onclick="showSection('finance',this)"
+    >
+        💰 Finans
+    </button>
+
+</div>
+
+
+<!-- ================= OVERVIEW ================= -->
+
+<section
+    id="overview"
+    class="section active"
+>
+
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ⚙️
+            </div>
+
+            <div class="stat-label">
+                Machin
+            </div>
+
+            <div
+                class="stat-value"
+                id="machineCount"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <div class="stat-label">
+                Ajan
+            </div>
+
+            <div
+                class="stat-value"
+                id="agentCount"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🎟️
+            </div>
+
+            <div class="stat-label">
+                Tikè
+            </div>
+
+            <div
+                class="stat-value"
+                id="ticketCount"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+            <div class="stat-label">
+                Lavant
+            </div>
+
+            <div
+                class="stat-value"
+                id="salesTotal"
+            >
+                0
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    📈 Rezime
+                </h2>
+
+                <span>
+                    Jodi a
+                </span>
+
+            </div>
+
+
+            <div class="item">
+
+                <strong>
+                    💰 Lavant
+                </strong>
+
+                <small id="todaySales">
+                    0 Gdes
+                </small>
+
+            </div>
+
+
+            <div class="item">
+
+                <strong>
+                    📉 Pèt
+                </strong>
+
+                <small id="todayLoss">
+                    0 Gdes
+                </small>
+
+            </div>
+
+
+            <div class="item">
+
+                <strong>
+                    📈 Benefis
+                </strong>
+
+                <small id="todayProfit">
+                    0 Gdes
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    🏢 Kont Kliyan
+                </h2>
+
+                <span>
+                    LOTTOX
+                </span>
+
+            </div>
+
+
+            <div
+                id="clientInfo"
+                class="empty"
+            >
+                Ap chaje enfòmasyon...
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= MACHINES ================= -->
+
+<section
+    id="machines"
+    class="section"
+>
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                Machin mwen yo
+            </h2>
+
+            <span id="machineTotal">
+                0 machin
+            </span>
+
+        </div>
+
+
+        <div id="machinesList">
+
+            <div class="empty">
+                Pa gen machin pou kliyan sa.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AGENTS ================= -->
+
+<section
+    id="agents"
+    class="section"
+>
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                👥 Ajan mwen yo
+            </h2>
+
+            <span id="agentTotal">
+                0 ajan
+            </span>
+
+        </div>
+
+
+        <div id="agentsList">
+
+            <div class="empty">
+                Pa gen ajan pou kliyan sa.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TICKETS ================= -->
+
+<section
+    id="tickets"
+    class="section"
+>
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                🎟️ Tikè
+            </h2>
+
+            <span id="ticketTotal">
+                0 tikè
+            </span>
+
+        </div>
+
+
+        <div
+            id="ticketsList"
+        >
+
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FINANCE ================= -->
+
+<section
+    id="finance"
+    class="section"
+>
+
+    <div class="grid">
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    💰 Lavant
+                </h2>
+
+                <span>
+                    Total
+                </span>
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="financeSales"
+            >
+                0 Gdes
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <h2>
+                    📉 Pèt
+                </h2>
+
+                <span>
+                    Total
+                </span>
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="financeLoss"
+            >
+                0 Gdes
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+
+            <h2>
+                📊 Finans
+            </h2>
+
+            <span>
+                LOTTOX
+            </span>
+
+        </div>
+
+
+        <div class="item">
+
+            <strong>
+                💰 Total Lavant
+            </strong>
+
+            <small id="totalSales">
+                0 Gdes
+            </small>
+
+        </div>
+
+
+        <div class="item">
+
+            <strong>
+                📉 Total Pèt
+            </strong>
+
+            <small id="totalLoss">
+                0 Gdes
+            </small>
+
+        </div>
+
+
+        <div class="item">
+
+            <strong>
+                📈 Total Benefis
+            </strong>
+
+            <small id="totalProfit">
+                0 Gdes
+            </small>
+
+        </div>
+
+
+    </div>
+
+  </section>
+  <script>
+
+/* ================= DATABASE ================= */
+
+let clients =
+    JSON.parse(
+        localStorage.getItem("lottoxClients")
+    ) || [];
+
+
+let machines =
+    JSON.parse(
+        localStorage.getItem("lottoxMachines")
+    ) || [];
+
+
+let agents =
+    JSON.parse(
+        localStorage.getItem("lottoxAgents")
+    ) || [];
+
+
+let tickets =
+    JSON.parse(
+        localStorage.getItem("lottoxTickets")
+    ) || [];
+
+
+let finance =
+    JSON.parse(
+        localStorage.getItem("lottoxFinance")
+    ) || {
+        sales: 0,
+        loss: 0,
+        profit: 0
+    };
+
+
+/* ================= CURRENT CLIENT ================= */
+
+const currentClientId =
+    localStorage.getItem(
+        "lottoxCurrentClient"
+    );
+
+
+const currentClient =
+    clients.find(
+        client =>
+            String(client.id) ===
+            String(currentClientId)
+    );
+
+
+/* ================= NAVIGATION ================= */
+
+function showSection(name, button){
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const section =
+        document.getElementById(name);
+
+
+    if(section){
+
+        section.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* ================= FORMAT MONEY ================= */
+
+function money(value){
+
+    return Number(
+        value || 0
+    ).toLocaleString() + " Gdes";
+
+}
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* ================= CLIENT INFO ================= */
+
+function loadClient(){
+
+    const welcome =
+        document.getElementById(
+            "welcomeText"
+        );
+
+
+    const info =
+        document.getElementById(
+            "clientInfo"
+        );
+
+
+    if(!currentClient){
+
+        if(welcome){
+
+            welcome.textContent =
+                "Kliyan pa jwenn.";
+
+        }
+
+
+        if(info){
+
+            info.innerHTML = `
+                <div>
+                    ❌ Kliyan sa pa egziste.
+                </div>
+            `;
+
+        }
+
+        return;
+
+    }
+
+
+    if(welcome){
+
+        welcome.textContent =
+            "Byenveni, " +
+            currentClient.name +
+            " 👋";
+
+    }
+
+
+    if(info){
+
+        info.innerHTML = `
+
+            <div class="item">
+
+                <strong>
+                    🏢
+                    ${escapeHTML(
+                        currentClient.name
+                    )}
+                </strong>
+
+                <small>
+                    ID:
+                    ${escapeHTML(
+                        currentClient.id
+                    )}
+                </small>
+
+                <small>
+                    📞
+                    ${escapeHTML(
+                        currentClient.phone || "-"
+                    )}
+                </small>
+
+                <small
+                    class="${
+                        currentClient.status ===
+                        "ACTIVE"
+                        ? "active"
+                        : "inactive"
+                    }"
+                >
+                    ●
+                    ${escapeHTML(
+                        currentClient.status
+                    )}
+                </small>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* ================= CLIENT MACHINES ================= */
+
+function loadMachines(){
+
+    const box =
+        document.getElementById(
+            "machinesList"
+        );
+
+
+    const total =
+        document.getElementById(
+            "machineTotal"
+        );
+
+
+    if(!box) return;
+
+
+    const clientMachines =
+        machines.filter(
+            machine =>
+                String(
+                    machine.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    if(total){
+
+        total.textContent =
+            clientMachines.length +
+            " machin";
+
+    }
+
+
+    if(clientMachines.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                Pa gen machin pou kliyan sa.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        clientMachines.map(
+            machine => `
+
+            <div class="item">
+
+                <div class="item-top">
+
+                    <div>
+
+                        <strong>
+                            ⚙️
+                            ${escapeHTML(
+                                machine.id
+                            )}
+                        </strong>
+
+                        <small>
+                            Machin LOTTOX
+                        </small>
+
+                    </div>
+
+
+                    <strong
+                        class="${
+                            machine.status ===
+                            "ACTIVE"
+                            ? "active"
+                            : "inactive"
+                        }"
+                    >
+                        ●
+                        ${escapeHTML(
+                            machine.status
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* ================= CLIENT AGENTS ================= */
+
+function loadAgents(){
+
+    const box =
+        document.getElementById(
+            "agentsList"
+        );
+
+
+    const total =
+        document.getElementById(
+            "agentTotal"
+        );
+
+
+    if(!box) return;
+
+
+    const clientAgents =
+        agents.filter(
+            agent =>
+                String(
+                    agent.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    if(total){
+
+        total.textContent =
+            clientAgents.length +
+            " ajan";
+
+    }
+
+
+    if(clientAgents.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                Pa gen ajan pou kliyan sa.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        clientAgents.map(
+            agent => `
+
+            <div class="item">
+
+                <div class="item-top">
+
+                    <div>
+
+                        <strong>
+                            👤
+                            ${escapeHTML(
+                                agent.name
+                            )}
+                        </strong>
+
+                        <small>
+                            ID:
+                            ${escapeHTML(
+                                agent.id
+                            )}
+                        </small>
+
+                        <small>
+                            📞
+                            ${escapeHTML(
+                                agent.phone || "-"
+                            )}
+                        </small>
+
+                        <small>
+                            Machin:
+                            ${escapeHTML(
+                                agent.machineId || "-"
+                            )}
+                        </small>
+
+                    </div>
+
+
+                    <strong
+                        class="${
+                            agent.status ===
+                            "ACTIVE"
+                            ? "active"
+                            : "inactive"
+                        }"
+                    >
+                        ●
+                        ${escapeHTML(
+                            agent.status
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* ================= CLIENT TICKETS ================= */
+
+function loadTickets(){
+
+    const box =
+        document.getElementById(
+            "ticketsList"
+        );
+
+
+    const total =
+        document.getElementById(
+            "ticketTotal"
+        );
+
+
+    if(!box) return;
+
+
+    const clientTickets =
+        tickets.filter(
+            ticket =>
+                String(
+                    ticket.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    if(total){
+
+        total.textContent =
+            clientTickets.length +
+            " tikè";
+
+    }
+
+
+    if(clientTickets.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+                Pa gen tikè ankò.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        clientTickets.map(
+            ticket => `
+
+            <div class="item">
+
+                <strong>
+                    🎟️
+                    ${escapeHTML(
+                        ticket.id ||
+                        "TICKET"
+                    )}
+                </strong>
+
+                <small>
+                    Ajan:
+                    ${escapeHTML(
+                        ticket.agentName || "-"
+                    )}
+                </small>
+
+                <small>
+                    Montan:
+                    ${money(
+                        ticket.amount || 0
+                    )}
+                </small>
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* ================= FINANCE ================= */
+
+function loadFinance(){
+
+    const sales =
+        Number(
+            finance.sales || 0
+        );
+
+
+    const loss =
+        Number(
+            finance.loss || 0
+        );
+
+
+    const profit =
+        Number(
+            finance.profit ||
+            (sales - loss)
+        );
+
+
+    const salesTotal =
+        document.getElementById(
+            "salesTotal"
+        );
+
+
+    const todaySales =
+        document.getElementById(
+            "todaySales"
+        );
+
+
+    const todayLoss =
+        document.getElementById(
+            "todayLoss"
+        );
+
+
+    const todayProfit =
+        document.getElementById(
+            "todayProfit"
+        );
+
+
+    const financeSales =
+        document.getElementById(
+            "financeSales"
+        );
+
+
+    const financeLoss =
+        document.getElementById(
+            "financeLoss"
+        );
+
+
+    const totalSales =
+        document.getElementById(
+            "totalSales"
+        );
+
+
+    const totalLoss =
+        document.getElementById(
+            "totalLoss"
+        );
+
+
+    const totalProfit =
+        document.getElementById(
+            "totalProfit"
+        );
+
+
+    if(salesTotal){
+
+        salesTotal.textContent =
+            money(sales);
+
+    }
+
+
+    if(todaySales){
+
+        todaySales.textContent =
+            money(sales);
+
+    }
+
+
+    if(todayLoss){
+
+        todayLoss.textContent =
+            money(loss);
+
+    }
+
+
+    if(todayProfit){
+
+        todayProfit.textContent =
+            money(profit);
+
+    }
+
+
+    if(financeSales){
+
+        financeSales.textContent =
+            money(sales);
+
+    }
+
+
+    if(financeLoss){
+
+        financeLoss.textContent =
+            money(loss);
+
+    }
+
+
+    if(totalSales){
+
+        totalSales.textContent =
+            money(sales);
+
+    }
+
+
+    if(totalLoss){
+
+        totalLoss.textContent =
+            money(loss);
+
+    }
+
+
+    if(totalProfit){
+
+        totalProfit.textContent =
+            money(profit);
+
+    }
+
+}
+
+
+/* ================= STATS ================= */
+
+function updateStats(){
+
+    const clientMachines =
+        machines.filter(
+            machine =>
+                String(
+                    machine.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    const clientAgents =
+        agents.filter(
+            agent =>
+                String(
+                    agent.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    const clientTickets =
+        tickets.filter(
+            ticket =>
+                String(
+                    ticket.clientId
+                ) ===
+                String(
+                    currentClientId
+                )
+        );
+
+
+    const machineCount =
+        document.getElementById(
+            "machineCount"
+        );
+
+
+    const agentCount =
+        document.getElementById(
+            "agentCount"
+        );
+
+
+    const ticketCount =
+        document.getElementById(
+            "ticketCount"
+        );
+
+
+    if(machineCount){
+
+        machineCount.textContent =
+            clientMachines.length;
+
+    }
+
+
+    if(agentCount){
+
+        agentCount.textContent =
+            clientAgents.length;
+
+    }
+
+
+    if(ticketCount){
+
+        ticketCount.textContent =
+            clientTickets.length;
+
+    }
+
+}
+/* ================= REFRESH ================= */
+
+function refresh(){
+
+    loadClient();
+
+    loadMachines();
+
+    loadAgents();
+
+    loadTickets();
+
+    loadFinance();
+
+    updateStats();
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "lottoxClientLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "lottoxCurrentClient"
+    );
+
+    window.location.href =
+        "client-login.html";
+
+}
+
+
+/* ================= SECURITY ================= */
+
+function checkClientLogin(){
+
+    const loggedIn =
+        localStorage.getItem(
+            "lottoxClientLoggedIn"
+        );
+
+
+    if(loggedIn !== "true"){
+
+        window.location.href =
+            "client-login.html";
+
+        return false;
+
+    }
+
+
+    if(!currentClientId){
+
+        window.location.href =
+            "client-login.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        if(!checkClientLogin()){
+
+            return;
+
+        }
+
+
+        refresh();
+
+
+        console.log(
+            "🏢 LOTTOX CLIENT DASHBOARD READY"
+        );
+
+    }
+);
+
+</script>
+
+</main>
+
+</body>
+
+</html>    
